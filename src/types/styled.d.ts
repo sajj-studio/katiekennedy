@@ -1,0 +1,26 @@
+import 'styled-components'
+
+declare module 'styled-components' {
+  export interface DefaultTheme {
+    typography: {
+      title: string
+      body: string
+    }
+    colors: {
+      white: string
+      black: string
+      grey: string
+      pink: string
+      beige: string
+    }
+    sizing: {
+      headerHeight: string
+      headerPadding: string
+      bodyPadding: string
+    }
+    transitions: {
+      default: string
+      long: string
+    }
+  }
+}
