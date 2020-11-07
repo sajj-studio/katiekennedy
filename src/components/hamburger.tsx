@@ -13,11 +13,13 @@ export const Hamburger: FC<HamburgerProps> = ({ isOpen, onClick }) => (
   </_Hamburger>
 )
 
+
 const _Hamburger = styled.div<{ isOpen: boolean }>`
   height: 1.875rem;
   width: 2.375rem;
   position: relative;
   z-index: 105;
+  margin: 0.5rem 1rem 0 0;
 
   ${({ isOpen }) => css`
     ${_HamburgerLine}::nth-child(1) {
@@ -35,16 +37,16 @@ const _Hamburger = styled.div<{ isOpen: boolean }>`
 `
 
 interface HamburgerLineProps {
-  position: 'top' | 'middle' | 'bottom'
+  position: 'top' | 'middle' | 'bottom',
 }
 const _HamburgerLine = styled.div<HamburgerLineProps>`
   position: absolute;
   display: block;
   width: 100%;
   height: 0.1875rem;
-  background: lighten($color-pink, 10%);
+  background: #C57D76;
   border-radius: 0.125rem;
-  transition: $transition;
+  transition: 0.2s;
 
   ${({ position }) => {
     switch (position) {

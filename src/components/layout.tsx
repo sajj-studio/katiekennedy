@@ -1,6 +1,7 @@
 import React, { FC } from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import { Header } from './header'
+import { Footer } from './footer'
 import { GlobalStyles } from './global-styles'
 import { ThemeProvider } from 'styled-components'
 import { theme } from './sc-theme'
@@ -28,7 +29,7 @@ export const Layout: FC = ({ children }) => {
         }}
       >
         <main>{children}</main>
-        <footer
+        {/* <footer
           style={{
             marginTop: `2rem`,
           }}
@@ -36,8 +37,10 @@ export const Layout: FC = ({ children }) => {
           © {new Date().getFullYear()}, Built with
           {` `}
           <a href="https://www.gatsbyjs.com">Gatsby</a>
-        </footer>
+        </footer> */}
+        
       </div>
+      <Footer />
     </ThemeProvider>
   )
 }
