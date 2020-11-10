@@ -1,9 +1,8 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "katiekennedy",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
     "babel-plugin-styled-components": "^1.11.1",
     "gatsby": "^2.25.2",
@@ -25,12 +24,11 @@
   "devDependencies": {
     "@types/react-helmet": "^6.1.0",
     "@types/styled-components": "^5.1.4",
+    "eslint-config-react-app": "^5.2.1",
+    "husky": "^4.3.0",
+    "lint-staged": "^10.5.1",
     "prettier": "2.1.2"
   },
-  "keywords": [
-    "gatsby"
-  ],
-  "license": "0BSD",
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
@@ -40,11 +38,13 @@
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx}": "eslint --max-warnings=0",
+    "*.{js,jsx,ts,tsx,json,md}": "prettier --check"
   }
 }

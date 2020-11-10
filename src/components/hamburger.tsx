@@ -13,7 +13,6 @@ export const Hamburger: FC<HamburgerProps> = ({ isOpen, onClick }) => (
   </_Hamburger>
 )
 
-
 const _Hamburger = styled.div<{ isOpen: boolean }>`
   height: 1.875rem;
   width: 2.375rem;
@@ -37,14 +36,14 @@ const _Hamburger = styled.div<{ isOpen: boolean }>`
 `
 
 interface HamburgerLineProps {
-  position: 'top' | 'middle' | 'bottom',
+  position: 'top' | 'middle' | 'bottom'
 }
 const _HamburgerLine = styled.div<HamburgerLineProps>`
   position: absolute;
   display: block;
   width: 100%;
   height: 0.1875rem;
-  background: #C57D76;
+  background: #c57d76;
   border-radius: 0.125rem;
   transition: 0.2s;
 

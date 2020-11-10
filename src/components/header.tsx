@@ -14,7 +14,7 @@ export const Header: FC = () => {
       <_Header isOpen={isOpen}>
         <div>
           <a href="/">
-            <img src="https://via.placeholder.com/160x44.png" />
+            <img src="https://via.placeholder.com/160x44.png" alt="" />
           </a>
         </div>
         <nav>

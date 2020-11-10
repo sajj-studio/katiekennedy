@@ -1,5 +1,4 @@
 import React, { FC } from 'react'
-import { useStaticQuery, graphql } from 'gatsby'
 import { Header } from './header'
 import { Footer } from './footer'
 import { GlobalStyles } from './global-styles'
@@ -7,16 +6,6 @@ import { ThemeProvider } from 'styled-components'
 import { theme } from './sc-theme'
 
 export const Layout: FC = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
-
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
@@ -38,7 +27,6 @@ export const Layout: FC = ({ children }) => {
           {` `}
           <a href="https://www.gatsbyjs.com">Gatsby</a>
         </footer> */}
-        
       </div>
       <Footer />
     </ThemeProvider>
