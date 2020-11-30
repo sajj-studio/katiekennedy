@@ -6,11 +6,11 @@ export const theme: DefaultTheme = {
     body: 'Lato',
   },
   colors: {
-    white: '#FFF',
+    white: '#fff',
     black: '#000',
-    grey: '#626267',
-    pink: '#C57D76',
-    beige: '#D3CAC2',
+    brown: '#b7895f',
+    pink: '#c57d75',
+    beige: '#d3cac3',
   },
   sizing: {
     headerHeight: '6.25rem',

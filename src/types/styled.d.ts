@@ -9,7 +9,7 @@ declare module 'styled-components' {
     colors: {
       white: string
       black: string
-      grey: string
+      brown: string
       pink: string
       beige: string
     }
