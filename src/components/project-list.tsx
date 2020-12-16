@@ -6,15 +6,10 @@ import { ProjectThumbnail } from './project-thumbnail'
 
 export const query = graphql`
   query ProjectList {
-    projects: allFile(filter: { sourceInstanceName: { eq: "projects" } }) {
+    allContentfulProject {
       nodes {
         id
-        childMarkdownRemark {
-          id
-          frontmatter {
-            ...Project
-          }
-        }
+        ...Project
       }
     }
   }
@@ -25,15 +20,9 @@ export const ProjectList: FC = () => {
 
   return (
     <_Container>
-      {data.projects.nodes.map(
-        project =>
-          project.childMarkdownRemark?.frontmatter && (
-            <ProjectThumbnail
-              key={project.id}
-              project={project.childMarkdownRemark?.frontmatter}
-            />
-          )
-      )}
+      {data.allContentfulProject.nodes.map(project => (
+        <ProjectThumbnail key={project.id} project={project} />
+      ))}
     </_Container>
   )
 }

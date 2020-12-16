@@ -5,13 +5,15 @@ import styled, { css } from 'styled-components'
 import { Typography } from './typography'
 
 export const Project = graphql`
-  fragment Project on MarkdownRemarkFrontmatter {
+  fragment Project on ContentfulProject {
     title
     slug
-    cover {
-      childImageSharp {
-        fluid(maxHeight: 171, maxWidth: 171) {
-          src
+    coverImage {
+      localFile {
+        childImageSharp {
+          fluid(maxHeight: 171, maxWidth: 171) {
+            src
+          }
         }
       }
     }
@@ -22,12 +24,15 @@ interface ProjectThumbnailProps {
 }
 
 export const ProjectThumbnail: FC<ProjectThumbnailProps> = ({
-  project: { cover, title, slug },
+  project: { coverImage, title, slug },
 }) => (
   <_Category>
     <Link to={`/project/${slug}`}>
       <_ImageContainer>
-        <img src={cover?.childImageSharp?.fluid?.src} alt={`${title} cover`} />
+        <img
+          src={coverImage?.localFile?.childImageSharp?.fluid?.src}
+          alt={`${title} cover`}
+        />
       </_ImageContainer>
       <Typography variant="body" color="brown">
         {title}
