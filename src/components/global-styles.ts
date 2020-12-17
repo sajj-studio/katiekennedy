@@ -140,10 +140,6 @@ export const GlobalStyles = createGlobalStyle`
       padding-top: ${theme.sizing.headerHeight};
       font-variant-ligatures: no-common-ligatures;
     }
-
-    section {
-      padding: ${theme.sizing.bodyPadding};
-    }
   `}
 
   section + section {

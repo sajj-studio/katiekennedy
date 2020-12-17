@@ -68,7 +68,8 @@ const _Header = styled.div<{ isOpen: boolean }>`
     padding: $header_padding;
     background: rgba(${theme.colors.white}, 0.875);
     backdrop-filter: blur(30px);
-    padding: 2rem 2.5625rem;
+    height: ${theme.sizing.headerHeight};
+    padding: 0 2.25rem;
 
     ${isOpen &&
     css`
@@ -78,5 +79,8 @@ const _Header = styled.div<{ isOpen: boolean }>`
   `}
 `
 const _Logo = styled.div`
-  max-width: 10.375rem;
+  img {
+    height: 3rem;
+    width: auto;
+  }
 `

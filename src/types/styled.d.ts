@@ -16,7 +16,6 @@ declare module 'styled-components' {
     sizing: {
       headerHeight: string
       headerPadding: string
-      bodyPadding: string
     }
     transitions: {
       default: string

@@ -13,9 +13,8 @@ export const theme: DefaultTheme = {
     beige: '#d3cac3',
   },
   sizing: {
-    headerHeight: '6.25rem',
+    headerHeight: '7.125rem',
     headerPadding: '1.625rem 2.5rem',
-    bodyPadding: '2.25rem 2.5rem',
   },
   transitions: {
     default: '0.2s',
