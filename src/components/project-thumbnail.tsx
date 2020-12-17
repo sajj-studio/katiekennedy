@@ -5,7 +5,7 @@ import styled, { css } from 'styled-components'
 import { Typography } from './typography'
 
 export const Project = graphql`
-  fragment Project on ContentfulProject {
+  fragment Project on ContentfulTheme {
     title
     slug
     coverImage {

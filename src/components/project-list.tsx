@@ -6,7 +6,7 @@ import { ProjectThumbnail } from './project-thumbnail'
 
 export const query = graphql`
   query ProjectList {
-    allContentfulProject {
+    allContentfulTheme {
       nodes {
         id
         ...Project
@@ -20,8 +20,8 @@ export const ProjectList: FC = () => {
 
   return (
     <_Container>
-      {data.allContentfulProject.nodes.map(project => (
-        <ProjectThumbnail key={project.id} project={project} />
+      {data.allContentfulTheme.nodes.map(theme => (
+        <ProjectThumbnail key={theme.id} project={theme} />
       ))}
     </_Container>
   )

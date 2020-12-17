@@ -1,7 +1,21 @@
 import React, { FC, useCallback, useState } from 'react'
+import { graphql, Link, useStaticQuery } from 'gatsby'
 import styled, { css } from 'styled-components'
 import { Hamburger } from './hamburger'
 import { Menu } from './sidebar'
+import { HeaderQuery } from '../graphqlTypes'
+
+export const query = graphql`
+  query Header {
+    contentfulLogo {
+      logo {
+        localFile {
+          publicURL
+        }
+      }
+    }
+  }
+`
 
 export const Header: FC = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -9,14 +23,19 @@ export const Header: FC = () => {
     setIsOpen(open => !open)
   }, [])
 
+  const data = useStaticQuery<HeaderQuery>(query)
+
   return (
     <_HeaderWrap>
       <_Header isOpen={isOpen}>
-        <div>
-          <a href="/">
-            <img src="https://via.placeholder.com/160x44.png" alt="" />
-          </a>
-        </div>
+        <_Logo>
+          <Link to="/">
+            <img
+              src={data.contentfulLogo?.logo?.localFile?.publicURL ?? ''}
+              alt="Katie Kennedy Logo"
+            />
+          </Link>
+        </_Logo>
         <nav>
           <Hamburger isOpen={isOpen} onClick={toggleMenu} />
           <Menu
@@ -39,21 +58,25 @@ const _HeaderWrap = styled.header`
   position: fixed;
   top: 0;
   width: 100%;
-  height: $header_height;
   z-index: 100;
 `
 const _Header = styled.div<{ isOpen: boolean }>`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: $header_padding;
-  background: rgba($color-white, 0.875);
-  backdrop-filter: blur(10px);
+  ${({ isOpen, theme }) => css`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $header_padding;
+    background: rgba(${theme.colors.white}, 0.875);
+    backdrop-filter: blur(30px);
+    padding: 2rem 2.5625rem;
 
-  ${({ isOpen }) =>
-    isOpen &&
+    ${isOpen &&
     css`
       backdrop-filter: none;
-      background: rgba($color-white, 0.95);
+      background: rgba(${theme.colors.white}, 0.95);
     `}
+  `}
+`
+const _Logo = styled.div`
+  max-width: 10.375rem;
 `

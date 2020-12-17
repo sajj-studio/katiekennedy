@@ -10,6 +10,7 @@ module.exports = {
     {
       files: ['**/*.ts?(x)'],
       rules: {
+        '@typescript-eslint/no-redeclare': 'off',
         '@typescript-eslint/explicit-member-accessibility': 'off',
         '@typescript-eslint/no-parameter-properties': 'off',
         '@typescript-eslint/no-empty-interface': 'off',
