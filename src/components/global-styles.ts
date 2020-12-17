@@ -154,4 +154,14 @@ export const GlobalStyles = createGlobalStyle`
     text-decoration: none;
     color: inherit;
   }
+
+  @font-face {
+    font-family: 'DM Serif Display';
+    src: url('/fonts/DMSerifDisplay-Regular.ttf') format('ttf');
+  }
+  @font-face {
+    font-family: 'DM Serif Display';
+    font-style: italic;
+    src: url('/fonts/DMSerifDisplay-Italic.ttf') format('ttf');
+  }
 `

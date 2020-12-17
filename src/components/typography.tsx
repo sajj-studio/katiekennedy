@@ -13,7 +13,7 @@ export const Typography = styled.p<TypographyProps>`
       switch (variant) {
         case 'title':
           return css`
-            font-family: 'DM Serif Display';
+            font-family: 'DM';
             font-weight: regular;
             font-size: 2.8125rem;
           `
