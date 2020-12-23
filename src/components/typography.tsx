@@ -20,18 +20,24 @@ export const Typography = styled.p<TypographyProps>`
 
         case 'subtitle':
           return css`
+            display: block;
             font-family: ${theme.typography.sansSerif};
             font-weight: 100;
             font-size: 1.1875rem;
             text-transform: uppercase;
+            letter-spacing: 0.47px;
+            margin-bottom: 0.7rem;
           `
 
         case 'body':
           return css`
             font-family: ${theme.typography.sansSerif};
             font-weight: 300;
-            margin: 1.25rem 0;
             line-height: 1.125rem;
+
+            & + & {
+              margin: 1.25rem 0;
+            }
           `
       }
     })()}

@@ -6,6 +6,7 @@ import Img from 'gatsby-image'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { BLOCKS } from '@contentful/rich-text-types'
 import { Typography } from './typography'
+import styled from 'styled-components'
 
 export const query = graphql`
   query AboutMe {
@@ -38,12 +39,13 @@ export const AboutMe: FC = () => {
             ?.fluid
         }
       />
+      <_Space />
       {documentToReactComponents(
         JSON.parse(data.contentfulHomepageAboutMe?.text?.raw ?? '{}'),
         {
           renderNode: {
             [BLOCKS.PARAGRAPH]: (_, children) => (
-              <Typography variant="body" color="pink">
+              <Typography variant="body" color="brown">
                 {children}
               </Typography>
             ),
@@ -53,3 +55,7 @@ export const AboutMe: FC = () => {
     </Container>
   )
 }
+
+const _Space = styled.div`
+  margin-bottom: 1.25rem;
+`
