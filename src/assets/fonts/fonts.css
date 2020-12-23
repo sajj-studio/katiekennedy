@@ -1,0 +1,36 @@
+@font-face {
+  font-family: 'DM Serif Display';
+  src: local('DM Serif Display'),
+    url('./DMSerifDisplay-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'DM Serif Display';
+  font-style: italic;
+  src: local('DM Serif Display'),
+    url('./DMSerifDisplay-Italic.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'San Francisco Display';
+  font-weight: 300;
+  src: local('San Francisco Display'),
+    url('./SFProDisplay-Light.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'San Francisco Display';
+  font-weight: 300;
+  font-style: italic;
+  src: local('San Francisco Display'),
+    url('./SFProDisplay-LightItalic.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'San Francisco Display';
+  font-weight: 100;
+  src: local('San Francisco Display'),
+    url('./SFProDisplay-Thin.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'San Francisco Display';
+  font-weight: 400;
+  src: local('San Francisco Display'),
+    url('./SFProDisplay-Medium.ttf') format('truetype');
+}

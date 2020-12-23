@@ -2,8 +2,8 @@ import { DefaultTheme } from 'styled-components'
 
 export const theme: DefaultTheme = {
   typography: {
-    title: 'Playfair Display',
-    body: 'Lato',
+    serif: '"DM Serif Display", serif',
+    sansSerif: '"San Francisco Display", sans-serif',
   },
   colors: {
     white: '#fff',

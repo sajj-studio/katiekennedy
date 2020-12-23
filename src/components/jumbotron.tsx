@@ -36,7 +36,7 @@ export const Jumbotron: FC = () => {
       <_Content>
         <h1>Welcome to my Portfolio</h1>
         <Button to="/" variant="filled">
-          Explore
+          Explore more
         </Button>
       </_Content>
     </_Wrapper>
@@ -64,7 +64,7 @@ const _Content = styled.div`
     padding: 3rem 2rem;
 
     h1 {
-      font-family: 'DM Serif Display';
+      font-family: ${theme.typography.serif};
       font-size: 2rem;
       color: ${theme.colors.white};
       text-shadow: 0 0 8px rgba(0, 0, 0, 0.5);

@@ -13,14 +13,14 @@ export const Typography = styled.p<TypographyProps>`
       switch (variant) {
         case 'title':
           return css`
-            font-family: 'DM';
+            font-family: ${theme.typography.serif};
             font-weight: regular;
             font-size: 2.8125rem;
           `
 
         case 'subtitle':
           return css`
-            font-family: 'San Francisco Display';
+            font-family: ${theme.typography.sansSerif};
             font-weight: 100;
             font-size: 1.1875rem;
             text-transform: uppercase;
@@ -28,7 +28,7 @@ export const Typography = styled.p<TypographyProps>`
 
         case 'body':
           return css`
-            font-family: 'San Francisco Display';
+            font-family: ${theme.typography.sansSerif};
             font-weight: 100;
           `
       }
