@@ -34,7 +34,7 @@ export const Jumbotron: FC = () => {
         alt={data.contentfulHomepageJumbotron?.text ?? ''}
       />
       <_Content>
-        <h1>Welcome to my Portfolio</h1>
+        <h1>{data.contentfulHomepageJumbotron?.text}</h1>
         <Button to="/" variant="filled">
           Explore more
         </Button>
