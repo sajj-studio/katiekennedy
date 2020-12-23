@@ -1,5 +1,6 @@
 import React, { FC } from 'react'
 import styled, { css } from 'styled-components'
+import { hexToRGBA } from './sc-theme'
 
 interface MenuItem {
   href: string
@@ -20,25 +21,26 @@ export const Menu: FC<MenuProps> = ({ items, isOpen }) => (
 )
 
 const _Menu = styled.ul<{ isOpen: boolean }>`
-  position: absolute;
-  top: 0;
-  left: 125%;
-  width: calc(100% - 6.25rem);
-  height: 100vh;
-  padding-left: 3.75rem;
-  background: rgba(lighten($color-beige, 10%), 0.875);
-  backdrop-filter: blur(10px);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  transition: ${({ theme }) => theme.transitions.default};
+  ${({ isOpen, theme }) => css`
+    position: absolute;
+    top: 0;
+    left: 125%;
+    width: calc(100% - 6.25rem);
+    height: 100vh;
+    padding-left: 3.75rem;
+    background: ${hexToRGBA(theme.colors.beige, 0.875)};
+    backdrop-filter: blur(30px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: ${theme.transitions.default};
 
-  ${({ isOpen }) =>
-    isOpen &&
+    ${isOpen &&
     css`
       left: 6.25rem;
-      box-shadow: 0 0 10px rgba($color-black, 0.3);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     `}
+  `}
 `
 const _MenuItem = styled.li`
   margin-bottom: 2.5rem;
@@ -47,9 +49,11 @@ const _MenuItem = styled.li`
   }
 `
 const _MenuLink = styled.a`
-  display: block;
-  font-family: $font_title;
-  font-size: 1.875rem;
-  color: $color-white;
-  text-shadow: 0 0 8px rgba($color-black, 0.5);
+  ${({ theme }) => css`
+    display: block;
+    font-family: ${theme.typography.serif};
+    font-size: 1.875rem;
+    color: white;
+    text-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+  `}
 `
