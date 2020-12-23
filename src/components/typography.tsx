@@ -14,7 +14,7 @@ export const Typography = styled.p<TypographyProps>`
         case 'title':
           return css`
             font-family: ${theme.typography.serif};
-            font-weight: regular;
+            font-weight: 400;
             font-size: 2.8125rem;
           `
 
@@ -29,7 +29,9 @@ export const Typography = styled.p<TypographyProps>`
         case 'body':
           return css`
             font-family: ${theme.typography.sansSerif};
-            font-weight: 100;
+            font-weight: 300;
+            margin: 1.25rem 0;
+            line-height: 1.125rem;
           `
       }
     })()}

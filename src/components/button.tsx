@@ -17,13 +17,7 @@ export const Button = styled(Link)<ButtonProps>`
     box-shadow: 3px 3px 15px #00000029;
     border-width: 1px;
     border-style: solid;
-
-    ${disabled &&
-    css`
-      background-color: ${theme.colors.beige};
-      color: ${theme.colors.white};
-      border-color: ${theme.colors.beige};
-    `}
+    margin: 0.375rem;
 
     ${(() => {
       switch (variant) {
@@ -42,5 +36,13 @@ export const Button = styled(Link)<ButtonProps>`
           `
       }
     })()}
+
+    ${disabled &&
+    css`
+      background-color: ${theme.colors.beige};
+      color: ${theme.colors.white};
+      border-color: ${theme.colors.beige};
+      box-shadow: none;
+    `}
   `}
 `
