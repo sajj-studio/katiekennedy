@@ -3,8 +3,8 @@ import 'styled-components'
 declare module 'styled-components' {
   export interface DefaultTheme {
     typography: {
-      title: string
-      body: string
+      serif: string
+      sansSerif: string
     }
     colors: {
       white: string
