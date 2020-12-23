@@ -65,7 +65,6 @@ const _Header = styled.div<{ isOpen: boolean }>`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: $header_padding;
     background: rgba(${theme.colors.white}, 0.875);
     backdrop-filter: blur(30px);
     height: ${theme.sizing.headerHeight};

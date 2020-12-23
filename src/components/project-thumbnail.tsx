@@ -1,36 +1,58 @@
 import React, { FC } from 'react'
 import { graphql, Link } from 'gatsby'
-import { ProjectFragment } from '../graphqlTypes'
+import {
+  ProjectThumbnailFragment,
+  ThemeThumbnailFragment,
+} from '../graphqlTypes'
 import styled, { css } from 'styled-components'
 import { Typography } from './typography'
 
-export const Project = graphql`
-  fragment Project on ContentfulTheme {
-    title
-    slug
+export const fragments = graphql`
+  fragment ProjectThumbnail on ContentfulProject {
+    id
     coverImage {
       localFile {
         childImageSharp {
-          fluid(maxHeight: 171, maxWidth: 171) {
+          fixed(height: 91, width: 91) {
             src
           }
         }
       }
     }
+    slug
+    title
+  }
+
+  fragment ThemeThumbnail on ContentfulTheme {
+    id
+    coverImage {
+      localFile {
+        childImageSharp {
+          fixed(height: 91, width: 91) {
+            src
+          }
+        }
+      }
+    }
+    slug
+    title
   }
 `
+
 interface ProjectThumbnailProps {
-  project: ProjectFragment
+  type: 'project' | 'theme'
+  data: ProjectThumbnailFragment | ThemeThumbnailFragment
 }
 
 export const ProjectThumbnail: FC<ProjectThumbnailProps> = ({
-  project: { coverImage, title, slug },
+  type,
+  data: { coverImage, title, slug },
 }) => (
   <_Category>
-    <Link to={`/project/${slug}`}>
+    <Link to={`/${type}/${slug}`}>
       <_ImageContainer>
         <img
-          src={coverImage?.localFile?.childImageSharp?.fluid?.src}
+          src={coverImage?.localFile?.childImageSharp?.fixed?.src}
           alt={`${title} cover`}
         />
       </_ImageContainer>

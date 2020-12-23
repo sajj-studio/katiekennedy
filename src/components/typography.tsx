@@ -14,7 +14,7 @@ export const Typography = styled.p<TypographyProps>`
         case 'title':
           return css`
             font-family: ${theme.typography.serif};
-            font-weight: regular;
+            font-weight: 400;
             font-size: 2.8125rem;
           `
 

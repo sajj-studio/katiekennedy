@@ -3,6 +3,7 @@ import { graphql, useStaticQuery } from 'gatsby'
 import { JumbotronQuery } from '../graphqlTypes'
 import styled, { css } from 'styled-components'
 import { Button } from './button'
+import { Container } from './container'
 
 export const query = graphql`
   query Jumbotron {
@@ -57,7 +58,7 @@ const _Img = styled.img`
   transform: translate(-50%, -50%);
   z-index: -1;
 `
-const _Content = styled.div`
+const _Content = styled(Container)`
   ${({ theme }) => css`
     width: 70%;
     align-self: flex-end;
