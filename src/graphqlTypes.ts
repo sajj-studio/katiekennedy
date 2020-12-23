@@ -1039,10 +1039,30 @@ export type ContentfulHomepageAboutMe = ContentfulReference &
     contentful_id: Scalars['String']
     id: Scalars['ID']
     node_locale: Scalars['String']
+    text?: Maybe<ContentfulHomepageAboutMeText>
+    image?: Maybe<ContentfulAsset>
+    spaceId?: Maybe<Scalars['String']>
+    createdAt?: Maybe<Scalars['Date']>
+    updatedAt?: Maybe<Scalars['Date']>
+    sys?: Maybe<ContentfulHomepageAboutMeSys>
     parent?: Maybe<Node>
     children: Array<Node>
     internal: Internal
   }
+
+export type ContentfulHomepageAboutMeCreatedAtArgs = {
+  formatString?: Maybe<Scalars['String']>
+  fromNow?: Maybe<Scalars['Boolean']>
+  difference?: Maybe<Scalars['String']>
+  locale?: Maybe<Scalars['String']>
+}
+
+export type ContentfulHomepageAboutMeUpdatedAtArgs = {
+  formatString?: Maybe<Scalars['String']>
+  fromNow?: Maybe<Scalars['Boolean']>
+  difference?: Maybe<Scalars['String']>
+  locale?: Maybe<Scalars['String']>
+}
 
 export type ContentfulHomepageAboutMeConnection = {
   __typename?: 'ContentfulHomepageAboutMeConnection'
@@ -1075,6 +1095,158 @@ export enum ContentfulHomepageAboutMeFieldsEnum {
   ContentfulId = 'contentful_id',
   Id = 'id',
   NodeLocale = 'node_locale',
+  TextRaw = 'text___raw',
+  ImageContentfulId = 'image___contentful_id',
+  ImageId = 'image___id',
+  ImageSpaceId = 'image___spaceId',
+  ImageCreatedAt = 'image___createdAt',
+  ImageUpdatedAt = 'image___updatedAt',
+  ImageFileUrl = 'image___file___url',
+  ImageFileDetailsSize = 'image___file___details___size',
+  ImageFileFileName = 'image___file___fileName',
+  ImageFileContentType = 'image___file___contentType',
+  ImageTitle = 'image___title',
+  ImageDescription = 'image___description',
+  ImageNodeLocale = 'image___node_locale',
+  ImageSysType = 'image___sys___type',
+  ImageSysRevision = 'image___sys___revision',
+  ImageLocalFileSourceInstanceName = 'image___localFile___sourceInstanceName',
+  ImageLocalFileAbsolutePath = 'image___localFile___absolutePath',
+  ImageLocalFileRelativePath = 'image___localFile___relativePath',
+  ImageLocalFileExtension = 'image___localFile___extension',
+  ImageLocalFileSize = 'image___localFile___size',
+  ImageLocalFilePrettySize = 'image___localFile___prettySize',
+  ImageLocalFileModifiedTime = 'image___localFile___modifiedTime',
+  ImageLocalFileAccessTime = 'image___localFile___accessTime',
+  ImageLocalFileChangeTime = 'image___localFile___changeTime',
+  ImageLocalFileBirthTime = 'image___localFile___birthTime',
+  ImageLocalFileRoot = 'image___localFile___root',
+  ImageLocalFileDir = 'image___localFile___dir',
+  ImageLocalFileBase = 'image___localFile___base',
+  ImageLocalFileExt = 'image___localFile___ext',
+  ImageLocalFileName = 'image___localFile___name',
+  ImageLocalFileRelativeDirectory = 'image___localFile___relativeDirectory',
+  ImageLocalFileDev = 'image___localFile___dev',
+  ImageLocalFileMode = 'image___localFile___mode',
+  ImageLocalFileNlink = 'image___localFile___nlink',
+  ImageLocalFileUid = 'image___localFile___uid',
+  ImageLocalFileGid = 'image___localFile___gid',
+  ImageLocalFileRdev = 'image___localFile___rdev',
+  ImageLocalFileIno = 'image___localFile___ino',
+  ImageLocalFileAtimeMs = 'image___localFile___atimeMs',
+  ImageLocalFileMtimeMs = 'image___localFile___mtimeMs',
+  ImageLocalFileCtimeMs = 'image___localFile___ctimeMs',
+  ImageLocalFileAtime = 'image___localFile___atime',
+  ImageLocalFileMtime = 'image___localFile___mtime',
+  ImageLocalFileCtime = 'image___localFile___ctime',
+  ImageLocalFileBirthtime = 'image___localFile___birthtime',
+  ImageLocalFileBirthtimeMs = 'image___localFile___birthtimeMs',
+  ImageLocalFileBlksize = 'image___localFile___blksize',
+  ImageLocalFileBlocks = 'image___localFile___blocks',
+  ImageLocalFileUrl = 'image___localFile___url',
+  ImageLocalFilePublicUrl = 'image___localFile___publicURL',
+  ImageLocalFileChildImageSharpGatsbyImageData = 'image___localFile___childImageSharp___gatsbyImageData',
+  ImageLocalFileChildImageSharpId = 'image___localFile___childImageSharp___id',
+  ImageLocalFileChildImageSharpChildren = 'image___localFile___childImageSharp___children',
+  ImageLocalFileId = 'image___localFile___id',
+  ImageLocalFileParentId = 'image___localFile___parent___id',
+  ImageLocalFileParentChildren = 'image___localFile___parent___children',
+  ImageLocalFileChildren = 'image___localFile___children',
+  ImageLocalFileChildrenId = 'image___localFile___children___id',
+  ImageLocalFileChildrenChildren = 'image___localFile___children___children',
+  ImageLocalFileInternalContent = 'image___localFile___internal___content',
+  ImageLocalFileInternalContentDigest = 'image___localFile___internal___contentDigest',
+  ImageLocalFileInternalDescription = 'image___localFile___internal___description',
+  ImageLocalFileInternalFieldOwners = 'image___localFile___internal___fieldOwners',
+  ImageLocalFileInternalIgnoreType = 'image___localFile___internal___ignoreType',
+  ImageLocalFileInternalMediaType = 'image___localFile___internal___mediaType',
+  ImageLocalFileInternalOwner = 'image___localFile___internal___owner',
+  ImageLocalFileInternalType = 'image___localFile___internal___type',
+  ImageFixedBase64 = 'image___fixed___base64',
+  ImageFixedTracedSvg = 'image___fixed___tracedSVG',
+  ImageFixedAspectRatio = 'image___fixed___aspectRatio',
+  ImageFixedWidth = 'image___fixed___width',
+  ImageFixedHeight = 'image___fixed___height',
+  ImageFixedSrc = 'image___fixed___src',
+  ImageFixedSrcSet = 'image___fixed___srcSet',
+  ImageFixedSrcWebp = 'image___fixed___srcWebp',
+  ImageFixedSrcSetWebp = 'image___fixed___srcSetWebp',
+  ImageResolutionsBase64 = 'image___resolutions___base64',
+  ImageResolutionsTracedSvg = 'image___resolutions___tracedSVG',
+  ImageResolutionsAspectRatio = 'image___resolutions___aspectRatio',
+  ImageResolutionsWidth = 'image___resolutions___width',
+  ImageResolutionsHeight = 'image___resolutions___height',
+  ImageResolutionsSrc = 'image___resolutions___src',
+  ImageResolutionsSrcSet = 'image___resolutions___srcSet',
+  ImageResolutionsSrcWebp = 'image___resolutions___srcWebp',
+  ImageResolutionsSrcSetWebp = 'image___resolutions___srcSetWebp',
+  ImageFluidBase64 = 'image___fluid___base64',
+  ImageFluidTracedSvg = 'image___fluid___tracedSVG',
+  ImageFluidAspectRatio = 'image___fluid___aspectRatio',
+  ImageFluidSrc = 'image___fluid___src',
+  ImageFluidSrcSet = 'image___fluid___srcSet',
+  ImageFluidSrcWebp = 'image___fluid___srcWebp',
+  ImageFluidSrcSetWebp = 'image___fluid___srcSetWebp',
+  ImageFluidSizes = 'image___fluid___sizes',
+  ImageSizesBase64 = 'image___sizes___base64',
+  ImageSizesTracedSvg = 'image___sizes___tracedSVG',
+  ImageSizesAspectRatio = 'image___sizes___aspectRatio',
+  ImageSizesSrc = 'image___sizes___src',
+  ImageSizesSrcSet = 'image___sizes___srcSet',
+  ImageSizesSrcWebp = 'image___sizes___srcWebp',
+  ImageSizesSrcSetWebp = 'image___sizes___srcSetWebp',
+  ImageSizesSizes = 'image___sizes___sizes',
+  ImageResizeBase64 = 'image___resize___base64',
+  ImageResizeTracedSvg = 'image___resize___tracedSVG',
+  ImageResizeSrc = 'image___resize___src',
+  ImageResizeWidth = 'image___resize___width',
+  ImageResizeHeight = 'image___resize___height',
+  ImageResizeAspectRatio = 'image___resize___aspectRatio',
+  ImageParentId = 'image___parent___id',
+  ImageParentParentId = 'image___parent___parent___id',
+  ImageParentParentChildren = 'image___parent___parent___children',
+  ImageParentChildren = 'image___parent___children',
+  ImageParentChildrenId = 'image___parent___children___id',
+  ImageParentChildrenChildren = 'image___parent___children___children',
+  ImageParentInternalContent = 'image___parent___internal___content',
+  ImageParentInternalContentDigest = 'image___parent___internal___contentDigest',
+  ImageParentInternalDescription = 'image___parent___internal___description',
+  ImageParentInternalFieldOwners = 'image___parent___internal___fieldOwners',
+  ImageParentInternalIgnoreType = 'image___parent___internal___ignoreType',
+  ImageParentInternalMediaType = 'image___parent___internal___mediaType',
+  ImageParentInternalOwner = 'image___parent___internal___owner',
+  ImageParentInternalType = 'image___parent___internal___type',
+  ImageChildren = 'image___children',
+  ImageChildrenId = 'image___children___id',
+  ImageChildrenParentId = 'image___children___parent___id',
+  ImageChildrenParentChildren = 'image___children___parent___children',
+  ImageChildrenChildren = 'image___children___children',
+  ImageChildrenChildrenId = 'image___children___children___id',
+  ImageChildrenChildrenChildren = 'image___children___children___children',
+  ImageChildrenInternalContent = 'image___children___internal___content',
+  ImageChildrenInternalContentDigest = 'image___children___internal___contentDigest',
+  ImageChildrenInternalDescription = 'image___children___internal___description',
+  ImageChildrenInternalFieldOwners = 'image___children___internal___fieldOwners',
+  ImageChildrenInternalIgnoreType = 'image___children___internal___ignoreType',
+  ImageChildrenInternalMediaType = 'image___children___internal___mediaType',
+  ImageChildrenInternalOwner = 'image___children___internal___owner',
+  ImageChildrenInternalType = 'image___children___internal___type',
+  ImageInternalContent = 'image___internal___content',
+  ImageInternalContentDigest = 'image___internal___contentDigest',
+  ImageInternalDescription = 'image___internal___description',
+  ImageInternalFieldOwners = 'image___internal___fieldOwners',
+  ImageInternalIgnoreType = 'image___internal___ignoreType',
+  ImageInternalMediaType = 'image___internal___mediaType',
+  ImageInternalOwner = 'image___internal___owner',
+  ImageInternalType = 'image___internal___type',
+  SpaceId = 'spaceId',
+  CreatedAt = 'createdAt',
+  UpdatedAt = 'updatedAt',
+  SysType = 'sys___type',
+  SysRevision = 'sys___revision',
+  SysContentTypeSysType = 'sys___contentType___sys___type',
+  SysContentTypeSysLinkType = 'sys___contentType___sys___linkType',
+  SysContentTypeSysId = 'sys___contentType___sys___id',
   ParentId = 'parent___id',
   ParentParentId = 'parent___parent___id',
   ParentParentParentId = 'parent___parent___parent___id',
@@ -1166,6 +1338,12 @@ export type ContentfulHomepageAboutMeFilterInput = {
   contentful_id?: Maybe<StringQueryOperatorInput>
   id?: Maybe<StringQueryOperatorInput>
   node_locale?: Maybe<StringQueryOperatorInput>
+  text?: Maybe<ContentfulHomepageAboutMeTextFilterInput>
+  image?: Maybe<ContentfulAssetFilterInput>
+  spaceId?: Maybe<StringQueryOperatorInput>
+  createdAt?: Maybe<DateQueryOperatorInput>
+  updatedAt?: Maybe<DateQueryOperatorInput>
+  sys?: Maybe<ContentfulHomepageAboutMeSysFilterInput>
   parent?: Maybe<NodeFilterInput>
   children?: Maybe<NodeFilterListInput>
   internal?: Maybe<InternalFilterInput>
@@ -1184,6 +1362,50 @@ export type ContentfulHomepageAboutMeGroupConnection = {
 export type ContentfulHomepageAboutMeSortInput = {
   fields?: Maybe<Array<Maybe<ContentfulHomepageAboutMeFieldsEnum>>>
   order?: Maybe<Array<Maybe<SortOrderEnum>>>
+}
+
+export type ContentfulHomepageAboutMeSys = {
+  __typename?: 'ContentfulHomepageAboutMeSys'
+  type?: Maybe<Scalars['String']>
+  revision?: Maybe<Scalars['Int']>
+  contentType?: Maybe<ContentfulHomepageAboutMeSysContentType>
+}
+
+export type ContentfulHomepageAboutMeSysContentType = {
+  __typename?: 'ContentfulHomepageAboutMeSysContentType'
+  sys?: Maybe<ContentfulHomepageAboutMeSysContentTypeSys>
+}
+
+export type ContentfulHomepageAboutMeSysContentTypeFilterInput = {
+  sys?: Maybe<ContentfulHomepageAboutMeSysContentTypeSysFilterInput>
+}
+
+export type ContentfulHomepageAboutMeSysContentTypeSys = {
+  __typename?: 'ContentfulHomepageAboutMeSysContentTypeSys'
+  type?: Maybe<Scalars['String']>
+  linkType?: Maybe<Scalars['String']>
+  id?: Maybe<Scalars['String']>
+}
+
+export type ContentfulHomepageAboutMeSysContentTypeSysFilterInput = {
+  type?: Maybe<StringQueryOperatorInput>
+  linkType?: Maybe<StringQueryOperatorInput>
+  id?: Maybe<StringQueryOperatorInput>
+}
+
+export type ContentfulHomepageAboutMeSysFilterInput = {
+  type?: Maybe<StringQueryOperatorInput>
+  revision?: Maybe<IntQueryOperatorInput>
+  contentType?: Maybe<ContentfulHomepageAboutMeSysContentTypeFilterInput>
+}
+
+export type ContentfulHomepageAboutMeText = {
+  __typename?: 'ContentfulHomepageAboutMeText'
+  raw?: Maybe<Scalars['String']>
+}
+
+export type ContentfulHomepageAboutMeTextFilterInput = {
+  raw?: Maybe<StringQueryOperatorInput>
 }
 
 export type ContentfulHomepageFeatured = ContentfulReference &
@@ -5532,6 +5754,12 @@ export type QueryContentfulHomepageAboutMeArgs = {
   contentful_id?: Maybe<StringQueryOperatorInput>
   id?: Maybe<StringQueryOperatorInput>
   node_locale?: Maybe<StringQueryOperatorInput>
+  text?: Maybe<ContentfulHomepageAboutMeTextFilterInput>
+  image?: Maybe<ContentfulAssetFilterInput>
+  spaceId?: Maybe<StringQueryOperatorInput>
+  createdAt?: Maybe<DateQueryOperatorInput>
+  updatedAt?: Maybe<DateQueryOperatorInput>
+  sys?: Maybe<ContentfulHomepageAboutMeSysFilterInput>
   parent?: Maybe<NodeFilterInput>
   children?: Maybe<NodeFilterListInput>
   internal?: Maybe<InternalFilterInput>
@@ -6643,6 +6871,213 @@ export type TransformOptions = {
 
 export type WebPOptions = {
   quality?: Maybe<Scalars['Int']>
+}
+
+export type GatsbyImageSharpFixedFragment = {
+  __typename?: 'ImageSharpFixed'
+} & Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>
+
+export type GatsbyImageSharpFixed_TracedSvgFragment = {
+  __typename?: 'ImageSharpFixed'
+} & Pick<ImageSharpFixed, 'tracedSVG' | 'width' | 'height' | 'src' | 'srcSet'>
+
+export type GatsbyImageSharpFixed_WithWebpFragment = {
+  __typename?: 'ImageSharpFixed'
+} & Pick<
+  ImageSharpFixed,
+  'base64' | 'width' | 'height' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp'
+>
+
+export type GatsbyImageSharpFixed_WithWebp_TracedSvgFragment = {
+  __typename?: 'ImageSharpFixed'
+} & Pick<
+  ImageSharpFixed,
+  'tracedSVG' | 'width' | 'height' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp'
+>
+
+export type GatsbyImageSharpFixed_NoBase64Fragment = {
+  __typename?: 'ImageSharpFixed'
+} & Pick<ImageSharpFixed, 'width' | 'height' | 'src' | 'srcSet'>
+
+export type GatsbyImageSharpFixed_WithWebp_NoBase64Fragment = {
+  __typename?: 'ImageSharpFixed'
+} & Pick<
+  ImageSharpFixed,
+  'width' | 'height' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp'
+>
+
+export type GatsbyImageSharpFluidFragment = {
+  __typename?: 'ImageSharpFluid'
+} & Pick<ImageSharpFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>
+
+export type GatsbyImageSharpFluidLimitPresentationSizeFragment = {
+  __typename?: 'ImageSharpFluid'
+} & {
+  maxHeight: ImageSharpFluid['presentationHeight']
+  maxWidth: ImageSharpFluid['presentationWidth']
+}
+
+export type GatsbyImageSharpFluid_TracedSvgFragment = {
+  __typename?: 'ImageSharpFluid'
+} & Pick<
+  ImageSharpFluid,
+  'tracedSVG' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'
+>
+
+export type GatsbyImageSharpFluid_WithWebpFragment = {
+  __typename?: 'ImageSharpFluid'
+} & Pick<
+  ImageSharpFluid,
+  | 'base64'
+  | 'aspectRatio'
+  | 'src'
+  | 'srcSet'
+  | 'srcWebp'
+  | 'srcSetWebp'
+  | 'sizes'
+>
+
+export type GatsbyImageSharpFluid_WithWebp_TracedSvgFragment = {
+  __typename?: 'ImageSharpFluid'
+} & Pick<
+  ImageSharpFluid,
+  | 'tracedSVG'
+  | 'aspectRatio'
+  | 'src'
+  | 'srcSet'
+  | 'srcWebp'
+  | 'srcSetWebp'
+  | 'sizes'
+>
+
+export type GatsbyImageSharpFluid_NoBase64Fragment = {
+  __typename?: 'ImageSharpFluid'
+} & Pick<ImageSharpFluid, 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>
+
+export type GatsbyImageSharpFluid_WithWebp_NoBase64Fragment = {
+  __typename?: 'ImageSharpFluid'
+} & Pick<
+  ImageSharpFluid,
+  'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'
+>
+
+export type GatsbyImageSharpResolutionsFragment = {
+  __typename?: 'ImageSharpResolutions'
+} & Pick<
+  ImageSharpResolutions,
+  'base64' | 'width' | 'height' | 'src' | 'srcSet'
+>
+
+export type GatsbyImageSharpResolutions_TracedSvgFragment = {
+  __typename?: 'ImageSharpResolutions'
+} & Pick<
+  ImageSharpResolutions,
+  'tracedSVG' | 'width' | 'height' | 'src' | 'srcSet'
+>
+
+export type GatsbyImageSharpResolutions_WithWebpFragment = {
+  __typename?: 'ImageSharpResolutions'
+} & Pick<
+  ImageSharpResolutions,
+  'base64' | 'width' | 'height' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp'
+>
+
+export type GatsbyImageSharpResolutions_WithWebp_TracedSvgFragment = {
+  __typename?: 'ImageSharpResolutions'
+} & Pick<
+  ImageSharpResolutions,
+  'tracedSVG' | 'width' | 'height' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp'
+>
+
+export type GatsbyImageSharpResolutions_NoBase64Fragment = {
+  __typename?: 'ImageSharpResolutions'
+} & Pick<ImageSharpResolutions, 'width' | 'height' | 'src' | 'srcSet'>
+
+export type GatsbyImageSharpResolutions_WithWebp_NoBase64Fragment = {
+  __typename?: 'ImageSharpResolutions'
+} & Pick<
+  ImageSharpResolutions,
+  'width' | 'height' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp'
+>
+
+export type GatsbyImageSharpSizesFragment = {
+  __typename?: 'ImageSharpSizes'
+} & Pick<ImageSharpSizes, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>
+
+export type GatsbyImageSharpSizes_TracedSvgFragment = {
+  __typename?: 'ImageSharpSizes'
+} & Pick<
+  ImageSharpSizes,
+  'tracedSVG' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'
+>
+
+export type GatsbyImageSharpSizes_WithWebpFragment = {
+  __typename?: 'ImageSharpSizes'
+} & Pick<
+  ImageSharpSizes,
+  | 'base64'
+  | 'aspectRatio'
+  | 'src'
+  | 'srcSet'
+  | 'srcWebp'
+  | 'srcSetWebp'
+  | 'sizes'
+>
+
+export type GatsbyImageSharpSizes_WithWebp_TracedSvgFragment = {
+  __typename?: 'ImageSharpSizes'
+} & Pick<
+  ImageSharpSizes,
+  | 'tracedSVG'
+  | 'aspectRatio'
+  | 'src'
+  | 'srcSet'
+  | 'srcWebp'
+  | 'srcSetWebp'
+  | 'sizes'
+>
+
+export type GatsbyImageSharpSizes_NoBase64Fragment = {
+  __typename?: 'ImageSharpSizes'
+} & Pick<ImageSharpSizes, 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>
+
+export type GatsbyImageSharpSizes_WithWebp_NoBase64Fragment = {
+  __typename?: 'ImageSharpSizes'
+} & Pick<
+  ImageSharpSizes,
+  'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'
+>
+
+export type AboutMeQueryVariables = Exact<{ [key: string]: never }>
+
+export type AboutMeQuery = { __typename?: 'Query' } & {
+  contentfulHomepageAboutMe?: Maybe<
+    { __typename?: 'ContentfulHomepageAboutMe' } & {
+      text?: Maybe<
+        { __typename?: 'ContentfulHomepageAboutMeText' } & Pick<
+          ContentfulHomepageAboutMeText,
+          'raw'
+        >
+      >
+      image?: Maybe<
+        { __typename?: 'ContentfulAsset' } & {
+          localFile?: Maybe<
+            { __typename?: 'File' } & {
+              childImageSharp?: Maybe<
+                { __typename?: 'ImageSharp' } & {
+                  fluid?: Maybe<
+                    {
+                      __typename?: 'ImageSharpFluid'
+                    } & GatsbyImageSharpFluidFragment
+                  >
+                }
+              >
+            }
+          >
+        }
+      >
+    }
+  >
 }
 
 export type FeaturedQueryVariables = Exact<{ [key: string]: never }>

@@ -10,7 +10,7 @@ interface SectionTitleProps {
 export const SectionTitle: FC<SectionTitleProps> = ({ color, children }) => {
   return (
     <_Wrapper>
-      <_Circle color={color} />
+      <_Circle />
 
       <Typography color={color} variant="title" as="h2">
         {children}
@@ -21,15 +21,15 @@ export const SectionTitle: FC<SectionTitleProps> = ({ color, children }) => {
 
 const _Wrapper = styled.div`
   position: relative;
-  margin-bottom: 1.5rem;
+  margin: 1.5rem 0;
 
   ${Typography} {
     padding-left: 2.4375rem;
   }
 `
 
-const _Circle = styled.div<{ color: keyof DefaultTheme['colors'] }>`
-  ${({ color, theme }) => css`
+const _Circle = styled.div`
+  ${({ theme }) => css`
     position: absolute;
     width: 100%;
 
@@ -40,7 +40,7 @@ const _Circle = styled.div<{ color: keyof DefaultTheme['colors'] }>`
       background-size: 3.625rem 3.625rem;
       height: 3.625rem;
       width: 3.625rem;
-      border: 1px solid ${theme.colors[color]};
+      border: 1px solid ${theme.colors.beige};
       border-radius: 50%;
       left: 0;
       transform: translate(-60%, -9px);
