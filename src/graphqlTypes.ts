@@ -533,10 +533,32 @@ export type ContentfulContactInfo = ContentfulReference &
     contentful_id: Scalars['String']
     id: Scalars['ID']
     node_locale: Scalars['String']
+    facebookPage?: Maybe<Scalars['String']>
+    instagramPage?: Maybe<Scalars['String']>
+    email?: Maybe<Scalars['String']>
+    phoneNumber?: Maybe<Scalars['String']>
+    spaceId?: Maybe<Scalars['String']>
+    createdAt?: Maybe<Scalars['Date']>
+    updatedAt?: Maybe<Scalars['Date']>
+    sys?: Maybe<ContentfulContactInfoSys>
     parent?: Maybe<Node>
     children: Array<Node>
     internal: Internal
   }
+
+export type ContentfulContactInfoCreatedAtArgs = {
+  formatString?: Maybe<Scalars['String']>
+  fromNow?: Maybe<Scalars['Boolean']>
+  difference?: Maybe<Scalars['String']>
+  locale?: Maybe<Scalars['String']>
+}
+
+export type ContentfulContactInfoUpdatedAtArgs = {
+  formatString?: Maybe<Scalars['String']>
+  fromNow?: Maybe<Scalars['Boolean']>
+  difference?: Maybe<Scalars['String']>
+  locale?: Maybe<Scalars['String']>
+}
 
 export type ContentfulContactInfoConnection = {
   __typename?: 'ContentfulContactInfoConnection'
@@ -569,6 +591,18 @@ export enum ContentfulContactInfoFieldsEnum {
   ContentfulId = 'contentful_id',
   Id = 'id',
   NodeLocale = 'node_locale',
+  FacebookPage = 'facebookPage',
+  InstagramPage = 'instagramPage',
+  Email = 'email',
+  PhoneNumber = 'phoneNumber',
+  SpaceId = 'spaceId',
+  CreatedAt = 'createdAt',
+  UpdatedAt = 'updatedAt',
+  SysType = 'sys___type',
+  SysRevision = 'sys___revision',
+  SysContentTypeSysType = 'sys___contentType___sys___type',
+  SysContentTypeSysLinkType = 'sys___contentType___sys___linkType',
+  SysContentTypeSysId = 'sys___contentType___sys___id',
   ParentId = 'parent___id',
   ParentParentId = 'parent___parent___id',
   ParentParentParentId = 'parent___parent___parent___id',
@@ -660,6 +694,14 @@ export type ContentfulContactInfoFilterInput = {
   contentful_id?: Maybe<StringQueryOperatorInput>
   id?: Maybe<StringQueryOperatorInput>
   node_locale?: Maybe<StringQueryOperatorInput>
+  facebookPage?: Maybe<StringQueryOperatorInput>
+  instagramPage?: Maybe<StringQueryOperatorInput>
+  email?: Maybe<StringQueryOperatorInput>
+  phoneNumber?: Maybe<StringQueryOperatorInput>
+  spaceId?: Maybe<StringQueryOperatorInput>
+  createdAt?: Maybe<DateQueryOperatorInput>
+  updatedAt?: Maybe<DateQueryOperatorInput>
+  sys?: Maybe<ContentfulContactInfoSysFilterInput>
   parent?: Maybe<NodeFilterInput>
   children?: Maybe<NodeFilterListInput>
   internal?: Maybe<InternalFilterInput>
@@ -678,6 +720,41 @@ export type ContentfulContactInfoGroupConnection = {
 export type ContentfulContactInfoSortInput = {
   fields?: Maybe<Array<Maybe<ContentfulContactInfoFieldsEnum>>>
   order?: Maybe<Array<Maybe<SortOrderEnum>>>
+}
+
+export type ContentfulContactInfoSys = {
+  __typename?: 'ContentfulContactInfoSys'
+  type?: Maybe<Scalars['String']>
+  revision?: Maybe<Scalars['Int']>
+  contentType?: Maybe<ContentfulContactInfoSysContentType>
+}
+
+export type ContentfulContactInfoSysContentType = {
+  __typename?: 'ContentfulContactInfoSysContentType'
+  sys?: Maybe<ContentfulContactInfoSysContentTypeSys>
+}
+
+export type ContentfulContactInfoSysContentTypeFilterInput = {
+  sys?: Maybe<ContentfulContactInfoSysContentTypeSysFilterInput>
+}
+
+export type ContentfulContactInfoSysContentTypeSys = {
+  __typename?: 'ContentfulContactInfoSysContentTypeSys'
+  type?: Maybe<Scalars['String']>
+  linkType?: Maybe<Scalars['String']>
+  id?: Maybe<Scalars['String']>
+}
+
+export type ContentfulContactInfoSysContentTypeSysFilterInput = {
+  type?: Maybe<StringQueryOperatorInput>
+  linkType?: Maybe<StringQueryOperatorInput>
+  id?: Maybe<StringQueryOperatorInput>
+}
+
+export type ContentfulContactInfoSysFilterInput = {
+  type?: Maybe<StringQueryOperatorInput>
+  revision?: Maybe<IntQueryOperatorInput>
+  contentType?: Maybe<ContentfulContactInfoSysContentTypeFilterInput>
 }
 
 export type ContentfulContentType = Node & {
@@ -962,10 +1039,30 @@ export type ContentfulHomepageAboutMe = ContentfulReference &
     contentful_id: Scalars['String']
     id: Scalars['ID']
     node_locale: Scalars['String']
+    text?: Maybe<ContentfulHomepageAboutMeText>
+    image?: Maybe<ContentfulAsset>
+    spaceId?: Maybe<Scalars['String']>
+    createdAt?: Maybe<Scalars['Date']>
+    updatedAt?: Maybe<Scalars['Date']>
+    sys?: Maybe<ContentfulHomepageAboutMeSys>
     parent?: Maybe<Node>
     children: Array<Node>
     internal: Internal
   }
+
+export type ContentfulHomepageAboutMeCreatedAtArgs = {
+  formatString?: Maybe<Scalars['String']>
+  fromNow?: Maybe<Scalars['Boolean']>
+  difference?: Maybe<Scalars['String']>
+  locale?: Maybe<Scalars['String']>
+}
+
+export type ContentfulHomepageAboutMeUpdatedAtArgs = {
+  formatString?: Maybe<Scalars['String']>
+  fromNow?: Maybe<Scalars['Boolean']>
+  difference?: Maybe<Scalars['String']>
+  locale?: Maybe<Scalars['String']>
+}
 
 export type ContentfulHomepageAboutMeConnection = {
   __typename?: 'ContentfulHomepageAboutMeConnection'
@@ -998,6 +1095,158 @@ export enum ContentfulHomepageAboutMeFieldsEnum {
   ContentfulId = 'contentful_id',
   Id = 'id',
   NodeLocale = 'node_locale',
+  TextRaw = 'text___raw',
+  ImageContentfulId = 'image___contentful_id',
+  ImageId = 'image___id',
+  ImageSpaceId = 'image___spaceId',
+  ImageCreatedAt = 'image___createdAt',
+  ImageUpdatedAt = 'image___updatedAt',
+  ImageFileUrl = 'image___file___url',
+  ImageFileDetailsSize = 'image___file___details___size',
+  ImageFileFileName = 'image___file___fileName',
+  ImageFileContentType = 'image___file___contentType',
+  ImageTitle = 'image___title',
+  ImageDescription = 'image___description',
+  ImageNodeLocale = 'image___node_locale',
+  ImageSysType = 'image___sys___type',
+  ImageSysRevision = 'image___sys___revision',
+  ImageLocalFileSourceInstanceName = 'image___localFile___sourceInstanceName',
+  ImageLocalFileAbsolutePath = 'image___localFile___absolutePath',
+  ImageLocalFileRelativePath = 'image___localFile___relativePath',
+  ImageLocalFileExtension = 'image___localFile___extension',
+  ImageLocalFileSize = 'image___localFile___size',
+  ImageLocalFilePrettySize = 'image___localFile___prettySize',
+  ImageLocalFileModifiedTime = 'image___localFile___modifiedTime',
+  ImageLocalFileAccessTime = 'image___localFile___accessTime',
+  ImageLocalFileChangeTime = 'image___localFile___changeTime',
+  ImageLocalFileBirthTime = 'image___localFile___birthTime',
+  ImageLocalFileRoot = 'image___localFile___root',
+  ImageLocalFileDir = 'image___localFile___dir',
+  ImageLocalFileBase = 'image___localFile___base',
+  ImageLocalFileExt = 'image___localFile___ext',
+  ImageLocalFileName = 'image___localFile___name',
+  ImageLocalFileRelativeDirectory = 'image___localFile___relativeDirectory',
+  ImageLocalFileDev = 'image___localFile___dev',
+  ImageLocalFileMode = 'image___localFile___mode',
+  ImageLocalFileNlink = 'image___localFile___nlink',
+  ImageLocalFileUid = 'image___localFile___uid',
+  ImageLocalFileGid = 'image___localFile___gid',
+  ImageLocalFileRdev = 'image___localFile___rdev',
+  ImageLocalFileIno = 'image___localFile___ino',
+  ImageLocalFileAtimeMs = 'image___localFile___atimeMs',
+  ImageLocalFileMtimeMs = 'image___localFile___mtimeMs',
+  ImageLocalFileCtimeMs = 'image___localFile___ctimeMs',
+  ImageLocalFileAtime = 'image___localFile___atime',
+  ImageLocalFileMtime = 'image___localFile___mtime',
+  ImageLocalFileCtime = 'image___localFile___ctime',
+  ImageLocalFileBirthtime = 'image___localFile___birthtime',
+  ImageLocalFileBirthtimeMs = 'image___localFile___birthtimeMs',
+  ImageLocalFileBlksize = 'image___localFile___blksize',
+  ImageLocalFileBlocks = 'image___localFile___blocks',
+  ImageLocalFileUrl = 'image___localFile___url',
+  ImageLocalFilePublicUrl = 'image___localFile___publicURL',
+  ImageLocalFileChildImageSharpGatsbyImageData = 'image___localFile___childImageSharp___gatsbyImageData',
+  ImageLocalFileChildImageSharpId = 'image___localFile___childImageSharp___id',
+  ImageLocalFileChildImageSharpChildren = 'image___localFile___childImageSharp___children',
+  ImageLocalFileId = 'image___localFile___id',
+  ImageLocalFileParentId = 'image___localFile___parent___id',
+  ImageLocalFileParentChildren = 'image___localFile___parent___children',
+  ImageLocalFileChildren = 'image___localFile___children',
+  ImageLocalFileChildrenId = 'image___localFile___children___id',
+  ImageLocalFileChildrenChildren = 'image___localFile___children___children',
+  ImageLocalFileInternalContent = 'image___localFile___internal___content',
+  ImageLocalFileInternalContentDigest = 'image___localFile___internal___contentDigest',
+  ImageLocalFileInternalDescription = 'image___localFile___internal___description',
+  ImageLocalFileInternalFieldOwners = 'image___localFile___internal___fieldOwners',
+  ImageLocalFileInternalIgnoreType = 'image___localFile___internal___ignoreType',
+  ImageLocalFileInternalMediaType = 'image___localFile___internal___mediaType',
+  ImageLocalFileInternalOwner = 'image___localFile___internal___owner',
+  ImageLocalFileInternalType = 'image___localFile___internal___type',
+  ImageFixedBase64 = 'image___fixed___base64',
+  ImageFixedTracedSvg = 'image___fixed___tracedSVG',
+  ImageFixedAspectRatio = 'image___fixed___aspectRatio',
+  ImageFixedWidth = 'image___fixed___width',
+  ImageFixedHeight = 'image___fixed___height',
+  ImageFixedSrc = 'image___fixed___src',
+  ImageFixedSrcSet = 'image___fixed___srcSet',
+  ImageFixedSrcWebp = 'image___fixed___srcWebp',
+  ImageFixedSrcSetWebp = 'image___fixed___srcSetWebp',
+  ImageResolutionsBase64 = 'image___resolutions___base64',
+  ImageResolutionsTracedSvg = 'image___resolutions___tracedSVG',
+  ImageResolutionsAspectRatio = 'image___resolutions___aspectRatio',
+  ImageResolutionsWidth = 'image___resolutions___width',
+  ImageResolutionsHeight = 'image___resolutions___height',
+  ImageResolutionsSrc = 'image___resolutions___src',
+  ImageResolutionsSrcSet = 'image___resolutions___srcSet',
+  ImageResolutionsSrcWebp = 'image___resolutions___srcWebp',
+  ImageResolutionsSrcSetWebp = 'image___resolutions___srcSetWebp',
+  ImageFluidBase64 = 'image___fluid___base64',
+  ImageFluidTracedSvg = 'image___fluid___tracedSVG',
+  ImageFluidAspectRatio = 'image___fluid___aspectRatio',
+  ImageFluidSrc = 'image___fluid___src',
+  ImageFluidSrcSet = 'image___fluid___srcSet',
+  ImageFluidSrcWebp = 'image___fluid___srcWebp',
+  ImageFluidSrcSetWebp = 'image___fluid___srcSetWebp',
+  ImageFluidSizes = 'image___fluid___sizes',
+  ImageSizesBase64 = 'image___sizes___base64',
+  ImageSizesTracedSvg = 'image___sizes___tracedSVG',
+  ImageSizesAspectRatio = 'image___sizes___aspectRatio',
+  ImageSizesSrc = 'image___sizes___src',
+  ImageSizesSrcSet = 'image___sizes___srcSet',
+  ImageSizesSrcWebp = 'image___sizes___srcWebp',
+  ImageSizesSrcSetWebp = 'image___sizes___srcSetWebp',
+  ImageSizesSizes = 'image___sizes___sizes',
+  ImageResizeBase64 = 'image___resize___base64',
+  ImageResizeTracedSvg = 'image___resize___tracedSVG',
+  ImageResizeSrc = 'image___resize___src',
+  ImageResizeWidth = 'image___resize___width',
+  ImageResizeHeight = 'image___resize___height',
+  ImageResizeAspectRatio = 'image___resize___aspectRatio',
+  ImageParentId = 'image___parent___id',
+  ImageParentParentId = 'image___parent___parent___id',
+  ImageParentParentChildren = 'image___parent___parent___children',
+  ImageParentChildren = 'image___parent___children',
+  ImageParentChildrenId = 'image___parent___children___id',
+  ImageParentChildrenChildren = 'image___parent___children___children',
+  ImageParentInternalContent = 'image___parent___internal___content',
+  ImageParentInternalContentDigest = 'image___parent___internal___contentDigest',
+  ImageParentInternalDescription = 'image___parent___internal___description',
+  ImageParentInternalFieldOwners = 'image___parent___internal___fieldOwners',
+  ImageParentInternalIgnoreType = 'image___parent___internal___ignoreType',
+  ImageParentInternalMediaType = 'image___parent___internal___mediaType',
+  ImageParentInternalOwner = 'image___parent___internal___owner',
+  ImageParentInternalType = 'image___parent___internal___type',
+  ImageChildren = 'image___children',
+  ImageChildrenId = 'image___children___id',
+  ImageChildrenParentId = 'image___children___parent___id',
+  ImageChildrenParentChildren = 'image___children___parent___children',
+  ImageChildrenChildren = 'image___children___children',
+  ImageChildrenChildrenId = 'image___children___children___id',
+  ImageChildrenChildrenChildren = 'image___children___children___children',
+  ImageChildrenInternalContent = 'image___children___internal___content',
+  ImageChildrenInternalContentDigest = 'image___children___internal___contentDigest',
+  ImageChildrenInternalDescription = 'image___children___internal___description',
+  ImageChildrenInternalFieldOwners = 'image___children___internal___fieldOwners',
+  ImageChildrenInternalIgnoreType = 'image___children___internal___ignoreType',
+  ImageChildrenInternalMediaType = 'image___children___internal___mediaType',
+  ImageChildrenInternalOwner = 'image___children___internal___owner',
+  ImageChildrenInternalType = 'image___children___internal___type',
+  ImageInternalContent = 'image___internal___content',
+  ImageInternalContentDigest = 'image___internal___contentDigest',
+  ImageInternalDescription = 'image___internal___description',
+  ImageInternalFieldOwners = 'image___internal___fieldOwners',
+  ImageInternalIgnoreType = 'image___internal___ignoreType',
+  ImageInternalMediaType = 'image___internal___mediaType',
+  ImageInternalOwner = 'image___internal___owner',
+  ImageInternalType = 'image___internal___type',
+  SpaceId = 'spaceId',
+  CreatedAt = 'createdAt',
+  UpdatedAt = 'updatedAt',
+  SysType = 'sys___type',
+  SysRevision = 'sys___revision',
+  SysContentTypeSysType = 'sys___contentType___sys___type',
+  SysContentTypeSysLinkType = 'sys___contentType___sys___linkType',
+  SysContentTypeSysId = 'sys___contentType___sys___id',
   ParentId = 'parent___id',
   ParentParentId = 'parent___parent___id',
   ParentParentParentId = 'parent___parent___parent___id',
@@ -1089,6 +1338,12 @@ export type ContentfulHomepageAboutMeFilterInput = {
   contentful_id?: Maybe<StringQueryOperatorInput>
   id?: Maybe<StringQueryOperatorInput>
   node_locale?: Maybe<StringQueryOperatorInput>
+  text?: Maybe<ContentfulHomepageAboutMeTextFilterInput>
+  image?: Maybe<ContentfulAssetFilterInput>
+  spaceId?: Maybe<StringQueryOperatorInput>
+  createdAt?: Maybe<DateQueryOperatorInput>
+  updatedAt?: Maybe<DateQueryOperatorInput>
+  sys?: Maybe<ContentfulHomepageAboutMeSysFilterInput>
   parent?: Maybe<NodeFilterInput>
   children?: Maybe<NodeFilterListInput>
   internal?: Maybe<InternalFilterInput>
@@ -1109,6 +1364,50 @@ export type ContentfulHomepageAboutMeSortInput = {
   order?: Maybe<Array<Maybe<SortOrderEnum>>>
 }
 
+export type ContentfulHomepageAboutMeSys = {
+  __typename?: 'ContentfulHomepageAboutMeSys'
+  type?: Maybe<Scalars['String']>
+  revision?: Maybe<Scalars['Int']>
+  contentType?: Maybe<ContentfulHomepageAboutMeSysContentType>
+}
+
+export type ContentfulHomepageAboutMeSysContentType = {
+  __typename?: 'ContentfulHomepageAboutMeSysContentType'
+  sys?: Maybe<ContentfulHomepageAboutMeSysContentTypeSys>
+}
+
+export type ContentfulHomepageAboutMeSysContentTypeFilterInput = {
+  sys?: Maybe<ContentfulHomepageAboutMeSysContentTypeSysFilterInput>
+}
+
+export type ContentfulHomepageAboutMeSysContentTypeSys = {
+  __typename?: 'ContentfulHomepageAboutMeSysContentTypeSys'
+  type?: Maybe<Scalars['String']>
+  linkType?: Maybe<Scalars['String']>
+  id?: Maybe<Scalars['String']>
+}
+
+export type ContentfulHomepageAboutMeSysContentTypeSysFilterInput = {
+  type?: Maybe<StringQueryOperatorInput>
+  linkType?: Maybe<StringQueryOperatorInput>
+  id?: Maybe<StringQueryOperatorInput>
+}
+
+export type ContentfulHomepageAboutMeSysFilterInput = {
+  type?: Maybe<StringQueryOperatorInput>
+  revision?: Maybe<IntQueryOperatorInput>
+  contentType?: Maybe<ContentfulHomepageAboutMeSysContentTypeFilterInput>
+}
+
+export type ContentfulHomepageAboutMeText = {
+  __typename?: 'ContentfulHomepageAboutMeText'
+  raw?: Maybe<Scalars['String']>
+}
+
+export type ContentfulHomepageAboutMeTextFilterInput = {
+  raw?: Maybe<StringQueryOperatorInput>
+}
+
 export type ContentfulHomepageFeatured = ContentfulReference &
   ContentfulEntry &
   Node & {
@@ -1116,10 +1415,30 @@ export type ContentfulHomepageFeatured = ContentfulReference &
     contentful_id: Scalars['String']
     id: Scalars['ID']
     node_locale: Scalars['String']
+    themes?: Maybe<Array<Maybe<ContentfulTheme>>>
+    projects?: Maybe<Array<Maybe<ContentfulProject>>>
+    spaceId?: Maybe<Scalars['String']>
+    createdAt?: Maybe<Scalars['Date']>
+    updatedAt?: Maybe<Scalars['Date']>
+    sys?: Maybe<ContentfulHomepageFeaturedSys>
     parent?: Maybe<Node>
     children: Array<Node>
     internal: Internal
   }
+
+export type ContentfulHomepageFeaturedCreatedAtArgs = {
+  formatString?: Maybe<Scalars['String']>
+  fromNow?: Maybe<Scalars['Boolean']>
+  difference?: Maybe<Scalars['String']>
+  locale?: Maybe<Scalars['String']>
+}
+
+export type ContentfulHomepageFeaturedUpdatedAtArgs = {
+  formatString?: Maybe<Scalars['String']>
+  fromNow?: Maybe<Scalars['Boolean']>
+  difference?: Maybe<Scalars['String']>
+  locale?: Maybe<Scalars['String']>
+}
 
 export type ContentfulHomepageFeaturedConnection = {
   __typename?: 'ContentfulHomepageFeaturedConnection'
@@ -1152,6 +1471,404 @@ export enum ContentfulHomepageFeaturedFieldsEnum {
   ContentfulId = 'contentful_id',
   Id = 'id',
   NodeLocale = 'node_locale',
+  Themes = 'themes',
+  ThemesContentfulId = 'themes___contentful_id',
+  ThemesId = 'themes___id',
+  ThemesNodeLocale = 'themes___node_locale',
+  ThemesTitle = 'themes___title',
+  ThemesSlug = 'themes___slug',
+  ThemesCoverImageContentfulId = 'themes___coverImage___contentful_id',
+  ThemesCoverImageId = 'themes___coverImage___id',
+  ThemesCoverImageSpaceId = 'themes___coverImage___spaceId',
+  ThemesCoverImageCreatedAt = 'themes___coverImage___createdAt',
+  ThemesCoverImageUpdatedAt = 'themes___coverImage___updatedAt',
+  ThemesCoverImageFileUrl = 'themes___coverImage___file___url',
+  ThemesCoverImageFileFileName = 'themes___coverImage___file___fileName',
+  ThemesCoverImageFileContentType = 'themes___coverImage___file___contentType',
+  ThemesCoverImageTitle = 'themes___coverImage___title',
+  ThemesCoverImageDescription = 'themes___coverImage___description',
+  ThemesCoverImageNodeLocale = 'themes___coverImage___node_locale',
+  ThemesCoverImageSysType = 'themes___coverImage___sys___type',
+  ThemesCoverImageSysRevision = 'themes___coverImage___sys___revision',
+  ThemesCoverImageLocalFileSourceInstanceName = 'themes___coverImage___localFile___sourceInstanceName',
+  ThemesCoverImageLocalFileAbsolutePath = 'themes___coverImage___localFile___absolutePath',
+  ThemesCoverImageLocalFileRelativePath = 'themes___coverImage___localFile___relativePath',
+  ThemesCoverImageLocalFileExtension = 'themes___coverImage___localFile___extension',
+  ThemesCoverImageLocalFileSize = 'themes___coverImage___localFile___size',
+  ThemesCoverImageLocalFilePrettySize = 'themes___coverImage___localFile___prettySize',
+  ThemesCoverImageLocalFileModifiedTime = 'themes___coverImage___localFile___modifiedTime',
+  ThemesCoverImageLocalFileAccessTime = 'themes___coverImage___localFile___accessTime',
+  ThemesCoverImageLocalFileChangeTime = 'themes___coverImage___localFile___changeTime',
+  ThemesCoverImageLocalFileBirthTime = 'themes___coverImage___localFile___birthTime',
+  ThemesCoverImageLocalFileRoot = 'themes___coverImage___localFile___root',
+  ThemesCoverImageLocalFileDir = 'themes___coverImage___localFile___dir',
+  ThemesCoverImageLocalFileBase = 'themes___coverImage___localFile___base',
+  ThemesCoverImageLocalFileExt = 'themes___coverImage___localFile___ext',
+  ThemesCoverImageLocalFileName = 'themes___coverImage___localFile___name',
+  ThemesCoverImageLocalFileRelativeDirectory = 'themes___coverImage___localFile___relativeDirectory',
+  ThemesCoverImageLocalFileDev = 'themes___coverImage___localFile___dev',
+  ThemesCoverImageLocalFileMode = 'themes___coverImage___localFile___mode',
+  ThemesCoverImageLocalFileNlink = 'themes___coverImage___localFile___nlink',
+  ThemesCoverImageLocalFileUid = 'themes___coverImage___localFile___uid',
+  ThemesCoverImageLocalFileGid = 'themes___coverImage___localFile___gid',
+  ThemesCoverImageLocalFileRdev = 'themes___coverImage___localFile___rdev',
+  ThemesCoverImageLocalFileIno = 'themes___coverImage___localFile___ino',
+  ThemesCoverImageLocalFileAtimeMs = 'themes___coverImage___localFile___atimeMs',
+  ThemesCoverImageLocalFileMtimeMs = 'themes___coverImage___localFile___mtimeMs',
+  ThemesCoverImageLocalFileCtimeMs = 'themes___coverImage___localFile___ctimeMs',
+  ThemesCoverImageLocalFileAtime = 'themes___coverImage___localFile___atime',
+  ThemesCoverImageLocalFileMtime = 'themes___coverImage___localFile___mtime',
+  ThemesCoverImageLocalFileCtime = 'themes___coverImage___localFile___ctime',
+  ThemesCoverImageLocalFileBirthtime = 'themes___coverImage___localFile___birthtime',
+  ThemesCoverImageLocalFileBirthtimeMs = 'themes___coverImage___localFile___birthtimeMs',
+  ThemesCoverImageLocalFileBlksize = 'themes___coverImage___localFile___blksize',
+  ThemesCoverImageLocalFileBlocks = 'themes___coverImage___localFile___blocks',
+  ThemesCoverImageLocalFileUrl = 'themes___coverImage___localFile___url',
+  ThemesCoverImageLocalFilePublicUrl = 'themes___coverImage___localFile___publicURL',
+  ThemesCoverImageLocalFileId = 'themes___coverImage___localFile___id',
+  ThemesCoverImageLocalFileChildren = 'themes___coverImage___localFile___children',
+  ThemesCoverImageFixedBase64 = 'themes___coverImage___fixed___base64',
+  ThemesCoverImageFixedTracedSvg = 'themes___coverImage___fixed___tracedSVG',
+  ThemesCoverImageFixedAspectRatio = 'themes___coverImage___fixed___aspectRatio',
+  ThemesCoverImageFixedWidth = 'themes___coverImage___fixed___width',
+  ThemesCoverImageFixedHeight = 'themes___coverImage___fixed___height',
+  ThemesCoverImageFixedSrc = 'themes___coverImage___fixed___src',
+  ThemesCoverImageFixedSrcSet = 'themes___coverImage___fixed___srcSet',
+  ThemesCoverImageFixedSrcWebp = 'themes___coverImage___fixed___srcWebp',
+  ThemesCoverImageFixedSrcSetWebp = 'themes___coverImage___fixed___srcSetWebp',
+  ThemesCoverImageResolutionsBase64 = 'themes___coverImage___resolutions___base64',
+  ThemesCoverImageResolutionsTracedSvg = 'themes___coverImage___resolutions___tracedSVG',
+  ThemesCoverImageResolutionsAspectRatio = 'themes___coverImage___resolutions___aspectRatio',
+  ThemesCoverImageResolutionsWidth = 'themes___coverImage___resolutions___width',
+  ThemesCoverImageResolutionsHeight = 'themes___coverImage___resolutions___height',
+  ThemesCoverImageResolutionsSrc = 'themes___coverImage___resolutions___src',
+  ThemesCoverImageResolutionsSrcSet = 'themes___coverImage___resolutions___srcSet',
+  ThemesCoverImageResolutionsSrcWebp = 'themes___coverImage___resolutions___srcWebp',
+  ThemesCoverImageResolutionsSrcSetWebp = 'themes___coverImage___resolutions___srcSetWebp',
+  ThemesCoverImageFluidBase64 = 'themes___coverImage___fluid___base64',
+  ThemesCoverImageFluidTracedSvg = 'themes___coverImage___fluid___tracedSVG',
+  ThemesCoverImageFluidAspectRatio = 'themes___coverImage___fluid___aspectRatio',
+  ThemesCoverImageFluidSrc = 'themes___coverImage___fluid___src',
+  ThemesCoverImageFluidSrcSet = 'themes___coverImage___fluid___srcSet',
+  ThemesCoverImageFluidSrcWebp = 'themes___coverImage___fluid___srcWebp',
+  ThemesCoverImageFluidSrcSetWebp = 'themes___coverImage___fluid___srcSetWebp',
+  ThemesCoverImageFluidSizes = 'themes___coverImage___fluid___sizes',
+  ThemesCoverImageSizesBase64 = 'themes___coverImage___sizes___base64',
+  ThemesCoverImageSizesTracedSvg = 'themes___coverImage___sizes___tracedSVG',
+  ThemesCoverImageSizesAspectRatio = 'themes___coverImage___sizes___aspectRatio',
+  ThemesCoverImageSizesSrc = 'themes___coverImage___sizes___src',
+  ThemesCoverImageSizesSrcSet = 'themes___coverImage___sizes___srcSet',
+  ThemesCoverImageSizesSrcWebp = 'themes___coverImage___sizes___srcWebp',
+  ThemesCoverImageSizesSrcSetWebp = 'themes___coverImage___sizes___srcSetWebp',
+  ThemesCoverImageSizesSizes = 'themes___coverImage___sizes___sizes',
+  ThemesCoverImageResizeBase64 = 'themes___coverImage___resize___base64',
+  ThemesCoverImageResizeTracedSvg = 'themes___coverImage___resize___tracedSVG',
+  ThemesCoverImageResizeSrc = 'themes___coverImage___resize___src',
+  ThemesCoverImageResizeWidth = 'themes___coverImage___resize___width',
+  ThemesCoverImageResizeHeight = 'themes___coverImage___resize___height',
+  ThemesCoverImageResizeAspectRatio = 'themes___coverImage___resize___aspectRatio',
+  ThemesCoverImageParentId = 'themes___coverImage___parent___id',
+  ThemesCoverImageParentChildren = 'themes___coverImage___parent___children',
+  ThemesCoverImageChildren = 'themes___coverImage___children',
+  ThemesCoverImageChildrenId = 'themes___coverImage___children___id',
+  ThemesCoverImageChildrenChildren = 'themes___coverImage___children___children',
+  ThemesCoverImageInternalContent = 'themes___coverImage___internal___content',
+  ThemesCoverImageInternalContentDigest = 'themes___coverImage___internal___contentDigest',
+  ThemesCoverImageInternalDescription = 'themes___coverImage___internal___description',
+  ThemesCoverImageInternalFieldOwners = 'themes___coverImage___internal___fieldOwners',
+  ThemesCoverImageInternalIgnoreType = 'themes___coverImage___internal___ignoreType',
+  ThemesCoverImageInternalMediaType = 'themes___coverImage___internal___mediaType',
+  ThemesCoverImageInternalOwner = 'themes___coverImage___internal___owner',
+  ThemesCoverImageInternalType = 'themes___coverImage___internal___type',
+  ThemesHomepageFeatured = 'themes___homepage___featured',
+  ThemesHomepageFeaturedContentfulId = 'themes___homepage___featured___contentful_id',
+  ThemesHomepageFeaturedId = 'themes___homepage___featured___id',
+  ThemesHomepageFeaturedNodeLocale = 'themes___homepage___featured___node_locale',
+  ThemesHomepageFeaturedThemes = 'themes___homepage___featured___themes',
+  ThemesHomepageFeaturedThemesContentfulId = 'themes___homepage___featured___themes___contentful_id',
+  ThemesHomepageFeaturedThemesId = 'themes___homepage___featured___themes___id',
+  ThemesHomepageFeaturedThemesNodeLocale = 'themes___homepage___featured___themes___node_locale',
+  ThemesHomepageFeaturedThemesTitle = 'themes___homepage___featured___themes___title',
+  ThemesHomepageFeaturedThemesSlug = 'themes___homepage___featured___themes___slug',
+  ThemesHomepageFeaturedThemesHomepageFeatured = 'themes___homepage___featured___themes___homepage___featured',
+  ThemesHomepageFeaturedThemesSpaceId = 'themes___homepage___featured___themes___spaceId',
+  ThemesHomepageFeaturedThemesCreatedAt = 'themes___homepage___featured___themes___createdAt',
+  ThemesHomepageFeaturedThemesUpdatedAt = 'themes___homepage___featured___themes___updatedAt',
+  ThemesHomepageFeaturedThemesChildren = 'themes___homepage___featured___themes___children',
+  ThemesHomepageFeaturedProjects = 'themes___homepage___featured___projects',
+  ThemesHomepageFeaturedProjectsContentfulId = 'themes___homepage___featured___projects___contentful_id',
+  ThemesHomepageFeaturedProjectsId = 'themes___homepage___featured___projects___id',
+  ThemesHomepageFeaturedProjectsNodeLocale = 'themes___homepage___featured___projects___node_locale',
+  ThemesHomepageFeaturedProjectsTitle = 'themes___homepage___featured___projects___title',
+  ThemesHomepageFeaturedProjectsSlug = 'themes___homepage___featured___projects___slug',
+  ThemesHomepageFeaturedProjectsHomepageFeatured = 'themes___homepage___featured___projects___homepage___featured',
+  ThemesHomepageFeaturedProjectsSpaceId = 'themes___homepage___featured___projects___spaceId',
+  ThemesHomepageFeaturedProjectsCreatedAt = 'themes___homepage___featured___projects___createdAt',
+  ThemesHomepageFeaturedProjectsUpdatedAt = 'themes___homepage___featured___projects___updatedAt',
+  ThemesHomepageFeaturedProjectsChildren = 'themes___homepage___featured___projects___children',
+  ThemesHomepageFeaturedSpaceId = 'themes___homepage___featured___spaceId',
+  ThemesHomepageFeaturedCreatedAt = 'themes___homepage___featured___createdAt',
+  ThemesHomepageFeaturedUpdatedAt = 'themes___homepage___featured___updatedAt',
+  ThemesHomepageFeaturedSysType = 'themes___homepage___featured___sys___type',
+  ThemesHomepageFeaturedSysRevision = 'themes___homepage___featured___sys___revision',
+  ThemesHomepageFeaturedParentId = 'themes___homepage___featured___parent___id',
+  ThemesHomepageFeaturedParentChildren = 'themes___homepage___featured___parent___children',
+  ThemesHomepageFeaturedChildren = 'themes___homepage___featured___children',
+  ThemesHomepageFeaturedChildrenId = 'themes___homepage___featured___children___id',
+  ThemesHomepageFeaturedChildrenChildren = 'themes___homepage___featured___children___children',
+  ThemesHomepageFeaturedInternalContent = 'themes___homepage___featured___internal___content',
+  ThemesHomepageFeaturedInternalContentDigest = 'themes___homepage___featured___internal___contentDigest',
+  ThemesHomepageFeaturedInternalDescription = 'themes___homepage___featured___internal___description',
+  ThemesHomepageFeaturedInternalFieldOwners = 'themes___homepage___featured___internal___fieldOwners',
+  ThemesHomepageFeaturedInternalIgnoreType = 'themes___homepage___featured___internal___ignoreType',
+  ThemesHomepageFeaturedInternalMediaType = 'themes___homepage___featured___internal___mediaType',
+  ThemesHomepageFeaturedInternalOwner = 'themes___homepage___featured___internal___owner',
+  ThemesHomepageFeaturedInternalType = 'themes___homepage___featured___internal___type',
+  ThemesSpaceId = 'themes___spaceId',
+  ThemesCreatedAt = 'themes___createdAt',
+  ThemesUpdatedAt = 'themes___updatedAt',
+  ThemesSysType = 'themes___sys___type',
+  ThemesSysRevision = 'themes___sys___revision',
+  ThemesParentId = 'themes___parent___id',
+  ThemesParentParentId = 'themes___parent___parent___id',
+  ThemesParentParentChildren = 'themes___parent___parent___children',
+  ThemesParentChildren = 'themes___parent___children',
+  ThemesParentChildrenId = 'themes___parent___children___id',
+  ThemesParentChildrenChildren = 'themes___parent___children___children',
+  ThemesParentInternalContent = 'themes___parent___internal___content',
+  ThemesParentInternalContentDigest = 'themes___parent___internal___contentDigest',
+  ThemesParentInternalDescription = 'themes___parent___internal___description',
+  ThemesParentInternalFieldOwners = 'themes___parent___internal___fieldOwners',
+  ThemesParentInternalIgnoreType = 'themes___parent___internal___ignoreType',
+  ThemesParentInternalMediaType = 'themes___parent___internal___mediaType',
+  ThemesParentInternalOwner = 'themes___parent___internal___owner',
+  ThemesParentInternalType = 'themes___parent___internal___type',
+  ThemesChildren = 'themes___children',
+  ThemesChildrenId = 'themes___children___id',
+  ThemesChildrenParentId = 'themes___children___parent___id',
+  ThemesChildrenParentChildren = 'themes___children___parent___children',
+  ThemesChildrenChildren = 'themes___children___children',
+  ThemesChildrenChildrenId = 'themes___children___children___id',
+  ThemesChildrenChildrenChildren = 'themes___children___children___children',
+  ThemesChildrenInternalContent = 'themes___children___internal___content',
+  ThemesChildrenInternalContentDigest = 'themes___children___internal___contentDigest',
+  ThemesChildrenInternalDescription = 'themes___children___internal___description',
+  ThemesChildrenInternalFieldOwners = 'themes___children___internal___fieldOwners',
+  ThemesChildrenInternalIgnoreType = 'themes___children___internal___ignoreType',
+  ThemesChildrenInternalMediaType = 'themes___children___internal___mediaType',
+  ThemesChildrenInternalOwner = 'themes___children___internal___owner',
+  ThemesChildrenInternalType = 'themes___children___internal___type',
+  ThemesInternalContent = 'themes___internal___content',
+  ThemesInternalContentDigest = 'themes___internal___contentDigest',
+  ThemesInternalDescription = 'themes___internal___description',
+  ThemesInternalFieldOwners = 'themes___internal___fieldOwners',
+  ThemesInternalIgnoreType = 'themes___internal___ignoreType',
+  ThemesInternalMediaType = 'themes___internal___mediaType',
+  ThemesInternalOwner = 'themes___internal___owner',
+  ThemesInternalType = 'themes___internal___type',
+  Projects = 'projects',
+  ProjectsContentfulId = 'projects___contentful_id',
+  ProjectsId = 'projects___id',
+  ProjectsNodeLocale = 'projects___node_locale',
+  ProjectsTitle = 'projects___title',
+  ProjectsSlug = 'projects___slug',
+  ProjectsCoverImageContentfulId = 'projects___coverImage___contentful_id',
+  ProjectsCoverImageId = 'projects___coverImage___id',
+  ProjectsCoverImageSpaceId = 'projects___coverImage___spaceId',
+  ProjectsCoverImageCreatedAt = 'projects___coverImage___createdAt',
+  ProjectsCoverImageUpdatedAt = 'projects___coverImage___updatedAt',
+  ProjectsCoverImageFileUrl = 'projects___coverImage___file___url',
+  ProjectsCoverImageFileFileName = 'projects___coverImage___file___fileName',
+  ProjectsCoverImageFileContentType = 'projects___coverImage___file___contentType',
+  ProjectsCoverImageTitle = 'projects___coverImage___title',
+  ProjectsCoverImageDescription = 'projects___coverImage___description',
+  ProjectsCoverImageNodeLocale = 'projects___coverImage___node_locale',
+  ProjectsCoverImageSysType = 'projects___coverImage___sys___type',
+  ProjectsCoverImageSysRevision = 'projects___coverImage___sys___revision',
+  ProjectsCoverImageLocalFileSourceInstanceName = 'projects___coverImage___localFile___sourceInstanceName',
+  ProjectsCoverImageLocalFileAbsolutePath = 'projects___coverImage___localFile___absolutePath',
+  ProjectsCoverImageLocalFileRelativePath = 'projects___coverImage___localFile___relativePath',
+  ProjectsCoverImageLocalFileExtension = 'projects___coverImage___localFile___extension',
+  ProjectsCoverImageLocalFileSize = 'projects___coverImage___localFile___size',
+  ProjectsCoverImageLocalFilePrettySize = 'projects___coverImage___localFile___prettySize',
+  ProjectsCoverImageLocalFileModifiedTime = 'projects___coverImage___localFile___modifiedTime',
+  ProjectsCoverImageLocalFileAccessTime = 'projects___coverImage___localFile___accessTime',
+  ProjectsCoverImageLocalFileChangeTime = 'projects___coverImage___localFile___changeTime',
+  ProjectsCoverImageLocalFileBirthTime = 'projects___coverImage___localFile___birthTime',
+  ProjectsCoverImageLocalFileRoot = 'projects___coverImage___localFile___root',
+  ProjectsCoverImageLocalFileDir = 'projects___coverImage___localFile___dir',
+  ProjectsCoverImageLocalFileBase = 'projects___coverImage___localFile___base',
+  ProjectsCoverImageLocalFileExt = 'projects___coverImage___localFile___ext',
+  ProjectsCoverImageLocalFileName = 'projects___coverImage___localFile___name',
+  ProjectsCoverImageLocalFileRelativeDirectory = 'projects___coverImage___localFile___relativeDirectory',
+  ProjectsCoverImageLocalFileDev = 'projects___coverImage___localFile___dev',
+  ProjectsCoverImageLocalFileMode = 'projects___coverImage___localFile___mode',
+  ProjectsCoverImageLocalFileNlink = 'projects___coverImage___localFile___nlink',
+  ProjectsCoverImageLocalFileUid = 'projects___coverImage___localFile___uid',
+  ProjectsCoverImageLocalFileGid = 'projects___coverImage___localFile___gid',
+  ProjectsCoverImageLocalFileRdev = 'projects___coverImage___localFile___rdev',
+  ProjectsCoverImageLocalFileIno = 'projects___coverImage___localFile___ino',
+  ProjectsCoverImageLocalFileAtimeMs = 'projects___coverImage___localFile___atimeMs',
+  ProjectsCoverImageLocalFileMtimeMs = 'projects___coverImage___localFile___mtimeMs',
+  ProjectsCoverImageLocalFileCtimeMs = 'projects___coverImage___localFile___ctimeMs',
+  ProjectsCoverImageLocalFileAtime = 'projects___coverImage___localFile___atime',
+  ProjectsCoverImageLocalFileMtime = 'projects___coverImage___localFile___mtime',
+  ProjectsCoverImageLocalFileCtime = 'projects___coverImage___localFile___ctime',
+  ProjectsCoverImageLocalFileBirthtime = 'projects___coverImage___localFile___birthtime',
+  ProjectsCoverImageLocalFileBirthtimeMs = 'projects___coverImage___localFile___birthtimeMs',
+  ProjectsCoverImageLocalFileBlksize = 'projects___coverImage___localFile___blksize',
+  ProjectsCoverImageLocalFileBlocks = 'projects___coverImage___localFile___blocks',
+  ProjectsCoverImageLocalFileUrl = 'projects___coverImage___localFile___url',
+  ProjectsCoverImageLocalFilePublicUrl = 'projects___coverImage___localFile___publicURL',
+  ProjectsCoverImageLocalFileId = 'projects___coverImage___localFile___id',
+  ProjectsCoverImageLocalFileChildren = 'projects___coverImage___localFile___children',
+  ProjectsCoverImageFixedBase64 = 'projects___coverImage___fixed___base64',
+  ProjectsCoverImageFixedTracedSvg = 'projects___coverImage___fixed___tracedSVG',
+  ProjectsCoverImageFixedAspectRatio = 'projects___coverImage___fixed___aspectRatio',
+  ProjectsCoverImageFixedWidth = 'projects___coverImage___fixed___width',
+  ProjectsCoverImageFixedHeight = 'projects___coverImage___fixed___height',
+  ProjectsCoverImageFixedSrc = 'projects___coverImage___fixed___src',
+  ProjectsCoverImageFixedSrcSet = 'projects___coverImage___fixed___srcSet',
+  ProjectsCoverImageFixedSrcWebp = 'projects___coverImage___fixed___srcWebp',
+  ProjectsCoverImageFixedSrcSetWebp = 'projects___coverImage___fixed___srcSetWebp',
+  ProjectsCoverImageResolutionsBase64 = 'projects___coverImage___resolutions___base64',
+  ProjectsCoverImageResolutionsTracedSvg = 'projects___coverImage___resolutions___tracedSVG',
+  ProjectsCoverImageResolutionsAspectRatio = 'projects___coverImage___resolutions___aspectRatio',
+  ProjectsCoverImageResolutionsWidth = 'projects___coverImage___resolutions___width',
+  ProjectsCoverImageResolutionsHeight = 'projects___coverImage___resolutions___height',
+  ProjectsCoverImageResolutionsSrc = 'projects___coverImage___resolutions___src',
+  ProjectsCoverImageResolutionsSrcSet = 'projects___coverImage___resolutions___srcSet',
+  ProjectsCoverImageResolutionsSrcWebp = 'projects___coverImage___resolutions___srcWebp',
+  ProjectsCoverImageResolutionsSrcSetWebp = 'projects___coverImage___resolutions___srcSetWebp',
+  ProjectsCoverImageFluidBase64 = 'projects___coverImage___fluid___base64',
+  ProjectsCoverImageFluidTracedSvg = 'projects___coverImage___fluid___tracedSVG',
+  ProjectsCoverImageFluidAspectRatio = 'projects___coverImage___fluid___aspectRatio',
+  ProjectsCoverImageFluidSrc = 'projects___coverImage___fluid___src',
+  ProjectsCoverImageFluidSrcSet = 'projects___coverImage___fluid___srcSet',
+  ProjectsCoverImageFluidSrcWebp = 'projects___coverImage___fluid___srcWebp',
+  ProjectsCoverImageFluidSrcSetWebp = 'projects___coverImage___fluid___srcSetWebp',
+  ProjectsCoverImageFluidSizes = 'projects___coverImage___fluid___sizes',
+  ProjectsCoverImageSizesBase64 = 'projects___coverImage___sizes___base64',
+  ProjectsCoverImageSizesTracedSvg = 'projects___coverImage___sizes___tracedSVG',
+  ProjectsCoverImageSizesAspectRatio = 'projects___coverImage___sizes___aspectRatio',
+  ProjectsCoverImageSizesSrc = 'projects___coverImage___sizes___src',
+  ProjectsCoverImageSizesSrcSet = 'projects___coverImage___sizes___srcSet',
+  ProjectsCoverImageSizesSrcWebp = 'projects___coverImage___sizes___srcWebp',
+  ProjectsCoverImageSizesSrcSetWebp = 'projects___coverImage___sizes___srcSetWebp',
+  ProjectsCoverImageSizesSizes = 'projects___coverImage___sizes___sizes',
+  ProjectsCoverImageResizeBase64 = 'projects___coverImage___resize___base64',
+  ProjectsCoverImageResizeTracedSvg = 'projects___coverImage___resize___tracedSVG',
+  ProjectsCoverImageResizeSrc = 'projects___coverImage___resize___src',
+  ProjectsCoverImageResizeWidth = 'projects___coverImage___resize___width',
+  ProjectsCoverImageResizeHeight = 'projects___coverImage___resize___height',
+  ProjectsCoverImageResizeAspectRatio = 'projects___coverImage___resize___aspectRatio',
+  ProjectsCoverImageParentId = 'projects___coverImage___parent___id',
+  ProjectsCoverImageParentChildren = 'projects___coverImage___parent___children',
+  ProjectsCoverImageChildren = 'projects___coverImage___children',
+  ProjectsCoverImageChildrenId = 'projects___coverImage___children___id',
+  ProjectsCoverImageChildrenChildren = 'projects___coverImage___children___children',
+  ProjectsCoverImageInternalContent = 'projects___coverImage___internal___content',
+  ProjectsCoverImageInternalContentDigest = 'projects___coverImage___internal___contentDigest',
+  ProjectsCoverImageInternalDescription = 'projects___coverImage___internal___description',
+  ProjectsCoverImageInternalFieldOwners = 'projects___coverImage___internal___fieldOwners',
+  ProjectsCoverImageInternalIgnoreType = 'projects___coverImage___internal___ignoreType',
+  ProjectsCoverImageInternalMediaType = 'projects___coverImage___internal___mediaType',
+  ProjectsCoverImageInternalOwner = 'projects___coverImage___internal___owner',
+  ProjectsCoverImageInternalType = 'projects___coverImage___internal___type',
+  ProjectsHomepageFeatured = 'projects___homepage___featured',
+  ProjectsHomepageFeaturedContentfulId = 'projects___homepage___featured___contentful_id',
+  ProjectsHomepageFeaturedId = 'projects___homepage___featured___id',
+  ProjectsHomepageFeaturedNodeLocale = 'projects___homepage___featured___node_locale',
+  ProjectsHomepageFeaturedThemes = 'projects___homepage___featured___themes',
+  ProjectsHomepageFeaturedThemesContentfulId = 'projects___homepage___featured___themes___contentful_id',
+  ProjectsHomepageFeaturedThemesId = 'projects___homepage___featured___themes___id',
+  ProjectsHomepageFeaturedThemesNodeLocale = 'projects___homepage___featured___themes___node_locale',
+  ProjectsHomepageFeaturedThemesTitle = 'projects___homepage___featured___themes___title',
+  ProjectsHomepageFeaturedThemesSlug = 'projects___homepage___featured___themes___slug',
+  ProjectsHomepageFeaturedThemesHomepageFeatured = 'projects___homepage___featured___themes___homepage___featured',
+  ProjectsHomepageFeaturedThemesSpaceId = 'projects___homepage___featured___themes___spaceId',
+  ProjectsHomepageFeaturedThemesCreatedAt = 'projects___homepage___featured___themes___createdAt',
+  ProjectsHomepageFeaturedThemesUpdatedAt = 'projects___homepage___featured___themes___updatedAt',
+  ProjectsHomepageFeaturedThemesChildren = 'projects___homepage___featured___themes___children',
+  ProjectsHomepageFeaturedProjects = 'projects___homepage___featured___projects',
+  ProjectsHomepageFeaturedProjectsContentfulId = 'projects___homepage___featured___projects___contentful_id',
+  ProjectsHomepageFeaturedProjectsId = 'projects___homepage___featured___projects___id',
+  ProjectsHomepageFeaturedProjectsNodeLocale = 'projects___homepage___featured___projects___node_locale',
+  ProjectsHomepageFeaturedProjectsTitle = 'projects___homepage___featured___projects___title',
+  ProjectsHomepageFeaturedProjectsSlug = 'projects___homepage___featured___projects___slug',
+  ProjectsHomepageFeaturedProjectsHomepageFeatured = 'projects___homepage___featured___projects___homepage___featured',
+  ProjectsHomepageFeaturedProjectsSpaceId = 'projects___homepage___featured___projects___spaceId',
+  ProjectsHomepageFeaturedProjectsCreatedAt = 'projects___homepage___featured___projects___createdAt',
+  ProjectsHomepageFeaturedProjectsUpdatedAt = 'projects___homepage___featured___projects___updatedAt',
+  ProjectsHomepageFeaturedProjectsChildren = 'projects___homepage___featured___projects___children',
+  ProjectsHomepageFeaturedSpaceId = 'projects___homepage___featured___spaceId',
+  ProjectsHomepageFeaturedCreatedAt = 'projects___homepage___featured___createdAt',
+  ProjectsHomepageFeaturedUpdatedAt = 'projects___homepage___featured___updatedAt',
+  ProjectsHomepageFeaturedSysType = 'projects___homepage___featured___sys___type',
+  ProjectsHomepageFeaturedSysRevision = 'projects___homepage___featured___sys___revision',
+  ProjectsHomepageFeaturedParentId = 'projects___homepage___featured___parent___id',
+  ProjectsHomepageFeaturedParentChildren = 'projects___homepage___featured___parent___children',
+  ProjectsHomepageFeaturedChildren = 'projects___homepage___featured___children',
+  ProjectsHomepageFeaturedChildrenId = 'projects___homepage___featured___children___id',
+  ProjectsHomepageFeaturedChildrenChildren = 'projects___homepage___featured___children___children',
+  ProjectsHomepageFeaturedInternalContent = 'projects___homepage___featured___internal___content',
+  ProjectsHomepageFeaturedInternalContentDigest = 'projects___homepage___featured___internal___contentDigest',
+  ProjectsHomepageFeaturedInternalDescription = 'projects___homepage___featured___internal___description',
+  ProjectsHomepageFeaturedInternalFieldOwners = 'projects___homepage___featured___internal___fieldOwners',
+  ProjectsHomepageFeaturedInternalIgnoreType = 'projects___homepage___featured___internal___ignoreType',
+  ProjectsHomepageFeaturedInternalMediaType = 'projects___homepage___featured___internal___mediaType',
+  ProjectsHomepageFeaturedInternalOwner = 'projects___homepage___featured___internal___owner',
+  ProjectsHomepageFeaturedInternalType = 'projects___homepage___featured___internal___type',
+  ProjectsSpaceId = 'projects___spaceId',
+  ProjectsCreatedAt = 'projects___createdAt',
+  ProjectsUpdatedAt = 'projects___updatedAt',
+  ProjectsSysType = 'projects___sys___type',
+  ProjectsSysRevision = 'projects___sys___revision',
+  ProjectsParentId = 'projects___parent___id',
+  ProjectsParentParentId = 'projects___parent___parent___id',
+  ProjectsParentParentChildren = 'projects___parent___parent___children',
+  ProjectsParentChildren = 'projects___parent___children',
+  ProjectsParentChildrenId = 'projects___parent___children___id',
+  ProjectsParentChildrenChildren = 'projects___parent___children___children',
+  ProjectsParentInternalContent = 'projects___parent___internal___content',
+  ProjectsParentInternalContentDigest = 'projects___parent___internal___contentDigest',
+  ProjectsParentInternalDescription = 'projects___parent___internal___description',
+  ProjectsParentInternalFieldOwners = 'projects___parent___internal___fieldOwners',
+  ProjectsParentInternalIgnoreType = 'projects___parent___internal___ignoreType',
+  ProjectsParentInternalMediaType = 'projects___parent___internal___mediaType',
+  ProjectsParentInternalOwner = 'projects___parent___internal___owner',
+  ProjectsParentInternalType = 'projects___parent___internal___type',
+  ProjectsChildren = 'projects___children',
+  ProjectsChildrenId = 'projects___children___id',
+  ProjectsChildrenParentId = 'projects___children___parent___id',
+  ProjectsChildrenParentChildren = 'projects___children___parent___children',
+  ProjectsChildrenChildren = 'projects___children___children',
+  ProjectsChildrenChildrenId = 'projects___children___children___id',
+  ProjectsChildrenChildrenChildren = 'projects___children___children___children',
+  ProjectsChildrenInternalContent = 'projects___children___internal___content',
+  ProjectsChildrenInternalContentDigest = 'projects___children___internal___contentDigest',
+  ProjectsChildrenInternalDescription = 'projects___children___internal___description',
+  ProjectsChildrenInternalFieldOwners = 'projects___children___internal___fieldOwners',
+  ProjectsChildrenInternalIgnoreType = 'projects___children___internal___ignoreType',
+  ProjectsChildrenInternalMediaType = 'projects___children___internal___mediaType',
+  ProjectsChildrenInternalOwner = 'projects___children___internal___owner',
+  ProjectsChildrenInternalType = 'projects___children___internal___type',
+  ProjectsInternalContent = 'projects___internal___content',
+  ProjectsInternalContentDigest = 'projects___internal___contentDigest',
+  ProjectsInternalDescription = 'projects___internal___description',
+  ProjectsInternalFieldOwners = 'projects___internal___fieldOwners',
+  ProjectsInternalIgnoreType = 'projects___internal___ignoreType',
+  ProjectsInternalMediaType = 'projects___internal___mediaType',
+  ProjectsInternalOwner = 'projects___internal___owner',
+  ProjectsInternalType = 'projects___internal___type',
+  SpaceId = 'spaceId',
+  CreatedAt = 'createdAt',
+  UpdatedAt = 'updatedAt',
+  SysType = 'sys___type',
+  SysRevision = 'sys___revision',
+  SysContentTypeSysType = 'sys___contentType___sys___type',
+  SysContentTypeSysLinkType = 'sys___contentType___sys___linkType',
+  SysContentTypeSysId = 'sys___contentType___sys___id',
   ParentId = 'parent___id',
   ParentParentId = 'parent___parent___id',
   ParentParentParentId = 'parent___parent___parent___id',
@@ -1243,9 +1960,19 @@ export type ContentfulHomepageFeaturedFilterInput = {
   contentful_id?: Maybe<StringQueryOperatorInput>
   id?: Maybe<StringQueryOperatorInput>
   node_locale?: Maybe<StringQueryOperatorInput>
+  themes?: Maybe<ContentfulThemeFilterListInput>
+  projects?: Maybe<ContentfulProjectFilterListInput>
+  spaceId?: Maybe<StringQueryOperatorInput>
+  createdAt?: Maybe<DateQueryOperatorInput>
+  updatedAt?: Maybe<DateQueryOperatorInput>
+  sys?: Maybe<ContentfulHomepageFeaturedSysFilterInput>
   parent?: Maybe<NodeFilterInput>
   children?: Maybe<NodeFilterListInput>
   internal?: Maybe<InternalFilterInput>
+}
+
+export type ContentfulHomepageFeaturedFilterListInput = {
+  elemMatch?: Maybe<ContentfulHomepageFeaturedFilterInput>
 }
 
 export type ContentfulHomepageFeaturedGroupConnection = {
@@ -1261,6 +1988,41 @@ export type ContentfulHomepageFeaturedGroupConnection = {
 export type ContentfulHomepageFeaturedSortInput = {
   fields?: Maybe<Array<Maybe<ContentfulHomepageFeaturedFieldsEnum>>>
   order?: Maybe<Array<Maybe<SortOrderEnum>>>
+}
+
+export type ContentfulHomepageFeaturedSys = {
+  __typename?: 'ContentfulHomepageFeaturedSys'
+  type?: Maybe<Scalars['String']>
+  revision?: Maybe<Scalars['Int']>
+  contentType?: Maybe<ContentfulHomepageFeaturedSysContentType>
+}
+
+export type ContentfulHomepageFeaturedSysContentType = {
+  __typename?: 'ContentfulHomepageFeaturedSysContentType'
+  sys?: Maybe<ContentfulHomepageFeaturedSysContentTypeSys>
+}
+
+export type ContentfulHomepageFeaturedSysContentTypeFilterInput = {
+  sys?: Maybe<ContentfulHomepageFeaturedSysContentTypeSysFilterInput>
+}
+
+export type ContentfulHomepageFeaturedSysContentTypeSys = {
+  __typename?: 'ContentfulHomepageFeaturedSysContentTypeSys'
+  type?: Maybe<Scalars['String']>
+  linkType?: Maybe<Scalars['String']>
+  id?: Maybe<Scalars['String']>
+}
+
+export type ContentfulHomepageFeaturedSysContentTypeSysFilterInput = {
+  type?: Maybe<StringQueryOperatorInput>
+  linkType?: Maybe<StringQueryOperatorInput>
+  id?: Maybe<StringQueryOperatorInput>
+}
+
+export type ContentfulHomepageFeaturedSysFilterInput = {
+  type?: Maybe<StringQueryOperatorInput>
+  revision?: Maybe<IntQueryOperatorInput>
+  contentType?: Maybe<ContentfulHomepageFeaturedSysContentTypeFilterInput>
 }
 
 export type ContentfulHomepageJumbotron = ContentfulReference &
@@ -2176,10 +2938,32 @@ export type ContentfulProject = ContentfulReference &
     contentful_id: Scalars['String']
     id: Scalars['ID']
     node_locale: Scalars['String']
+    title?: Maybe<Scalars['String']>
+    slug?: Maybe<Scalars['String']>
+    coverImage?: Maybe<ContentfulAsset>
+    homepage___featured?: Maybe<Array<Maybe<ContentfulHomepageFeatured>>>
+    spaceId?: Maybe<Scalars['String']>
+    createdAt?: Maybe<Scalars['Date']>
+    updatedAt?: Maybe<Scalars['Date']>
+    sys?: Maybe<ContentfulProjectSys>
     parent?: Maybe<Node>
     children: Array<Node>
     internal: Internal
   }
+
+export type ContentfulProjectCreatedAtArgs = {
+  formatString?: Maybe<Scalars['String']>
+  fromNow?: Maybe<Scalars['Boolean']>
+  difference?: Maybe<Scalars['String']>
+  locale?: Maybe<Scalars['String']>
+}
+
+export type ContentfulProjectUpdatedAtArgs = {
+  formatString?: Maybe<Scalars['String']>
+  fromNow?: Maybe<Scalars['Boolean']>
+  difference?: Maybe<Scalars['String']>
+  locale?: Maybe<Scalars['String']>
+}
 
 export type ContentfulProjectConnection = {
   __typename?: 'ContentfulProjectConnection'
@@ -2212,6 +2996,291 @@ export enum ContentfulProjectFieldsEnum {
   ContentfulId = 'contentful_id',
   Id = 'id',
   NodeLocale = 'node_locale',
+  Title = 'title',
+  Slug = 'slug',
+  CoverImageContentfulId = 'coverImage___contentful_id',
+  CoverImageId = 'coverImage___id',
+  CoverImageSpaceId = 'coverImage___spaceId',
+  CoverImageCreatedAt = 'coverImage___createdAt',
+  CoverImageUpdatedAt = 'coverImage___updatedAt',
+  CoverImageFileUrl = 'coverImage___file___url',
+  CoverImageFileDetailsSize = 'coverImage___file___details___size',
+  CoverImageFileFileName = 'coverImage___file___fileName',
+  CoverImageFileContentType = 'coverImage___file___contentType',
+  CoverImageTitle = 'coverImage___title',
+  CoverImageDescription = 'coverImage___description',
+  CoverImageNodeLocale = 'coverImage___node_locale',
+  CoverImageSysType = 'coverImage___sys___type',
+  CoverImageSysRevision = 'coverImage___sys___revision',
+  CoverImageLocalFileSourceInstanceName = 'coverImage___localFile___sourceInstanceName',
+  CoverImageLocalFileAbsolutePath = 'coverImage___localFile___absolutePath',
+  CoverImageLocalFileRelativePath = 'coverImage___localFile___relativePath',
+  CoverImageLocalFileExtension = 'coverImage___localFile___extension',
+  CoverImageLocalFileSize = 'coverImage___localFile___size',
+  CoverImageLocalFilePrettySize = 'coverImage___localFile___prettySize',
+  CoverImageLocalFileModifiedTime = 'coverImage___localFile___modifiedTime',
+  CoverImageLocalFileAccessTime = 'coverImage___localFile___accessTime',
+  CoverImageLocalFileChangeTime = 'coverImage___localFile___changeTime',
+  CoverImageLocalFileBirthTime = 'coverImage___localFile___birthTime',
+  CoverImageLocalFileRoot = 'coverImage___localFile___root',
+  CoverImageLocalFileDir = 'coverImage___localFile___dir',
+  CoverImageLocalFileBase = 'coverImage___localFile___base',
+  CoverImageLocalFileExt = 'coverImage___localFile___ext',
+  CoverImageLocalFileName = 'coverImage___localFile___name',
+  CoverImageLocalFileRelativeDirectory = 'coverImage___localFile___relativeDirectory',
+  CoverImageLocalFileDev = 'coverImage___localFile___dev',
+  CoverImageLocalFileMode = 'coverImage___localFile___mode',
+  CoverImageLocalFileNlink = 'coverImage___localFile___nlink',
+  CoverImageLocalFileUid = 'coverImage___localFile___uid',
+  CoverImageLocalFileGid = 'coverImage___localFile___gid',
+  CoverImageLocalFileRdev = 'coverImage___localFile___rdev',
+  CoverImageLocalFileIno = 'coverImage___localFile___ino',
+  CoverImageLocalFileAtimeMs = 'coverImage___localFile___atimeMs',
+  CoverImageLocalFileMtimeMs = 'coverImage___localFile___mtimeMs',
+  CoverImageLocalFileCtimeMs = 'coverImage___localFile___ctimeMs',
+  CoverImageLocalFileAtime = 'coverImage___localFile___atime',
+  CoverImageLocalFileMtime = 'coverImage___localFile___mtime',
+  CoverImageLocalFileCtime = 'coverImage___localFile___ctime',
+  CoverImageLocalFileBirthtime = 'coverImage___localFile___birthtime',
+  CoverImageLocalFileBirthtimeMs = 'coverImage___localFile___birthtimeMs',
+  CoverImageLocalFileBlksize = 'coverImage___localFile___blksize',
+  CoverImageLocalFileBlocks = 'coverImage___localFile___blocks',
+  CoverImageLocalFileUrl = 'coverImage___localFile___url',
+  CoverImageLocalFilePublicUrl = 'coverImage___localFile___publicURL',
+  CoverImageLocalFileChildImageSharpGatsbyImageData = 'coverImage___localFile___childImageSharp___gatsbyImageData',
+  CoverImageLocalFileChildImageSharpId = 'coverImage___localFile___childImageSharp___id',
+  CoverImageLocalFileChildImageSharpChildren = 'coverImage___localFile___childImageSharp___children',
+  CoverImageLocalFileId = 'coverImage___localFile___id',
+  CoverImageLocalFileParentId = 'coverImage___localFile___parent___id',
+  CoverImageLocalFileParentChildren = 'coverImage___localFile___parent___children',
+  CoverImageLocalFileChildren = 'coverImage___localFile___children',
+  CoverImageLocalFileChildrenId = 'coverImage___localFile___children___id',
+  CoverImageLocalFileChildrenChildren = 'coverImage___localFile___children___children',
+  CoverImageLocalFileInternalContent = 'coverImage___localFile___internal___content',
+  CoverImageLocalFileInternalContentDigest = 'coverImage___localFile___internal___contentDigest',
+  CoverImageLocalFileInternalDescription = 'coverImage___localFile___internal___description',
+  CoverImageLocalFileInternalFieldOwners = 'coverImage___localFile___internal___fieldOwners',
+  CoverImageLocalFileInternalIgnoreType = 'coverImage___localFile___internal___ignoreType',
+  CoverImageLocalFileInternalMediaType = 'coverImage___localFile___internal___mediaType',
+  CoverImageLocalFileInternalOwner = 'coverImage___localFile___internal___owner',
+  CoverImageLocalFileInternalType = 'coverImage___localFile___internal___type',
+  CoverImageFixedBase64 = 'coverImage___fixed___base64',
+  CoverImageFixedTracedSvg = 'coverImage___fixed___tracedSVG',
+  CoverImageFixedAspectRatio = 'coverImage___fixed___aspectRatio',
+  CoverImageFixedWidth = 'coverImage___fixed___width',
+  CoverImageFixedHeight = 'coverImage___fixed___height',
+  CoverImageFixedSrc = 'coverImage___fixed___src',
+  CoverImageFixedSrcSet = 'coverImage___fixed___srcSet',
+  CoverImageFixedSrcWebp = 'coverImage___fixed___srcWebp',
+  CoverImageFixedSrcSetWebp = 'coverImage___fixed___srcSetWebp',
+  CoverImageResolutionsBase64 = 'coverImage___resolutions___base64',
+  CoverImageResolutionsTracedSvg = 'coverImage___resolutions___tracedSVG',
+  CoverImageResolutionsAspectRatio = 'coverImage___resolutions___aspectRatio',
+  CoverImageResolutionsWidth = 'coverImage___resolutions___width',
+  CoverImageResolutionsHeight = 'coverImage___resolutions___height',
+  CoverImageResolutionsSrc = 'coverImage___resolutions___src',
+  CoverImageResolutionsSrcSet = 'coverImage___resolutions___srcSet',
+  CoverImageResolutionsSrcWebp = 'coverImage___resolutions___srcWebp',
+  CoverImageResolutionsSrcSetWebp = 'coverImage___resolutions___srcSetWebp',
+  CoverImageFluidBase64 = 'coverImage___fluid___base64',
+  CoverImageFluidTracedSvg = 'coverImage___fluid___tracedSVG',
+  CoverImageFluidAspectRatio = 'coverImage___fluid___aspectRatio',
+  CoverImageFluidSrc = 'coverImage___fluid___src',
+  CoverImageFluidSrcSet = 'coverImage___fluid___srcSet',
+  CoverImageFluidSrcWebp = 'coverImage___fluid___srcWebp',
+  CoverImageFluidSrcSetWebp = 'coverImage___fluid___srcSetWebp',
+  CoverImageFluidSizes = 'coverImage___fluid___sizes',
+  CoverImageSizesBase64 = 'coverImage___sizes___base64',
+  CoverImageSizesTracedSvg = 'coverImage___sizes___tracedSVG',
+  CoverImageSizesAspectRatio = 'coverImage___sizes___aspectRatio',
+  CoverImageSizesSrc = 'coverImage___sizes___src',
+  CoverImageSizesSrcSet = 'coverImage___sizes___srcSet',
+  CoverImageSizesSrcWebp = 'coverImage___sizes___srcWebp',
+  CoverImageSizesSrcSetWebp = 'coverImage___sizes___srcSetWebp',
+  CoverImageSizesSizes = 'coverImage___sizes___sizes',
+  CoverImageResizeBase64 = 'coverImage___resize___base64',
+  CoverImageResizeTracedSvg = 'coverImage___resize___tracedSVG',
+  CoverImageResizeSrc = 'coverImage___resize___src',
+  CoverImageResizeWidth = 'coverImage___resize___width',
+  CoverImageResizeHeight = 'coverImage___resize___height',
+  CoverImageResizeAspectRatio = 'coverImage___resize___aspectRatio',
+  CoverImageParentId = 'coverImage___parent___id',
+  CoverImageParentParentId = 'coverImage___parent___parent___id',
+  CoverImageParentParentChildren = 'coverImage___parent___parent___children',
+  CoverImageParentChildren = 'coverImage___parent___children',
+  CoverImageParentChildrenId = 'coverImage___parent___children___id',
+  CoverImageParentChildrenChildren = 'coverImage___parent___children___children',
+  CoverImageParentInternalContent = 'coverImage___parent___internal___content',
+  CoverImageParentInternalContentDigest = 'coverImage___parent___internal___contentDigest',
+  CoverImageParentInternalDescription = 'coverImage___parent___internal___description',
+  CoverImageParentInternalFieldOwners = 'coverImage___parent___internal___fieldOwners',
+  CoverImageParentInternalIgnoreType = 'coverImage___parent___internal___ignoreType',
+  CoverImageParentInternalMediaType = 'coverImage___parent___internal___mediaType',
+  CoverImageParentInternalOwner = 'coverImage___parent___internal___owner',
+  CoverImageParentInternalType = 'coverImage___parent___internal___type',
+  CoverImageChildren = 'coverImage___children',
+  CoverImageChildrenId = 'coverImage___children___id',
+  CoverImageChildrenParentId = 'coverImage___children___parent___id',
+  CoverImageChildrenParentChildren = 'coverImage___children___parent___children',
+  CoverImageChildrenChildren = 'coverImage___children___children',
+  CoverImageChildrenChildrenId = 'coverImage___children___children___id',
+  CoverImageChildrenChildrenChildren = 'coverImage___children___children___children',
+  CoverImageChildrenInternalContent = 'coverImage___children___internal___content',
+  CoverImageChildrenInternalContentDigest = 'coverImage___children___internal___contentDigest',
+  CoverImageChildrenInternalDescription = 'coverImage___children___internal___description',
+  CoverImageChildrenInternalFieldOwners = 'coverImage___children___internal___fieldOwners',
+  CoverImageChildrenInternalIgnoreType = 'coverImage___children___internal___ignoreType',
+  CoverImageChildrenInternalMediaType = 'coverImage___children___internal___mediaType',
+  CoverImageChildrenInternalOwner = 'coverImage___children___internal___owner',
+  CoverImageChildrenInternalType = 'coverImage___children___internal___type',
+  CoverImageInternalContent = 'coverImage___internal___content',
+  CoverImageInternalContentDigest = 'coverImage___internal___contentDigest',
+  CoverImageInternalDescription = 'coverImage___internal___description',
+  CoverImageInternalFieldOwners = 'coverImage___internal___fieldOwners',
+  CoverImageInternalIgnoreType = 'coverImage___internal___ignoreType',
+  CoverImageInternalMediaType = 'coverImage___internal___mediaType',
+  CoverImageInternalOwner = 'coverImage___internal___owner',
+  CoverImageInternalType = 'coverImage___internal___type',
+  HomepageFeatured = 'homepage___featured',
+  HomepageFeaturedContentfulId = 'homepage___featured___contentful_id',
+  HomepageFeaturedId = 'homepage___featured___id',
+  HomepageFeaturedNodeLocale = 'homepage___featured___node_locale',
+  HomepageFeaturedThemes = 'homepage___featured___themes',
+  HomepageFeaturedThemesContentfulId = 'homepage___featured___themes___contentful_id',
+  HomepageFeaturedThemesId = 'homepage___featured___themes___id',
+  HomepageFeaturedThemesNodeLocale = 'homepage___featured___themes___node_locale',
+  HomepageFeaturedThemesTitle = 'homepage___featured___themes___title',
+  HomepageFeaturedThemesSlug = 'homepage___featured___themes___slug',
+  HomepageFeaturedThemesCoverImageContentfulId = 'homepage___featured___themes___coverImage___contentful_id',
+  HomepageFeaturedThemesCoverImageId = 'homepage___featured___themes___coverImage___id',
+  HomepageFeaturedThemesCoverImageSpaceId = 'homepage___featured___themes___coverImage___spaceId',
+  HomepageFeaturedThemesCoverImageCreatedAt = 'homepage___featured___themes___coverImage___createdAt',
+  HomepageFeaturedThemesCoverImageUpdatedAt = 'homepage___featured___themes___coverImage___updatedAt',
+  HomepageFeaturedThemesCoverImageTitle = 'homepage___featured___themes___coverImage___title',
+  HomepageFeaturedThemesCoverImageDescription = 'homepage___featured___themes___coverImage___description',
+  HomepageFeaturedThemesCoverImageNodeLocale = 'homepage___featured___themes___coverImage___node_locale',
+  HomepageFeaturedThemesCoverImageChildren = 'homepage___featured___themes___coverImage___children',
+  HomepageFeaturedThemesHomepageFeatured = 'homepage___featured___themes___homepage___featured',
+  HomepageFeaturedThemesHomepageFeaturedContentfulId = 'homepage___featured___themes___homepage___featured___contentful_id',
+  HomepageFeaturedThemesHomepageFeaturedId = 'homepage___featured___themes___homepage___featured___id',
+  HomepageFeaturedThemesHomepageFeaturedNodeLocale = 'homepage___featured___themes___homepage___featured___node_locale',
+  HomepageFeaturedThemesHomepageFeaturedThemes = 'homepage___featured___themes___homepage___featured___themes',
+  HomepageFeaturedThemesHomepageFeaturedProjects = 'homepage___featured___themes___homepage___featured___projects',
+  HomepageFeaturedThemesHomepageFeaturedSpaceId = 'homepage___featured___themes___homepage___featured___spaceId',
+  HomepageFeaturedThemesHomepageFeaturedCreatedAt = 'homepage___featured___themes___homepage___featured___createdAt',
+  HomepageFeaturedThemesHomepageFeaturedUpdatedAt = 'homepage___featured___themes___homepage___featured___updatedAt',
+  HomepageFeaturedThemesHomepageFeaturedChildren = 'homepage___featured___themes___homepage___featured___children',
+  HomepageFeaturedThemesSpaceId = 'homepage___featured___themes___spaceId',
+  HomepageFeaturedThemesCreatedAt = 'homepage___featured___themes___createdAt',
+  HomepageFeaturedThemesUpdatedAt = 'homepage___featured___themes___updatedAt',
+  HomepageFeaturedThemesSysType = 'homepage___featured___themes___sys___type',
+  HomepageFeaturedThemesSysRevision = 'homepage___featured___themes___sys___revision',
+  HomepageFeaturedThemesParentId = 'homepage___featured___themes___parent___id',
+  HomepageFeaturedThemesParentChildren = 'homepage___featured___themes___parent___children',
+  HomepageFeaturedThemesChildren = 'homepage___featured___themes___children',
+  HomepageFeaturedThemesChildrenId = 'homepage___featured___themes___children___id',
+  HomepageFeaturedThemesChildrenChildren = 'homepage___featured___themes___children___children',
+  HomepageFeaturedThemesInternalContent = 'homepage___featured___themes___internal___content',
+  HomepageFeaturedThemesInternalContentDigest = 'homepage___featured___themes___internal___contentDigest',
+  HomepageFeaturedThemesInternalDescription = 'homepage___featured___themes___internal___description',
+  HomepageFeaturedThemesInternalFieldOwners = 'homepage___featured___themes___internal___fieldOwners',
+  HomepageFeaturedThemesInternalIgnoreType = 'homepage___featured___themes___internal___ignoreType',
+  HomepageFeaturedThemesInternalMediaType = 'homepage___featured___themes___internal___mediaType',
+  HomepageFeaturedThemesInternalOwner = 'homepage___featured___themes___internal___owner',
+  HomepageFeaturedThemesInternalType = 'homepage___featured___themes___internal___type',
+  HomepageFeaturedProjects = 'homepage___featured___projects',
+  HomepageFeaturedProjectsContentfulId = 'homepage___featured___projects___contentful_id',
+  HomepageFeaturedProjectsId = 'homepage___featured___projects___id',
+  HomepageFeaturedProjectsNodeLocale = 'homepage___featured___projects___node_locale',
+  HomepageFeaturedProjectsTitle = 'homepage___featured___projects___title',
+  HomepageFeaturedProjectsSlug = 'homepage___featured___projects___slug',
+  HomepageFeaturedProjectsCoverImageContentfulId = 'homepage___featured___projects___coverImage___contentful_id',
+  HomepageFeaturedProjectsCoverImageId = 'homepage___featured___projects___coverImage___id',
+  HomepageFeaturedProjectsCoverImageSpaceId = 'homepage___featured___projects___coverImage___spaceId',
+  HomepageFeaturedProjectsCoverImageCreatedAt = 'homepage___featured___projects___coverImage___createdAt',
+  HomepageFeaturedProjectsCoverImageUpdatedAt = 'homepage___featured___projects___coverImage___updatedAt',
+  HomepageFeaturedProjectsCoverImageTitle = 'homepage___featured___projects___coverImage___title',
+  HomepageFeaturedProjectsCoverImageDescription = 'homepage___featured___projects___coverImage___description',
+  HomepageFeaturedProjectsCoverImageNodeLocale = 'homepage___featured___projects___coverImage___node_locale',
+  HomepageFeaturedProjectsCoverImageChildren = 'homepage___featured___projects___coverImage___children',
+  HomepageFeaturedProjectsHomepageFeatured = 'homepage___featured___projects___homepage___featured',
+  HomepageFeaturedProjectsHomepageFeaturedContentfulId = 'homepage___featured___projects___homepage___featured___contentful_id',
+  HomepageFeaturedProjectsHomepageFeaturedId = 'homepage___featured___projects___homepage___featured___id',
+  HomepageFeaturedProjectsHomepageFeaturedNodeLocale = 'homepage___featured___projects___homepage___featured___node_locale',
+  HomepageFeaturedProjectsHomepageFeaturedThemes = 'homepage___featured___projects___homepage___featured___themes',
+  HomepageFeaturedProjectsHomepageFeaturedProjects = 'homepage___featured___projects___homepage___featured___projects',
+  HomepageFeaturedProjectsHomepageFeaturedSpaceId = 'homepage___featured___projects___homepage___featured___spaceId',
+  HomepageFeaturedProjectsHomepageFeaturedCreatedAt = 'homepage___featured___projects___homepage___featured___createdAt',
+  HomepageFeaturedProjectsHomepageFeaturedUpdatedAt = 'homepage___featured___projects___homepage___featured___updatedAt',
+  HomepageFeaturedProjectsHomepageFeaturedChildren = 'homepage___featured___projects___homepage___featured___children',
+  HomepageFeaturedProjectsSpaceId = 'homepage___featured___projects___spaceId',
+  HomepageFeaturedProjectsCreatedAt = 'homepage___featured___projects___createdAt',
+  HomepageFeaturedProjectsUpdatedAt = 'homepage___featured___projects___updatedAt',
+  HomepageFeaturedProjectsSysType = 'homepage___featured___projects___sys___type',
+  HomepageFeaturedProjectsSysRevision = 'homepage___featured___projects___sys___revision',
+  HomepageFeaturedProjectsParentId = 'homepage___featured___projects___parent___id',
+  HomepageFeaturedProjectsParentChildren = 'homepage___featured___projects___parent___children',
+  HomepageFeaturedProjectsChildren = 'homepage___featured___projects___children',
+  HomepageFeaturedProjectsChildrenId = 'homepage___featured___projects___children___id',
+  HomepageFeaturedProjectsChildrenChildren = 'homepage___featured___projects___children___children',
+  HomepageFeaturedProjectsInternalContent = 'homepage___featured___projects___internal___content',
+  HomepageFeaturedProjectsInternalContentDigest = 'homepage___featured___projects___internal___contentDigest',
+  HomepageFeaturedProjectsInternalDescription = 'homepage___featured___projects___internal___description',
+  HomepageFeaturedProjectsInternalFieldOwners = 'homepage___featured___projects___internal___fieldOwners',
+  HomepageFeaturedProjectsInternalIgnoreType = 'homepage___featured___projects___internal___ignoreType',
+  HomepageFeaturedProjectsInternalMediaType = 'homepage___featured___projects___internal___mediaType',
+  HomepageFeaturedProjectsInternalOwner = 'homepage___featured___projects___internal___owner',
+  HomepageFeaturedProjectsInternalType = 'homepage___featured___projects___internal___type',
+  HomepageFeaturedSpaceId = 'homepage___featured___spaceId',
+  HomepageFeaturedCreatedAt = 'homepage___featured___createdAt',
+  HomepageFeaturedUpdatedAt = 'homepage___featured___updatedAt',
+  HomepageFeaturedSysType = 'homepage___featured___sys___type',
+  HomepageFeaturedSysRevision = 'homepage___featured___sys___revision',
+  HomepageFeaturedParentId = 'homepage___featured___parent___id',
+  HomepageFeaturedParentParentId = 'homepage___featured___parent___parent___id',
+  HomepageFeaturedParentParentChildren = 'homepage___featured___parent___parent___children',
+  HomepageFeaturedParentChildren = 'homepage___featured___parent___children',
+  HomepageFeaturedParentChildrenId = 'homepage___featured___parent___children___id',
+  HomepageFeaturedParentChildrenChildren = 'homepage___featured___parent___children___children',
+  HomepageFeaturedParentInternalContent = 'homepage___featured___parent___internal___content',
+  HomepageFeaturedParentInternalContentDigest = 'homepage___featured___parent___internal___contentDigest',
+  HomepageFeaturedParentInternalDescription = 'homepage___featured___parent___internal___description',
+  HomepageFeaturedParentInternalFieldOwners = 'homepage___featured___parent___internal___fieldOwners',
+  HomepageFeaturedParentInternalIgnoreType = 'homepage___featured___parent___internal___ignoreType',
+  HomepageFeaturedParentInternalMediaType = 'homepage___featured___parent___internal___mediaType',
+  HomepageFeaturedParentInternalOwner = 'homepage___featured___parent___internal___owner',
+  HomepageFeaturedParentInternalType = 'homepage___featured___parent___internal___type',
+  HomepageFeaturedChildren = 'homepage___featured___children',
+  HomepageFeaturedChildrenId = 'homepage___featured___children___id',
+  HomepageFeaturedChildrenParentId = 'homepage___featured___children___parent___id',
+  HomepageFeaturedChildrenParentChildren = 'homepage___featured___children___parent___children',
+  HomepageFeaturedChildrenChildren = 'homepage___featured___children___children',
+  HomepageFeaturedChildrenChildrenId = 'homepage___featured___children___children___id',
+  HomepageFeaturedChildrenChildrenChildren = 'homepage___featured___children___children___children',
+  HomepageFeaturedChildrenInternalContent = 'homepage___featured___children___internal___content',
+  HomepageFeaturedChildrenInternalContentDigest = 'homepage___featured___children___internal___contentDigest',
+  HomepageFeaturedChildrenInternalDescription = 'homepage___featured___children___internal___description',
+  HomepageFeaturedChildrenInternalFieldOwners = 'homepage___featured___children___internal___fieldOwners',
+  HomepageFeaturedChildrenInternalIgnoreType = 'homepage___featured___children___internal___ignoreType',
+  HomepageFeaturedChildrenInternalMediaType = 'homepage___featured___children___internal___mediaType',
+  HomepageFeaturedChildrenInternalOwner = 'homepage___featured___children___internal___owner',
+  HomepageFeaturedChildrenInternalType = 'homepage___featured___children___internal___type',
+  HomepageFeaturedInternalContent = 'homepage___featured___internal___content',
+  HomepageFeaturedInternalContentDigest = 'homepage___featured___internal___contentDigest',
+  HomepageFeaturedInternalDescription = 'homepage___featured___internal___description',
+  HomepageFeaturedInternalFieldOwners = 'homepage___featured___internal___fieldOwners',
+  HomepageFeaturedInternalIgnoreType = 'homepage___featured___internal___ignoreType',
+  HomepageFeaturedInternalMediaType = 'homepage___featured___internal___mediaType',
+  HomepageFeaturedInternalOwner = 'homepage___featured___internal___owner',
+  HomepageFeaturedInternalType = 'homepage___featured___internal___type',
+  SpaceId = 'spaceId',
+  CreatedAt = 'createdAt',
+  UpdatedAt = 'updatedAt',
+  SysType = 'sys___type',
+  SysRevision = 'sys___revision',
+  SysContentTypeSysType = 'sys___contentType___sys___type',
+  SysContentTypeSysLinkType = 'sys___contentType___sys___linkType',
+  SysContentTypeSysId = 'sys___contentType___sys___id',
   ParentId = 'parent___id',
   ParentParentId = 'parent___parent___id',
   ParentParentParentId = 'parent___parent___parent___id',
@@ -2303,9 +3372,21 @@ export type ContentfulProjectFilterInput = {
   contentful_id?: Maybe<StringQueryOperatorInput>
   id?: Maybe<StringQueryOperatorInput>
   node_locale?: Maybe<StringQueryOperatorInput>
+  title?: Maybe<StringQueryOperatorInput>
+  slug?: Maybe<StringQueryOperatorInput>
+  coverImage?: Maybe<ContentfulAssetFilterInput>
+  homepage___featured?: Maybe<ContentfulHomepageFeaturedFilterListInput>
+  spaceId?: Maybe<StringQueryOperatorInput>
+  createdAt?: Maybe<DateQueryOperatorInput>
+  updatedAt?: Maybe<DateQueryOperatorInput>
+  sys?: Maybe<ContentfulProjectSysFilterInput>
   parent?: Maybe<NodeFilterInput>
   children?: Maybe<NodeFilterListInput>
   internal?: Maybe<InternalFilterInput>
+}
+
+export type ContentfulProjectFilterListInput = {
+  elemMatch?: Maybe<ContentfulProjectFilterInput>
 }
 
 export type ContentfulProjectGroupConnection = {
@@ -2321,6 +3402,41 @@ export type ContentfulProjectGroupConnection = {
 export type ContentfulProjectSortInput = {
   fields?: Maybe<Array<Maybe<ContentfulProjectFieldsEnum>>>
   order?: Maybe<Array<Maybe<SortOrderEnum>>>
+}
+
+export type ContentfulProjectSys = {
+  __typename?: 'ContentfulProjectSys'
+  type?: Maybe<Scalars['String']>
+  revision?: Maybe<Scalars['Int']>
+  contentType?: Maybe<ContentfulProjectSysContentType>
+}
+
+export type ContentfulProjectSysContentType = {
+  __typename?: 'ContentfulProjectSysContentType'
+  sys?: Maybe<ContentfulProjectSysContentTypeSys>
+}
+
+export type ContentfulProjectSysContentTypeFilterInput = {
+  sys?: Maybe<ContentfulProjectSysContentTypeSysFilterInput>
+}
+
+export type ContentfulProjectSysContentTypeSys = {
+  __typename?: 'ContentfulProjectSysContentTypeSys'
+  type?: Maybe<Scalars['String']>
+  linkType?: Maybe<Scalars['String']>
+  id?: Maybe<Scalars['String']>
+}
+
+export type ContentfulProjectSysContentTypeSysFilterInput = {
+  type?: Maybe<StringQueryOperatorInput>
+  linkType?: Maybe<StringQueryOperatorInput>
+  id?: Maybe<StringQueryOperatorInput>
+}
+
+export type ContentfulProjectSysFilterInput = {
+  type?: Maybe<StringQueryOperatorInput>
+  revision?: Maybe<IntQueryOperatorInput>
+  contentType?: Maybe<ContentfulProjectSysContentTypeFilterInput>
 }
 
 export type ContentfulReference = {
@@ -2405,6 +3521,7 @@ export type ContentfulTheme = ContentfulReference &
     title?: Maybe<Scalars['String']>
     slug?: Maybe<Scalars['String']>
     coverImage?: Maybe<ContentfulAsset>
+    homepage___featured?: Maybe<Array<Maybe<ContentfulHomepageFeatured>>>
     spaceId?: Maybe<Scalars['String']>
     createdAt?: Maybe<Scalars['Date']>
     updatedAt?: Maybe<Scalars['Date']>
@@ -2604,6 +3721,138 @@ export enum ContentfulThemeFieldsEnum {
   CoverImageInternalMediaType = 'coverImage___internal___mediaType',
   CoverImageInternalOwner = 'coverImage___internal___owner',
   CoverImageInternalType = 'coverImage___internal___type',
+  HomepageFeatured = 'homepage___featured',
+  HomepageFeaturedContentfulId = 'homepage___featured___contentful_id',
+  HomepageFeaturedId = 'homepage___featured___id',
+  HomepageFeaturedNodeLocale = 'homepage___featured___node_locale',
+  HomepageFeaturedThemes = 'homepage___featured___themes',
+  HomepageFeaturedThemesContentfulId = 'homepage___featured___themes___contentful_id',
+  HomepageFeaturedThemesId = 'homepage___featured___themes___id',
+  HomepageFeaturedThemesNodeLocale = 'homepage___featured___themes___node_locale',
+  HomepageFeaturedThemesTitle = 'homepage___featured___themes___title',
+  HomepageFeaturedThemesSlug = 'homepage___featured___themes___slug',
+  HomepageFeaturedThemesCoverImageContentfulId = 'homepage___featured___themes___coverImage___contentful_id',
+  HomepageFeaturedThemesCoverImageId = 'homepage___featured___themes___coverImage___id',
+  HomepageFeaturedThemesCoverImageSpaceId = 'homepage___featured___themes___coverImage___spaceId',
+  HomepageFeaturedThemesCoverImageCreatedAt = 'homepage___featured___themes___coverImage___createdAt',
+  HomepageFeaturedThemesCoverImageUpdatedAt = 'homepage___featured___themes___coverImage___updatedAt',
+  HomepageFeaturedThemesCoverImageTitle = 'homepage___featured___themes___coverImage___title',
+  HomepageFeaturedThemesCoverImageDescription = 'homepage___featured___themes___coverImage___description',
+  HomepageFeaturedThemesCoverImageNodeLocale = 'homepage___featured___themes___coverImage___node_locale',
+  HomepageFeaturedThemesCoverImageChildren = 'homepage___featured___themes___coverImage___children',
+  HomepageFeaturedThemesHomepageFeatured = 'homepage___featured___themes___homepage___featured',
+  HomepageFeaturedThemesHomepageFeaturedContentfulId = 'homepage___featured___themes___homepage___featured___contentful_id',
+  HomepageFeaturedThemesHomepageFeaturedId = 'homepage___featured___themes___homepage___featured___id',
+  HomepageFeaturedThemesHomepageFeaturedNodeLocale = 'homepage___featured___themes___homepage___featured___node_locale',
+  HomepageFeaturedThemesHomepageFeaturedThemes = 'homepage___featured___themes___homepage___featured___themes',
+  HomepageFeaturedThemesHomepageFeaturedProjects = 'homepage___featured___themes___homepage___featured___projects',
+  HomepageFeaturedThemesHomepageFeaturedSpaceId = 'homepage___featured___themes___homepage___featured___spaceId',
+  HomepageFeaturedThemesHomepageFeaturedCreatedAt = 'homepage___featured___themes___homepage___featured___createdAt',
+  HomepageFeaturedThemesHomepageFeaturedUpdatedAt = 'homepage___featured___themes___homepage___featured___updatedAt',
+  HomepageFeaturedThemesHomepageFeaturedChildren = 'homepage___featured___themes___homepage___featured___children',
+  HomepageFeaturedThemesSpaceId = 'homepage___featured___themes___spaceId',
+  HomepageFeaturedThemesCreatedAt = 'homepage___featured___themes___createdAt',
+  HomepageFeaturedThemesUpdatedAt = 'homepage___featured___themes___updatedAt',
+  HomepageFeaturedThemesSysType = 'homepage___featured___themes___sys___type',
+  HomepageFeaturedThemesSysRevision = 'homepage___featured___themes___sys___revision',
+  HomepageFeaturedThemesParentId = 'homepage___featured___themes___parent___id',
+  HomepageFeaturedThemesParentChildren = 'homepage___featured___themes___parent___children',
+  HomepageFeaturedThemesChildren = 'homepage___featured___themes___children',
+  HomepageFeaturedThemesChildrenId = 'homepage___featured___themes___children___id',
+  HomepageFeaturedThemesChildrenChildren = 'homepage___featured___themes___children___children',
+  HomepageFeaturedThemesInternalContent = 'homepage___featured___themes___internal___content',
+  HomepageFeaturedThemesInternalContentDigest = 'homepage___featured___themes___internal___contentDigest',
+  HomepageFeaturedThemesInternalDescription = 'homepage___featured___themes___internal___description',
+  HomepageFeaturedThemesInternalFieldOwners = 'homepage___featured___themes___internal___fieldOwners',
+  HomepageFeaturedThemesInternalIgnoreType = 'homepage___featured___themes___internal___ignoreType',
+  HomepageFeaturedThemesInternalMediaType = 'homepage___featured___themes___internal___mediaType',
+  HomepageFeaturedThemesInternalOwner = 'homepage___featured___themes___internal___owner',
+  HomepageFeaturedThemesInternalType = 'homepage___featured___themes___internal___type',
+  HomepageFeaturedProjects = 'homepage___featured___projects',
+  HomepageFeaturedProjectsContentfulId = 'homepage___featured___projects___contentful_id',
+  HomepageFeaturedProjectsId = 'homepage___featured___projects___id',
+  HomepageFeaturedProjectsNodeLocale = 'homepage___featured___projects___node_locale',
+  HomepageFeaturedProjectsTitle = 'homepage___featured___projects___title',
+  HomepageFeaturedProjectsSlug = 'homepage___featured___projects___slug',
+  HomepageFeaturedProjectsCoverImageContentfulId = 'homepage___featured___projects___coverImage___contentful_id',
+  HomepageFeaturedProjectsCoverImageId = 'homepage___featured___projects___coverImage___id',
+  HomepageFeaturedProjectsCoverImageSpaceId = 'homepage___featured___projects___coverImage___spaceId',
+  HomepageFeaturedProjectsCoverImageCreatedAt = 'homepage___featured___projects___coverImage___createdAt',
+  HomepageFeaturedProjectsCoverImageUpdatedAt = 'homepage___featured___projects___coverImage___updatedAt',
+  HomepageFeaturedProjectsCoverImageTitle = 'homepage___featured___projects___coverImage___title',
+  HomepageFeaturedProjectsCoverImageDescription = 'homepage___featured___projects___coverImage___description',
+  HomepageFeaturedProjectsCoverImageNodeLocale = 'homepage___featured___projects___coverImage___node_locale',
+  HomepageFeaturedProjectsCoverImageChildren = 'homepage___featured___projects___coverImage___children',
+  HomepageFeaturedProjectsHomepageFeatured = 'homepage___featured___projects___homepage___featured',
+  HomepageFeaturedProjectsHomepageFeaturedContentfulId = 'homepage___featured___projects___homepage___featured___contentful_id',
+  HomepageFeaturedProjectsHomepageFeaturedId = 'homepage___featured___projects___homepage___featured___id',
+  HomepageFeaturedProjectsHomepageFeaturedNodeLocale = 'homepage___featured___projects___homepage___featured___node_locale',
+  HomepageFeaturedProjectsHomepageFeaturedThemes = 'homepage___featured___projects___homepage___featured___themes',
+  HomepageFeaturedProjectsHomepageFeaturedProjects = 'homepage___featured___projects___homepage___featured___projects',
+  HomepageFeaturedProjectsHomepageFeaturedSpaceId = 'homepage___featured___projects___homepage___featured___spaceId',
+  HomepageFeaturedProjectsHomepageFeaturedCreatedAt = 'homepage___featured___projects___homepage___featured___createdAt',
+  HomepageFeaturedProjectsHomepageFeaturedUpdatedAt = 'homepage___featured___projects___homepage___featured___updatedAt',
+  HomepageFeaturedProjectsHomepageFeaturedChildren = 'homepage___featured___projects___homepage___featured___children',
+  HomepageFeaturedProjectsSpaceId = 'homepage___featured___projects___spaceId',
+  HomepageFeaturedProjectsCreatedAt = 'homepage___featured___projects___createdAt',
+  HomepageFeaturedProjectsUpdatedAt = 'homepage___featured___projects___updatedAt',
+  HomepageFeaturedProjectsSysType = 'homepage___featured___projects___sys___type',
+  HomepageFeaturedProjectsSysRevision = 'homepage___featured___projects___sys___revision',
+  HomepageFeaturedProjectsParentId = 'homepage___featured___projects___parent___id',
+  HomepageFeaturedProjectsParentChildren = 'homepage___featured___projects___parent___children',
+  HomepageFeaturedProjectsChildren = 'homepage___featured___projects___children',
+  HomepageFeaturedProjectsChildrenId = 'homepage___featured___projects___children___id',
+  HomepageFeaturedProjectsChildrenChildren = 'homepage___featured___projects___children___children',
+  HomepageFeaturedProjectsInternalContent = 'homepage___featured___projects___internal___content',
+  HomepageFeaturedProjectsInternalContentDigest = 'homepage___featured___projects___internal___contentDigest',
+  HomepageFeaturedProjectsInternalDescription = 'homepage___featured___projects___internal___description',
+  HomepageFeaturedProjectsInternalFieldOwners = 'homepage___featured___projects___internal___fieldOwners',
+  HomepageFeaturedProjectsInternalIgnoreType = 'homepage___featured___projects___internal___ignoreType',
+  HomepageFeaturedProjectsInternalMediaType = 'homepage___featured___projects___internal___mediaType',
+  HomepageFeaturedProjectsInternalOwner = 'homepage___featured___projects___internal___owner',
+  HomepageFeaturedProjectsInternalType = 'homepage___featured___projects___internal___type',
+  HomepageFeaturedSpaceId = 'homepage___featured___spaceId',
+  HomepageFeaturedCreatedAt = 'homepage___featured___createdAt',
+  HomepageFeaturedUpdatedAt = 'homepage___featured___updatedAt',
+  HomepageFeaturedSysType = 'homepage___featured___sys___type',
+  HomepageFeaturedSysRevision = 'homepage___featured___sys___revision',
+  HomepageFeaturedParentId = 'homepage___featured___parent___id',
+  HomepageFeaturedParentParentId = 'homepage___featured___parent___parent___id',
+  HomepageFeaturedParentParentChildren = 'homepage___featured___parent___parent___children',
+  HomepageFeaturedParentChildren = 'homepage___featured___parent___children',
+  HomepageFeaturedParentChildrenId = 'homepage___featured___parent___children___id',
+  HomepageFeaturedParentChildrenChildren = 'homepage___featured___parent___children___children',
+  HomepageFeaturedParentInternalContent = 'homepage___featured___parent___internal___content',
+  HomepageFeaturedParentInternalContentDigest = 'homepage___featured___parent___internal___contentDigest',
+  HomepageFeaturedParentInternalDescription = 'homepage___featured___parent___internal___description',
+  HomepageFeaturedParentInternalFieldOwners = 'homepage___featured___parent___internal___fieldOwners',
+  HomepageFeaturedParentInternalIgnoreType = 'homepage___featured___parent___internal___ignoreType',
+  HomepageFeaturedParentInternalMediaType = 'homepage___featured___parent___internal___mediaType',
+  HomepageFeaturedParentInternalOwner = 'homepage___featured___parent___internal___owner',
+  HomepageFeaturedParentInternalType = 'homepage___featured___parent___internal___type',
+  HomepageFeaturedChildren = 'homepage___featured___children',
+  HomepageFeaturedChildrenId = 'homepage___featured___children___id',
+  HomepageFeaturedChildrenParentId = 'homepage___featured___children___parent___id',
+  HomepageFeaturedChildrenParentChildren = 'homepage___featured___children___parent___children',
+  HomepageFeaturedChildrenChildren = 'homepage___featured___children___children',
+  HomepageFeaturedChildrenChildrenId = 'homepage___featured___children___children___id',
+  HomepageFeaturedChildrenChildrenChildren = 'homepage___featured___children___children___children',
+  HomepageFeaturedChildrenInternalContent = 'homepage___featured___children___internal___content',
+  HomepageFeaturedChildrenInternalContentDigest = 'homepage___featured___children___internal___contentDigest',
+  HomepageFeaturedChildrenInternalDescription = 'homepage___featured___children___internal___description',
+  HomepageFeaturedChildrenInternalFieldOwners = 'homepage___featured___children___internal___fieldOwners',
+  HomepageFeaturedChildrenInternalIgnoreType = 'homepage___featured___children___internal___ignoreType',
+  HomepageFeaturedChildrenInternalMediaType = 'homepage___featured___children___internal___mediaType',
+  HomepageFeaturedChildrenInternalOwner = 'homepage___featured___children___internal___owner',
+  HomepageFeaturedChildrenInternalType = 'homepage___featured___children___internal___type',
+  HomepageFeaturedInternalContent = 'homepage___featured___internal___content',
+  HomepageFeaturedInternalContentDigest = 'homepage___featured___internal___contentDigest',
+  HomepageFeaturedInternalDescription = 'homepage___featured___internal___description',
+  HomepageFeaturedInternalFieldOwners = 'homepage___featured___internal___fieldOwners',
+  HomepageFeaturedInternalIgnoreType = 'homepage___featured___internal___ignoreType',
+  HomepageFeaturedInternalMediaType = 'homepage___featured___internal___mediaType',
+  HomepageFeaturedInternalOwner = 'homepage___featured___internal___owner',
+  HomepageFeaturedInternalType = 'homepage___featured___internal___type',
   SpaceId = 'spaceId',
   CreatedAt = 'createdAt',
   UpdatedAt = 'updatedAt',
@@ -2706,6 +3955,7 @@ export type ContentfulThemeFilterInput = {
   title?: Maybe<StringQueryOperatorInput>
   slug?: Maybe<StringQueryOperatorInput>
   coverImage?: Maybe<ContentfulAssetFilterInput>
+  homepage___featured?: Maybe<ContentfulHomepageFeaturedFilterListInput>
   spaceId?: Maybe<StringQueryOperatorInput>
   createdAt?: Maybe<DateQueryOperatorInput>
   updatedAt?: Maybe<DateQueryOperatorInput>
@@ -2713,6 +3963,10 @@ export type ContentfulThemeFilterInput = {
   parent?: Maybe<NodeFilterInput>
   children?: Maybe<NodeFilterListInput>
   internal?: Maybe<InternalFilterInput>
+}
+
+export type ContentfulThemeFilterListInput = {
+  elemMatch?: Maybe<ContentfulThemeFilterInput>
 }
 
 export type ContentfulThemeGroupConnection = {
@@ -2811,6 +4065,8 @@ export type Directory = Node & {
   birthtime?: Maybe<Scalars['Date']>
   /** @deprecated Use `birthTime` instead */
   birthtimeMs?: Maybe<Scalars['Float']>
+  blksize?: Maybe<Scalars['Int']>
+  blocks?: Maybe<Scalars['Int']>
   id: Scalars['ID']
   parent?: Maybe<Node>
   children: Array<Node>
@@ -2925,6 +4181,8 @@ export enum DirectoryFieldsEnum {
   Ctime = 'ctime',
   Birthtime = 'birthtime',
   BirthtimeMs = 'birthtimeMs',
+  Blksize = 'blksize',
+  Blocks = 'blocks',
   Id = 'id',
   ParentId = 'parent___id',
   ParentParentId = 'parent___parent___id',
@@ -3045,6 +4303,8 @@ export type DirectoryFilterInput = {
   ctime?: Maybe<DateQueryOperatorInput>
   birthtime?: Maybe<DateQueryOperatorInput>
   birthtimeMs?: Maybe<FloatQueryOperatorInput>
+  blksize?: Maybe<IntQueryOperatorInput>
+  blocks?: Maybe<IntQueryOperatorInput>
   id?: Maybe<StringQueryOperatorInput>
   parent?: Maybe<NodeFilterInput>
   children?: Maybe<NodeFilterListInput>
@@ -4277,6 +5537,8 @@ export type QueryDirectoryArgs = {
   ctime?: Maybe<DateQueryOperatorInput>
   birthtime?: Maybe<DateQueryOperatorInput>
   birthtimeMs?: Maybe<FloatQueryOperatorInput>
+  blksize?: Maybe<IntQueryOperatorInput>
+  blocks?: Maybe<IntQueryOperatorInput>
   id?: Maybe<StringQueryOperatorInput>
   parent?: Maybe<NodeFilterInput>
   children?: Maybe<NodeFilterListInput>
@@ -4387,6 +5649,14 @@ export type QueryContentfulProjectArgs = {
   contentful_id?: Maybe<StringQueryOperatorInput>
   id?: Maybe<StringQueryOperatorInput>
   node_locale?: Maybe<StringQueryOperatorInput>
+  title?: Maybe<StringQueryOperatorInput>
+  slug?: Maybe<StringQueryOperatorInput>
+  coverImage?: Maybe<ContentfulAssetFilterInput>
+  homepage___featured?: Maybe<ContentfulHomepageFeaturedFilterListInput>
+  spaceId?: Maybe<StringQueryOperatorInput>
+  createdAt?: Maybe<DateQueryOperatorInput>
+  updatedAt?: Maybe<DateQueryOperatorInput>
+  sys?: Maybe<ContentfulProjectSysFilterInput>
   parent?: Maybe<NodeFilterInput>
   children?: Maybe<NodeFilterListInput>
   internal?: Maybe<InternalFilterInput>
@@ -4406,6 +5676,7 @@ export type QueryContentfulThemeArgs = {
   title?: Maybe<StringQueryOperatorInput>
   slug?: Maybe<StringQueryOperatorInput>
   coverImage?: Maybe<ContentfulAssetFilterInput>
+  homepage___featured?: Maybe<ContentfulHomepageFeaturedFilterListInput>
   spaceId?: Maybe<StringQueryOperatorInput>
   createdAt?: Maybe<DateQueryOperatorInput>
   updatedAt?: Maybe<DateQueryOperatorInput>
@@ -4469,6 +5740,12 @@ export type QueryContentfulHomepageFeaturedArgs = {
   contentful_id?: Maybe<StringQueryOperatorInput>
   id?: Maybe<StringQueryOperatorInput>
   node_locale?: Maybe<StringQueryOperatorInput>
+  themes?: Maybe<ContentfulThemeFilterListInput>
+  projects?: Maybe<ContentfulProjectFilterListInput>
+  spaceId?: Maybe<StringQueryOperatorInput>
+  createdAt?: Maybe<DateQueryOperatorInput>
+  updatedAt?: Maybe<DateQueryOperatorInput>
+  sys?: Maybe<ContentfulHomepageFeaturedSysFilterInput>
   parent?: Maybe<NodeFilterInput>
   children?: Maybe<NodeFilterListInput>
   internal?: Maybe<InternalFilterInput>
@@ -4485,6 +5762,12 @@ export type QueryContentfulHomepageAboutMeArgs = {
   contentful_id?: Maybe<StringQueryOperatorInput>
   id?: Maybe<StringQueryOperatorInput>
   node_locale?: Maybe<StringQueryOperatorInput>
+  text?: Maybe<ContentfulHomepageAboutMeTextFilterInput>
+  image?: Maybe<ContentfulAssetFilterInput>
+  spaceId?: Maybe<StringQueryOperatorInput>
+  createdAt?: Maybe<DateQueryOperatorInput>
+  updatedAt?: Maybe<DateQueryOperatorInput>
+  sys?: Maybe<ContentfulHomepageAboutMeSysFilterInput>
   parent?: Maybe<NodeFilterInput>
   children?: Maybe<NodeFilterListInput>
   internal?: Maybe<InternalFilterInput>
@@ -4517,6 +5800,14 @@ export type QueryContentfulContactInfoArgs = {
   contentful_id?: Maybe<StringQueryOperatorInput>
   id?: Maybe<StringQueryOperatorInput>
   node_locale?: Maybe<StringQueryOperatorInput>
+  facebookPage?: Maybe<StringQueryOperatorInput>
+  instagramPage?: Maybe<StringQueryOperatorInput>
+  email?: Maybe<StringQueryOperatorInput>
+  phoneNumber?: Maybe<StringQueryOperatorInput>
+  spaceId?: Maybe<StringQueryOperatorInput>
+  createdAt?: Maybe<DateQueryOperatorInput>
+  updatedAt?: Maybe<DateQueryOperatorInput>
+  sys?: Maybe<ContentfulContactInfoSysFilterInput>
   parent?: Maybe<NodeFilterInput>
   children?: Maybe<NodeFilterListInput>
   internal?: Maybe<InternalFilterInput>
@@ -5096,6 +6387,7 @@ export enum SitePageFieldsEnum {
   PluginCreatorPluginOptionsAssetDownloadWorkers = 'pluginCreator___pluginOptions___assetDownloadWorkers',
   PluginCreatorPluginOptionsUseNameForId = 'pluginCreator___pluginOptions___useNameForId',
   PluginCreatorPluginOptionsPath = 'pluginCreator___pluginOptions___path',
+  PluginCreatorPluginOptionsName = 'pluginCreator___pluginOptions___name',
   PluginCreatorPluginOptionsBase64Width = 'pluginCreator___pluginOptions___base64Width',
   PluginCreatorPluginOptionsStripMetadata = 'pluginCreator___pluginOptions___stripMetadata',
   PluginCreatorPluginOptionsDefaultQuality = 'pluginCreator___pluginOptions___defaultQuality',
@@ -5105,7 +6397,6 @@ export enum SitePageFieldsEnum {
   PluginCreatorPluginOptionsMinify = 'pluginCreator___pluginOptions___minify',
   PluginCreatorPluginOptionsTranspileTemplateLiterals = 'pluginCreator___pluginOptions___transpileTemplateLiterals',
   PluginCreatorPluginOptionsPure = 'pluginCreator___pluginOptions___pure',
-  PluginCreatorPluginOptionsName = 'pluginCreator___pluginOptions___name',
   PluginCreatorPluginOptionsShortName = 'pluginCreator___pluginOptions___short_name',
   PluginCreatorPluginOptionsStartUrl = 'pluginCreator___pluginOptions___start_url',
   PluginCreatorPluginOptionsBackgroundColor = 'pluginCreator___pluginOptions___background_color',
@@ -5320,6 +6611,7 @@ export enum SitePluginFieldsEnum {
   PluginOptionsAssetDownloadWorkers = 'pluginOptions___assetDownloadWorkers',
   PluginOptionsUseNameForId = 'pluginOptions___useNameForId',
   PluginOptionsPath = 'pluginOptions___path',
+  PluginOptionsName = 'pluginOptions___name',
   PluginOptionsBase64Width = 'pluginOptions___base64Width',
   PluginOptionsStripMetadata = 'pluginOptions___stripMetadata',
   PluginOptionsDefaultQuality = 'pluginOptions___defaultQuality',
@@ -5329,7 +6621,6 @@ export enum SitePluginFieldsEnum {
   PluginOptionsMinify = 'pluginOptions___minify',
   PluginOptionsTranspileTemplateLiterals = 'pluginOptions___transpileTemplateLiterals',
   PluginOptionsPure = 'pluginOptions___pure',
-  PluginOptionsName = 'pluginOptions___name',
   PluginOptionsShortName = 'pluginOptions___short_name',
   PluginOptionsStartUrl = 'pluginOptions___start_url',
   PluginOptionsBackgroundColor = 'pluginOptions___background_color',
@@ -5477,6 +6768,7 @@ export type SitePluginPluginOptions = {
   assetDownloadWorkers?: Maybe<Scalars['Int']>
   useNameForId?: Maybe<Scalars['Boolean']>
   path?: Maybe<Scalars['String']>
+  name?: Maybe<Scalars['String']>
   base64Width?: Maybe<Scalars['Int']>
   stripMetadata?: Maybe<Scalars['Boolean']>
   defaultQuality?: Maybe<Scalars['Int']>
@@ -5486,7 +6778,6 @@ export type SitePluginPluginOptions = {
   minify?: Maybe<Scalars['Boolean']>
   transpileTemplateLiterals?: Maybe<Scalars['Boolean']>
   pure?: Maybe<Scalars['Boolean']>
-  name?: Maybe<Scalars['String']>
   short_name?: Maybe<Scalars['String']>
   start_url?: Maybe<Scalars['String']>
   background_color?: Maybe<Scalars['String']>
@@ -5515,6 +6806,7 @@ export type SitePluginPluginOptionsFilterInput = {
   assetDownloadWorkers?: Maybe<IntQueryOperatorInput>
   useNameForId?: Maybe<BooleanQueryOperatorInput>
   path?: Maybe<StringQueryOperatorInput>
+  name?: Maybe<StringQueryOperatorInput>
   base64Width?: Maybe<IntQueryOperatorInput>
   stripMetadata?: Maybe<BooleanQueryOperatorInput>
   defaultQuality?: Maybe<IntQueryOperatorInput>
@@ -5524,7 +6816,6 @@ export type SitePluginPluginOptionsFilterInput = {
   minify?: Maybe<BooleanQueryOperatorInput>
   transpileTemplateLiterals?: Maybe<BooleanQueryOperatorInput>
   pure?: Maybe<BooleanQueryOperatorInput>
-  name?: Maybe<StringQueryOperatorInput>
   short_name?: Maybe<StringQueryOperatorInput>
   start_url?: Maybe<StringQueryOperatorInput>
   background_color?: Maybe<StringQueryOperatorInput>
@@ -5588,6 +6879,19 @@ export type TransformOptions = {
 
 export type WebPOptions = {
   quality?: Maybe<Scalars['Int']>
+}
+
+export type FooterQueryVariables = Exact<{ [key: string]: never }>
+
+export type FooterQuery = { __typename?: 'Query' } & {
+  contentfulContactInfo?: Maybe<
+    { __typename?: 'ContentfulContactInfo' } & Pick<
+      ContentfulContactInfo,
+      'email' | 'facebookPage' | 'instagramPage' | 'phoneNumber'
+    >
+  >
+  instagram?: Maybe<{ __typename?: 'File' } & Pick<File, 'publicURL'>>
+  facebook?: Maybe<{ __typename?: 'File' } & Pick<File, 'publicURL'>>
 }
 
 export type HeaderQueryVariables = Exact<{ [key: string]: never }>

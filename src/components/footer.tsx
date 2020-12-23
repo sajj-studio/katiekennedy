@@ -1,29 +1,56 @@
 import React, { FC } from 'react'
 import styled from 'styled-components'
+import { graphql, useStaticQuery } from 'gatsby'
+import { FooterQuery } from '../graphqlTypes'
 
-export const Footer: FC = () => (
-  <_FooterWrapper>
-    <_FooterCircle />
-    <section>
-      <h2>Contact me</h2>
-      <_FooterContentContacts>
-        <div className="footer-content__contacts--social">
-          <a href="/" target="_blank">
-            <i className="fab fa-facebook"></i>
-          </a>
-          <a href="/" target="_blank">
-            <i className="fab fa-instagram"></i>
-          </a>
-        </div>
-        <_FooterContentContactsSocial className="footer-content__contacts--personal">
-          <a href="mailto:katiekennedy9@gmail.com">katiekennedy9@gmail.com</a>
-          <a href="tel:5144650339">514-465-0339</a>
-        </_FooterContentContactsSocial>
-      </_FooterContentContacts>
-      <_FooterBookBtn href="#">Book a session</_FooterBookBtn>
-    </section>
-  </_FooterWrapper>
-)
+export const query = graphql`
+  query Footer {
+    contentfulContactInfo {
+      email
+      facebookPage
+      instagramPage
+      phoneNumber
+    }
+    instagram: file(name: { eq: "icons8-instagram" }) {
+      publicURL
+    }
+    facebook: file(name: { eq: "icons8-facebook" }) {
+      publicURL
+    }
+  }
+`
+
+export const Footer: FC = () => {
+  const data = useStaticQuery<FooterQuery>(query)
+
+  return (
+    <_FooterWrapper>
+      <_FooterCircle />
+      <_SectionWrapper>
+        <h2>Contact me</h2>
+        <_FooterContentContacts>
+          <div className="footer-content__contacts--social">
+            <a href={data.contentfulContactInfo?.facebookPage ?? ''}>
+              <_ImageWrapper src={data.facebook?.publicURL ?? ''} alt={''} />
+            </a>
+            <a href={data.contentfulContactInfo?.instagramPage ?? ''}>
+              <_ImageWrapper src={data.instagram?.publicURL ?? ''} alt={''} />
+            </a>
+          </div>
+          <_FooterContentContactsSocial className="footer-content__contacts--personal">
+            <a href="mailto:katiekennedy9@gmail.com">
+              {data.contentfulContactInfo?.email}
+            </a>
+            <a href="tel:5144650339">
+              {data.contentfulContactInfo?.phoneNumber}
+            </a>
+          </_FooterContentContactsSocial>
+        </_FooterContentContacts>
+        <_FooterBookBtn href="#">Book a session</_FooterBookBtn>
+      </_SectionWrapper>
+    </_FooterWrapper>
+  )
+}
 
 const font_body = 'Lato'
 
@@ -54,6 +81,11 @@ const _FooterWrapper = styled.footer`
   }
 `
 
+const _SectionWrapper = styled.section`
+  width: 80%;
+  margin: 2rem auto;
+`
+
 const _FooterCircle = styled.circle`
   position: absolute;
   width: 100%;
@@ -76,7 +108,6 @@ const _FooterCircle = styled.circle`
 const _FooterContentContacts = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
   margin-bottom: 1.25rem;
   margin-top: 1.25rem;
 `
@@ -84,6 +115,8 @@ const _FooterContentContacts = styled.div`
 const _FooterContentContactsSocial = styled.div`
   display: flex;
   flex-direction: column;
+  align-content: space-between;
+  margin: 0 0 0 1.4rem;
 `
 
 const _FooterBookBtn = styled.a`
@@ -95,9 +128,21 @@ const _FooterBookBtn = styled.a`
   background: #c57d76;
   color: #fff;
   border: 1px solid #c57d76;
+  box-shadow: 5px 5px 15px -1px rgba(0, 0, 0, 0.51);
 
   :hover {
     background-color: #bd776f;
     border: 1px solid #bd776f;
+  }
+`
+
+const _ImageWrapper = styled.img`
+  width: 44px;
+  height: 100%;
+  margin: 0 0.5rem 0;
+
+  :nth-child(2) {
+    width: 50px;
+    height: 50px;
   }
 `
