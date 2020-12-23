@@ -9970,6 +9970,23 @@ export type FooterQuery = { __typename?: 'Query' } & {
   facebook?: Maybe<{ __typename?: 'File' } & Pick<File, 'publicURL'>>
 }
 
+export type GalleryFragment = { __typename?: 'ContentfulAsset' } & Pick<
+  ContentfulAsset,
+  'id'
+> & {
+    localFile?: Maybe<
+      { __typename?: 'File' } & {
+        childImageSharp?: Maybe<
+          { __typename?: 'ImageSharp' } & {
+            fluid?: Maybe<
+              { __typename?: 'ImageSharpFluid' } & GatsbyImageSharpFluidFragment
+            >
+          }
+        >
+      }
+    >
+  }
+
 export type HeaderQueryVariables = Exact<{ [key: string]: never }>
 
 export type HeaderQuery = { __typename?: 'Query' } & {
@@ -10011,6 +10028,31 @@ export type JumbotronQuery = { __typename?: 'Query' } & {
           }
         >
       }
+  >
+}
+
+export type LatestWorkQueryVariables = Exact<{ [key: string]: never }>
+
+export type LatestWorkQuery = { __typename?: 'Query' } & {
+  contentfulHomepageLatestWork?: Maybe<
+    { __typename?: 'ContentfulHomepageLatestWork' } & {
+      project?: Maybe<
+        { __typename?: 'ContentfulProject' } & Pick<
+          ContentfulProject,
+          'slug' | 'title'
+        > & {
+            description?: Maybe<
+              { __typename?: 'contentfulProjectDescriptionTextNode' } & Pick<
+                ContentfulProjectDescriptionTextNode,
+                'description'
+              >
+            >
+          }
+      >
+      featuredPhotos?: Maybe<
+        Array<Maybe<{ __typename?: 'ContentfulAsset' } & GalleryFragment>>
+      >
+    }
   >
 }
 

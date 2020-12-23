@@ -5,6 +5,7 @@ import { Jumbotron } from '../components/jumbotron'
 import { Featured } from '../components/featured'
 import { SectionTitle } from '../components/section-title'
 import { AboutMe } from '../components/about-me'
+import { LatestWork } from '../components/latest-work'
 
 const IndexPage: FC = () => (
   <Layout>
@@ -16,6 +17,9 @@ const IndexPage: FC = () => (
 
     <SectionTitle color="pink">About me</SectionTitle>
     <AboutMe />
+
+    <SectionTitle color="pink">Latest work</SectionTitle>
+    <LatestWork />
   </Layout>
 )
 
