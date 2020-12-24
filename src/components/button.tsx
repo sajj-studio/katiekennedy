@@ -9,6 +9,7 @@ interface ButtonProps {
 
 export const Button = styled(Link)<ButtonProps>`
   ${({ variant, theme, disabled = false, fullWidth = false }) => css`
+    text-align: center;
     padding: 0.5rem 1.375rem;
     font-family: ${theme.typography.sansSerif};
     font-weight: 100;
@@ -18,7 +19,6 @@ export const Button = styled(Link)<ButtonProps>`
     box-shadow: 3px 3px 15px #00000029;
     border-width: 1px;
     border-style: solid;
-    margin: 0.375rem;
     display: inline-block;
     line-height: 1.5rem;
 
@@ -51,6 +51,7 @@ export const Button = styled(Link)<ButtonProps>`
     ${fullWidth &&
     css`
       width: 100%;
+      box-sizing: border-box;
     `}
   `}
 `

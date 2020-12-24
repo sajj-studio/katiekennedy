@@ -77,4 +77,8 @@ export const Featured: FC = () => {
 const _FlexCenter = styled.div`
   display: flex;
   justify-content: center;
+
+  ${Button} {
+    margin: 0.375rem;
+  }
 `
