@@ -142,10 +142,6 @@ export const GlobalStyles = createGlobalStyle`
     }
   `}
 
-  section + section {
-    padding: 1.125rem 2.5rem;
-  }
-
   img {
     width: 100%;
   }

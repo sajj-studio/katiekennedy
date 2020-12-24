@@ -12,14 +12,20 @@ const IndexPage: FC = () => (
     <SEO title="Home" />
     <Jumbotron />
 
-    <SectionTitle color="pink">Different angles</SectionTitle>
-    <Featured />
+    <section>
+      <SectionTitle color="pink">Different angles</SectionTitle>
+      <Featured />
+    </section>
 
-    <SectionTitle color="pink">About me</SectionTitle>
-    <AboutMe />
+    <section>
+      <SectionTitle color="pink">About me</SectionTitle>
+      <AboutMe />
+    </section>
 
-    <SectionTitle color="pink">Latest work</SectionTitle>
-    <LatestWork />
+    <section>
+      <SectionTitle color="pink">Latest work</SectionTitle>
+      <LatestWork />
+    </section>
   </Layout>
 )
 

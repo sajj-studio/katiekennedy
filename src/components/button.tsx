@@ -19,6 +19,8 @@ export const Button = styled(Link)<ButtonProps>`
     border-width: 1px;
     border-style: solid;
     margin: 0.375rem;
+    display: inline-block;
+    line-height: 1.5rem;
 
     ${(() => {
       switch (variant) {
