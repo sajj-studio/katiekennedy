@@ -41,10 +41,10 @@ export const Header: FC = () => {
           <Menu
             items={[
               { href: '/', label: 'Home' },
-              { href: '/', label: 'Gallery' },
+              { href: '/gallery', label: 'Gallery' },
               { href: '/', label: 'About Me' },
               { href: '/', label: 'Latest Work' },
-              { href: '/', label: 'Contact Me' },
+              { href: '/contact', label: 'Contact Me' },
             ]}
             isOpen={isOpen}
           />
