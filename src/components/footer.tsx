@@ -29,14 +29,14 @@ export const Footer: FC = () => {
       <_SectionWrapper>
         <h2>Contact me</h2>
         <_FooterContentContacts>
-          <div className="footer-content__contacts--social">
+          <_IconsWrapper>
             <a href={data.contentfulContactInfo?.facebookPage ?? ''}>
               <_ImageWrapper src={data.facebook?.publicURL ?? ''} alt={''} />
             </a>
             <a href={data.contentfulContactInfo?.instagramPage ?? ''}>
               <_ImageWrapper src={data.instagram?.publicURL ?? ''} alt={''} />
             </a>
-          </div>
+          </_IconsWrapper>
           <_FooterContentContactsSocial className="footer-content__contacts--personal">
             <a href="mailto:katiekennedy9@gmail.com">
               {data.contentfulContactInfo?.email}
@@ -79,6 +79,11 @@ const _FooterWrapper = styled.footer`
       transform: translate(-60%, -9px);
     }
   }
+`
+
+const _IconsWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
 `
 
 const _SectionWrapper = styled.section`
