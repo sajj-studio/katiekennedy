@@ -35,14 +35,12 @@ export const Footer: FC = () => {
       </SectionTitle>
       <Container>
         <_FooterContentContacts>
-          <_IconsWrapper>
-            <a href={data.contentfulContactInfo?.facebookPage ?? ''}>
-              <_ImageWrapper src={data.facebook?.publicURL ?? ''} alt={''} />
-            </a>
-            <a href={data.contentfulContactInfo?.instagramPage ?? ''}>
-              <_ImageWrapper src={data.instagram?.publicURL ?? ''} alt={''} />
-            </a>
-          </_IconsWrapper>
+          <a href={data.contentfulContactInfo?.facebookPage ?? ''}>
+            <_ImageWrapper src={data.facebook?.publicURL ?? ''} alt={''} />
+          </a>
+          <a href={data.contentfulContactInfo?.instagramPage ?? ''}>
+            <_ImageWrapper src={data.instagram?.publicURL ?? ''} alt={''} />
+          </a>
           <_FooterContentContactsSocial className="footer-content__contacts--personal">
             <Typography
               variant="inline"
@@ -86,11 +84,6 @@ const _FooterWrapper = styled.footer`
   `}
 `
 
-const _IconsWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-`
-
 const _FooterCircle = styled.circle`
   position: absolute;
   width: 100%;
@@ -113,6 +106,8 @@ const _FooterCircle = styled.circle`
 const _FooterContentContacts = styled.div`
   display: flex;
   align-items: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
   margin-bottom: 1.25rem;
 `
 
