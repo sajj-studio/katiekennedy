@@ -2,7 +2,7 @@ import styled, { css, DefaultTheme } from 'styled-components'
 
 interface TypographyProps {
   color: keyof DefaultTheme['colors']
-  variant: 'title' | 'subtitle' | 'body'
+  variant: 'title' | 'subtitle' | 'body' | 'inline'
 }
 
 export const Typography = styled.p<TypographyProps>`
@@ -34,10 +34,14 @@ export const Typography = styled.p<TypographyProps>`
             font-family: ${theme.typography.sansSerif};
             font-weight: 300;
             line-height: 1.125rem;
+            margin: 1.25rem 0;
+          `
 
-            & + & {
-              margin: 1.25rem 0;
-            }
+        case 'inline':
+          return css`
+            font-family: ${theme.typography.sansSerif};
+            font-weight: 300;
+            line-height: 1.125rem;
           `
       }
     })()}
