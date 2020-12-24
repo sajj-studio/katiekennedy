@@ -6,11 +6,11 @@ import { SectionTitle } from '../components/section-title'
 import { Featured } from '../components/featured'
 import { Button } from '../components/button'
 import { graphql, useStaticQuery } from 'gatsby'
-import { GalleryQuery } from '../graphqlTypes'
+import { GalleryPageQuery } from '../graphqlTypes'
 import styled from 'styled-components'
 
 export const query = graphql`
-  query Gallery {
+  query GalleryPage {
     allContentfulTheme {
       nodes {
         featuredPhotos {
@@ -29,7 +29,7 @@ export const query = graphql`
 `
 
 const GalleryPage: FC = () => {
-  const data = useStaticQuery<GalleryQuery>(query)
+  const data = useStaticQuery<GalleryPageQuery>(query)
   return (
     <Layout>
       <SEO title="Gallery" />
@@ -37,10 +37,10 @@ const GalleryPage: FC = () => {
       <SectionTitle color="pink">Different angles</SectionTitle>
       <Featured />
 
-      {data.allContentfulTheme.nodes.map(x => (
+      {data.allContentfulTheme.nodes.map(theme => (
         <_ProjectWrapper>
-          <SectionTitle color="pink">{x.title ?? ''}</SectionTitle>
-          <Button as="button" variant="outline" style={{ width: '97%' }}>
+          <SectionTitle color="pink">{theme.title ?? ''}</SectionTitle>
+          <Button as="button" variant="outline" fullWidth>
             See more
           </Button>
         </_ProjectWrapper>

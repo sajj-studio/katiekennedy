@@ -10115,33 +10115,14 @@ export type Unnamed_1_Query = { __typename?: 'Query' } & {
   >
 }
 
-export type GalleryQueryVariables = Exact<{ [key: string]: never }>
+export type GalleryPageQueryVariables = Exact<{ [key: string]: never }>
 
-export type GalleryQuery = { __typename?: 'Query' } & {
+export type GalleryPageQuery = { __typename?: 'Query' } & {
   allContentfulTheme: { __typename?: 'ContentfulThemeConnection' } & {
     nodes: Array<
       { __typename?: 'ContentfulTheme' } & Pick<ContentfulTheme, 'title'> & {
           featuredPhotos?: Maybe<
-            Array<
-              Maybe<
-                { __typename?: 'ContentfulAsset' } & {
-                  localFile?: Maybe<
-                    { __typename?: 'File' } & {
-                      childImageSharp?: Maybe<
-                        { __typename?: 'ImageSharp' } & {
-                          fluid?: Maybe<
-                            { __typename?: 'ImageSharpFluid' } & Pick<
-                              ImageSharpFluid,
-                              'src'
-                            >
-                          >
-                        }
-                      >
-                    }
-                  >
-                }
-              >
-            >
+            Array<Maybe<{ __typename?: 'ContentfulAsset' } & GalleryFragment>>
           >
         }
     >

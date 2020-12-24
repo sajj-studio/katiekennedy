@@ -4,10 +4,11 @@ import styled, { css } from 'styled-components'
 interface ButtonProps {
   variant: 'filled' | 'outline'
   disabled?: boolean
+  fullWidth?: boolean
 }
 
 export const Button = styled(Link)<ButtonProps>`
-  ${({ variant, theme, disabled = false }) => css`
+  ${({ variant, theme, disabled = false, fullWidth = false }) => css`
     padding: 0.5rem 1.375rem;
     font-family: ${theme.typography.sansSerif};
     font-weight: 100;
@@ -43,6 +44,11 @@ export const Button = styled(Link)<ButtonProps>`
       color: ${theme.colors.white};
       border-color: ${theme.colors.beige};
       box-shadow: none;
+    `}
+
+    ${fullWidth &&
+    css`
+      width: 100%;
     `}
   `}
 `
