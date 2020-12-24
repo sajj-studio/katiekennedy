@@ -1,48 +1,51 @@
+import { graphql } from 'gatsby'
 import React, { FC } from 'react'
-import { graphql, useStaticQuery } from 'gatsby'
-import { JumbotronQuery } from '../graphqlTypes'
 import styled, { css } from 'styled-components'
+import { JumbotronImageFragment } from '../graphqlTypes'
 import { Button } from './button'
 import { Container } from './container'
 
-export const query = graphql`
-  query Jumbotron {
-    contentfulHomepageJumbotron {
-      text
-      image {
-        localFile {
-          childImageSharp {
-            fluid(maxWidth: 1600) {
-              src
-            }
-          }
+export const fragment = graphql`
+  fragment JumbotronImage on ContentfulAsset {
+    id
+    localFile {
+      childImageSharp {
+        fluid(maxWidth: 1600) {
+          ...GatsbyImageSharpFluid
         }
       }
     }
   }
 `
 
-export const Jumbotron: FC = () => {
-  const data = useStaticQuery<JumbotronQuery>(query)
-
-  return (
-    <_Wrapper>
-      <_Img
-        src={
-          data.contentfulHomepageJumbotron?.image?.localFile?.childImageSharp
-            ?.fluid?.src
-        }
-        alt={data.contentfulHomepageJumbotron?.text ?? ''}
-      />
-      <_Content>
-        <h1>{data.contentfulHomepageJumbotron?.text}</h1>
-        <Button to="/" variant="filled">
-          Explore more
-        </Button>
-      </_Content>
-    </_Wrapper>
-  )
+interface JumbotronProps {
+  image?: JumbotronImageFragment | null
+  text: string
+  linkText?: string
+  linkTo?: string
 }
+
+export const Jumbotron: FC<JumbotronProps> = ({
+  image,
+  text,
+  linkText,
+  linkTo,
+}) => (
+  <_Wrapper>
+    <_Img
+      src={image?.localFile?.childImageSharp?.fluid?.src}
+      alt={text ?? ''}
+    />
+    <_Content>
+      <h1>{text}</h1>
+      {linkText && linkTo && (
+        <Button to={linkTo} variant="filled">
+          {linkText}
+        </Button>
+      )}
+    </_Content>
+  </_Wrapper>
+)
 
 const _Wrapper = styled.section`
   position: relative;

@@ -15,11 +15,14 @@ export const query = graphql`
   query GalleryPage {
     allContentfulTheme {
       nodes {
+        title
+        slug
         featuredPhotos {
           ...Gallery
         }
-        title
-        slug
+        coverImage {
+          ...JumbotronImage
+        }
       }
     }
   }
@@ -30,7 +33,13 @@ const GalleryPage: FC = () => {
   return (
     <Layout>
       <SEO title="Gallery" />
-      <Jumbotron />
+      <Jumbotron
+        image={
+          data.allContentfulTheme.nodes?.[Math.floor(Math.random() * 100) % 3]
+            .coverImage
+        }
+        text="Gallery"
+      />
       <SectionTitle color="pink">Different angles</SectionTitle>
       <Featured />
 
