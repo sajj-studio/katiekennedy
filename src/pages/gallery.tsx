@@ -16,15 +16,10 @@ export const query = graphql`
     allContentfulTheme {
       nodes {
         featuredPhotos {
-          localFile {
-            childImageSharp {
-              fluid {
-                src
-              }
-            }
-          }
+          ...Gallery
         }
         title
+        slug
       }
     }
   }
@@ -44,13 +39,12 @@ const GalleryPage: FC = () => {
           <SectionTitle color="pink">{theme.title ?? ''}</SectionTitle>
           <Container>
             {theme?.featuredPhotos && <Gallery photos={theme.featuredPhotos} />}
+            <_ButtonWrapper>
+              <Button to={`/theme/${theme.slug}`} variant="outline" fullWidth>
+                See more
+              </Button>
+            </_ButtonWrapper>
           </Container>
-
-          <_ButtonWrapper>
-            <Button as="button" variant="outline" fullWidth>
-              See more
-            </Button>
-          </_ButtonWrapper>
         </_ProjectWrapper>
       ))}
     </Layout>
@@ -62,8 +56,7 @@ const _ProjectWrapper = styled.div`
 `
 
 const _ButtonWrapper = styled.div`
-  display: flex;
-  justify-content: center;
+  margin: 0 -1.25rem;
 `
 
 export default GalleryPage
