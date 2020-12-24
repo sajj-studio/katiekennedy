@@ -8,21 +8,18 @@ import { Button } from '../components/button'
 import { graphql, useStaticQuery } from 'gatsby'
 import { GalleryPageQuery } from '../graphqlTypes'
 import styled from 'styled-components'
+import { Gallery } from '../components/gallery'
+import { Container } from '../components/container'
 
 export const query = graphql`
   query GalleryPage {
     allContentfulTheme {
       nodes {
         featuredPhotos {
-          localFile {
-            childImageSharp {
-              fluid {
-                src
-              }
-            }
-          }
+          ...Gallery
         }
         title
+        slug
       }
     }
   }
@@ -40,9 +37,14 @@ const GalleryPage: FC = () => {
       {data.allContentfulTheme.nodes.map(theme => (
         <_ProjectWrapper>
           <SectionTitle color="pink">{theme.title ?? ''}</SectionTitle>
-          <Button as="button" variant="outline" fullWidth>
-            See more
-          </Button>
+          <Container>
+            {theme?.featuredPhotos && <Gallery photos={theme.featuredPhotos} />}
+            <_ButtonWrapper>
+              <Button to={`/theme/${theme.slug}`} variant="outline" fullWidth>
+                See more
+              </Button>
+            </_ButtonWrapper>
+          </Container>
         </_ProjectWrapper>
       ))}
     </Layout>
@@ -51,6 +53,10 @@ const GalleryPage: FC = () => {
 
 const _ProjectWrapper = styled.div`
   margin: 0 0 3rem;
+`
+
+const _ButtonWrapper = styled.div`
+  margin: 0 -1.25rem;
 `
 
 export default GalleryPage

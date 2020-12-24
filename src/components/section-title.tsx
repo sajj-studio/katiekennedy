@@ -4,13 +4,18 @@ import { Typography } from './typography'
 
 interface SectionTitleProps {
   color: keyof DefaultTheme['colors']
+  circleColor?: keyof DefaultTheme['colors']
   children: string
 }
 
-export const SectionTitle: FC<SectionTitleProps> = ({ color, children }) => {
+export const SectionTitle: FC<SectionTitleProps> = ({
+  color,
+  circleColor,
+  children,
+}) => {
   return (
     <_Wrapper>
-      <_Circle />
+      <_Circle color={circleColor} />
 
       <Typography color={color} variant="title" as="h2">
         {children}
@@ -28,8 +33,8 @@ const _Wrapper = styled.div`
   }
 `
 
-const _Circle = styled.div`
-  ${({ theme }) => css`
+const _Circle = styled.div<{ color?: keyof DefaultTheme['colors'] }>`
+  ${({ theme, color = 'beige' }) => css`
     position: absolute;
     width: 100%;
 
@@ -40,7 +45,7 @@ const _Circle = styled.div`
       background-size: 3.625rem 3.625rem;
       height: 3.625rem;
       width: 3.625rem;
-      border: 1px solid ${theme.colors.beige};
+      border: 1px solid ${theme.colors[color]};
       border-radius: 50%;
       left: 0;
       transform: translate(-60%, -9px);
