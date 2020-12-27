@@ -1,5 +1,14 @@
 import { DefaultTheme } from 'styled-components'
 
+const breakpoints: DefaultTheme['breakpoints'] = {
+  mobile: { max: '767px' },
+  desktop: { min: '768px' },
+}
+const media: DefaultTheme['media'] = {
+  mobile: `@media screen and (max-width: ${breakpoints.mobile.max})`,
+  desktop: `@media screen and (min-width: ${breakpoints.desktop.min})`,
+}
+
 export const theme: DefaultTheme = {
   typography: {
     serif: '"DM Serif Display", serif',
@@ -20,6 +29,8 @@ export const theme: DefaultTheme = {
     default: '0.2s',
     long: '0.4s',
   },
+  breakpoints,
+  media,
 }
 
 export const hexToRGBA = (hexCode: string, opacity: number): string => {
