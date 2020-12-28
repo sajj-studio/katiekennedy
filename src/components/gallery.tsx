@@ -9,7 +9,7 @@ export const fragment = graphql`
     id
     localFile {
       childImageSharp {
-        fluid(maxWidth: 585, maxHeight: 242) {
+        fluid(maxWidth: 585, maxHeight: 500) {
           ...GatsbyImageSharpFluid
         }
       }
@@ -23,47 +23,63 @@ interface GalleryProps {
 
 export const Gallery: FC<GalleryProps> = ({ photos }) => {
   return (
-    <_Container>
+    <_Grid>
       {photos.map(
-        (photo, i) =>
+        photo =>
           photo && (
-            <_PhotoWrap key={photo.id} fullWidth={i % 3 === 0}>
+            <_Item key={photo.id}>
               {/*
               //@ts-ignore */}
-              <_Img fluid={photo?.localFile?.childImageSharp?.fluid} />
-            </_PhotoWrap>
+              <_Image fluid={photo?.localFile?.childImageSharp?.fluid} />
+            </_Item>
           )
       )}
-    </_Container>
+    </_Grid>
   )
 }
 
-const _Container = styled.div`
-  margin: 1.25rem -1.95rem;
-  display: flex;
-  flex-wrap: wrap;
-`
+const _Grid = styled.div`
+  ${({ theme }) => css`
+    margin: 1.25rem -1.25rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1rem;
 
-const _Img = styled(Img)``
-const _PhotoWrap = styled.div<{ fullWidth: boolean }>`
-  ${({ fullWidth }) => css`
-    padding: 0.75rem;
-    width: 50%;
-    box-sizing: border-box;
-    height: 10.8125rem;
-
-    ${fullWidth &&
-    css`
-      width: 100%;
-    `}
-
-    position: relative;
-    ${_Img} {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      height: 100%;
+    ${theme.media.desktop} {
+      grid-template-columns: repeat(3, 1fr);
     }
   `}
+`
+
+const _Item = styled.div`
+  ${({ theme }) => css`
+    height: 1px;
+    padding-bottom: 56.25%;
+    overflow: hidden;
+    position: relative;
+
+    ${theme.media.mobile} {
+      &:nth-child(3n + 3) {
+        grid-column: span 2;
+      }
+    }
+
+    ${theme.media.desktop} {
+      &:nth-child(6n + 2),
+      &:nth-child(6n + 4) {
+        grid-column: span 2;
+        grid-row: span 2;
+        padding-bottom: calc(56.25% + 0.625rem);
+      }
+    }
+  `}
+`
+
+const _Image = styled(Img)`
+  img {
+    max-width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+  }
 `

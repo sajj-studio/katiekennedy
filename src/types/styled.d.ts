@@ -1,6 +1,12 @@
 import 'styled-components'
 
 declare module 'styled-components' {
+  type BreakpointTypes = 'desktop' | 'mobile'
+  interface Breakpoint {
+    min?: string
+    max?: string
+  }
+
   export interface DefaultTheme {
     typography: {
       serif: string
@@ -21,5 +27,7 @@ declare module 'styled-components' {
       default: string
       long: string
     }
+    breakpoints: Record<BreakpointTypes, Breakpoint>
+    media: Record<BreakpointTypes, string>
   }
 }
