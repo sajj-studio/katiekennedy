@@ -8404,6 +8404,7 @@ export type QuerySitePageArgs = {
   children?: Maybe<NodeFilterListInput>
   internal?: Maybe<InternalFilterInput>
   isCreatedByStatefulCreatePages?: Maybe<BooleanQueryOperatorInput>
+  context?: Maybe<SitePageContextFilterInput>
   pluginCreator?: Maybe<SitePluginFilterInput>
   pluginCreatorId?: Maybe<StringQueryOperatorInput>
   componentPath?: Maybe<StringQueryOperatorInput>
@@ -9060,6 +9061,7 @@ export type SitePage = Node & {
   children: Array<Node>
   internal: Internal
   isCreatedByStatefulCreatePages?: Maybe<Scalars['Boolean']>
+  context?: Maybe<SitePageContext>
   pluginCreator?: Maybe<SitePlugin>
   pluginCreatorId?: Maybe<Scalars['String']>
   componentPath?: Maybe<Scalars['String']>
@@ -9083,6 +9085,15 @@ export type SitePageConnectionGroupArgs = {
   skip?: Maybe<Scalars['Int']>
   limit?: Maybe<Scalars['Int']>
   field: SitePageFieldsEnum
+}
+
+export type SitePageContext = {
+  __typename?: 'SitePageContext'
+  id?: Maybe<Scalars['String']>
+}
+
+export type SitePageContextFilterInput = {
+  id?: Maybe<StringQueryOperatorInput>
 }
 
 export type SitePageEdge = {
@@ -9185,6 +9196,7 @@ export enum SitePageFieldsEnum {
   InternalOwner = 'internal___owner',
   InternalType = 'internal___type',
   IsCreatedByStatefulCreatePages = 'isCreatedByStatefulCreatePages',
+  ContextId = 'context___id',
   PluginCreatorId = 'pluginCreator___id',
   PluginCreatorParentId = 'pluginCreator___parent___id',
   PluginCreatorParentParentId = 'pluginCreator___parent___parent___id',
@@ -9284,6 +9296,7 @@ export type SitePageFilterInput = {
   children?: Maybe<NodeFilterListInput>
   internal?: Maybe<InternalFilterInput>
   isCreatedByStatefulCreatePages?: Maybe<BooleanQueryOperatorInput>
+  context?: Maybe<SitePageContextFilterInput>
   pluginCreator?: Maybe<SitePluginFilterInput>
   pluginCreatorId?: Maybe<StringQueryOperatorInput>
   componentPath?: Maybe<StringQueryOperatorInput>
@@ -10068,6 +10081,21 @@ export type Unnamed_1_Query = { __typename?: 'Query' } & {
   >
 }
 
+export type ProjectPagesGeneratorQueryVariables = Exact<{
+  [key: string]: never
+}>
+
+export type ProjectPagesGeneratorQuery = { __typename?: 'Query' } & {
+  allContentfulProject: { __typename?: 'ContentfulProjectConnection' } & {
+    nodes: Array<
+      { __typename?: 'ContentfulProject' } & Pick<
+        ContentfulProject,
+        'id' | 'slug'
+      >
+    >
+  }
+}
+
 export type GalleryPageQueryVariables = Exact<{ [key: string]: never }>
 
 export type GalleryPageQuery = { __typename?: 'Query' } & {
@@ -10086,4 +10114,24 @@ export type GalleryPageQuery = { __typename?: 'Query' } & {
         }
     >
   }
+}
+
+export type ProjectPageQueryVariables = Exact<{
+  id: Scalars['String']
+}>
+
+export type ProjectPageQuery = { __typename?: 'Query' } & {
+  contentfulProject?: Maybe<
+    { __typename?: 'ContentfulProject' } & Pick<
+      ContentfulProject,
+      'id' | 'title'
+    > & {
+        coverImage?: Maybe<
+          { __typename?: 'ContentfulAsset' } & JumbotronImageFragment
+        >
+        photos?: Maybe<
+          Array<Maybe<{ __typename?: 'ContentfulAsset' } & GalleryFragment>>
+        >
+      }
+  >
 }
