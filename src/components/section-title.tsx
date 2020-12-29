@@ -50,5 +50,9 @@ const _Circle = styled.div<{ color?: keyof DefaultTheme['colors'] }>`
       left: 0;
       transform: translate(-60%, -9px);
     }
+
+    ${theme.media.desktop} {
+      display: none;
+    }
   `}
 `
