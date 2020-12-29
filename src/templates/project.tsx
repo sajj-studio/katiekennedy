@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { graphql, PageProps } from 'gatsby'
+import { graphql, Link, PageProps } from 'gatsby'
 import { ProjectPageQuery } from '../graphqlTypes'
 import { Jumbotron } from '../components/jumbotron'
 import { Gallery } from '../components/gallery'
@@ -19,7 +19,13 @@ const ProjectPage: FC<PageProps<ProjectPageQuery, ProjectPageContext>> = ({
     <Layout>
       <Jumbotron image={project?.coverImage} text={project?.title ?? ''} />
       <Container>
-        {project?.photos && <Gallery photos={project?.photos} />}
+        {project?.photos && (
+          <Gallery
+            photos={project?.photos}
+            ItemWrapper={Link}
+            itemWrapperProps={{ to: `/project/${project?.slug ?? ''}/gallery` }}
+          />
+        )}
       </Container>
     </Layout>
   )
@@ -31,6 +37,7 @@ export const query = graphql`
   query ProjectPage($id: String!) {
     contentfulProject(id: { eq: $id }) {
       id
+      slug
       title
       coverImage {
         ...JumbotronImage

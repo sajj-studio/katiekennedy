@@ -1,10 +1,15 @@
-import { createGlobalStyle, css } from 'styled-components'
+import { createGlobalStyle } from 'styled-components'
 
 export const GlobalStyles = createGlobalStyle`
   /* http://meyerweb.com/eric/tools/css/reset/ 
      v2.0 | 20110126
      License: none (public domain)
   */
+
+  html {
+    font-size: 16px;
+    font-variant-ligatures: no-common-ligatures;
+  }
 
   html,
   body,
@@ -131,17 +136,6 @@ export const GlobalStyles = createGlobalStyle`
     border-collapse: collapse;
     border-spacing: 0;
   }
-
-  ${({ theme }) => css`
-    body {
-      color: ${theme.colors.pink};
-      font-size: 16px;
-      width: 100vw;
-      overflow-x: hidden;
-      padding-top: ${theme.sizing.headerHeight};
-      font-variant-ligatures: no-common-ligatures;
-    }
-  `}
 
   img {
     width: 100%;
