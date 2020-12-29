@@ -40,11 +40,11 @@ const GalleryPage: FC = () => {
         }
         text="Gallery"
       />
-
-      <Container>
+      <_SectionWrapper>
         <SectionTitle color="pink">Different angles</SectionTitle>
-        <Featured />
-      </Container>
+      </_SectionWrapper>
+
+      <Featured />
 
       {data.allContentfulTheme.nodes.map(theme => (
         <_ProjectWrapper>
@@ -81,6 +81,14 @@ const _ButtonWrapper = styled.div`
     ${theme.media.desktop} {
       margin: 0 auto;
       width: 33.5%;
+    }
+  `}
+`
+const _SectionWrapper = styled.div`
+  ${({ theme }) => css`
+    ${theme.media.desktop} {
+      display: flex;
+      justify-content: center;
     }
   `}
 `
