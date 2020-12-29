@@ -55,7 +55,7 @@ const _Circle = styled.div<{ color?: keyof DefaultTheme['colors'] }>`
       width: 3.625rem;
       border: 1px solid ${theme.colors[color]};
       border-radius: 50%;
-      left: 0;
+      left: -11%;
       transform: translate(-60%, -9px);
     }
 

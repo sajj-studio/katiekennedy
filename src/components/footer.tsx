@@ -6,6 +6,7 @@ import { SectionTitle } from './section-title'
 import { Container } from './container'
 import { Button } from './button'
 import { Typography } from './typography'
+import { theme } from './sc-theme'
 
 export const query = graphql`
   query Footer {
@@ -60,9 +61,11 @@ export const Footer: FC = () => {
             </Typography>
           </_FooterContentContactsSocial>
         </_FooterContentContacts>
-        <Button variant="filled" to="/contact">
-          Book a session
-        </Button>
+        <_ButtonWrapper>
+          <Button variant="filled" to="/contact">
+            Book a session
+          </Button>
+        </_ButtonWrapper>
       </Container>
     </_FooterWrapper>
   )
@@ -109,6 +112,10 @@ const _FooterContentContacts = styled.div`
   flex-direction: row;
   flex-wrap: nowrap;
   margin-bottom: 1.25rem;
+
+  ${theme.media.desktop} {
+    margin-left: 0.75rem;
+  }
 `
 
 const _FooterContentContactsSocial = styled.div`
@@ -125,5 +132,11 @@ const _ImageWrapper = styled.img`
   :nth-child(2) {
     width: 50px;
     height: 50px;
+  }
+`
+
+const _ButtonWrapper = styled.div`
+  ${theme.media.desktop} {
+    margin-left: 1.25rem;
   }
 `
