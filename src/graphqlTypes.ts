@@ -10485,6 +10485,14 @@ export type HeaderQuery = { __typename?: 'Query' } & {
       >
     }
   >
+  contentfulContactInfo?: Maybe<
+    { __typename?: 'ContentfulContactInfo' } & Pick<
+      ContentfulContactInfo,
+      'email' | 'facebookPage' | 'instagramPage' | 'phoneNumber'
+    >
+  >
+  instagram?: Maybe<{ __typename?: 'File' } & Pick<File, 'publicURL'>>
+  facebook?: Maybe<{ __typename?: 'File' } & Pick<File, 'publicURL'>>
 }
 
 export type HomeJumbotronQueryVariables = Exact<{ [key: string]: never }>

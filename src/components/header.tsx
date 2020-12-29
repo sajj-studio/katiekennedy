@@ -5,6 +5,9 @@ import { Hamburger } from './hamburger'
 import { Menu } from './sidebar'
 import { HeaderQuery } from '../graphqlTypes'
 import { Container } from './container'
+import { Typography } from './typography'
+import { InstagramLogo } from '../assets/Images/instagram'
+import { FacebookLogo } from '../assets/Images/facebook'
 
 export const query = graphql`
   query Header {
@@ -14,6 +17,18 @@ export const query = graphql`
           publicURL
         }
       }
+    }
+    contentfulContactInfo {
+      email
+      facebookPage
+      instagramPage
+      phoneNumber
+    }
+    instagram: file(name: { eq: "icons8-instagram" }) {
+      publicURL
+    }
+    facebook: file(name: { eq: "icons8-facebook" }) {
+      publicURL
     }
   }
 `
@@ -38,20 +53,42 @@ export const Header: FC = () => {
               />
             </Link>
           </_Logo>
-          {/* <_MenuWrapper>
-            <Typography variant="subtitle" color="pink" as="a" href={'/'}>
+          <_MenuWrapper>
+            <Typography
+              variant="menu-desktop"
+              color="pink"
+              as="a"
+              href={'/gallery'}
+            >
               Gallery
             </Typography>
-            <Typography variant="subtitle" color="pink" as="a" href={'/'}>
+            <Typography variant="menu-desktop" color="pink" as="a" href={'/'}>
               About me
             </Typography>
-            <Typography variant="subtitle" color="pink" as="a" href={'/'}>
+            <Typography variant="menu-desktop" color="pink" as="a" href={'/'}>
               Latest work
             </Typography>
-            <Typography variant="subtitle" color="pink" as="a" href={'/'}>
+            <Typography
+              variant="menu-desktop"
+              color="pink"
+              as="a"
+              href={'/contact'}
+            >
               Contact me
             </Typography>
-          </_MenuWrapper> */}
+            <_SocialsWrapper>
+              <a href={data.contentfulContactInfo?.facebookPage ?? ''}>
+                <_ImageWrapper>
+                  <FacebookLogo color="#C57D75" />
+                </_ImageWrapper>
+              </a>
+              <a href={data.contentfulContactInfo?.instagramPage ?? ''}>
+                <_ImageWrapper>
+                  <InstagramLogo color="#C57D75" />
+                </_ImageWrapper>
+              </a>
+            </_SocialsWrapper>
+          </_MenuWrapper>
 
           <nav>
             <Hamburger isOpen={isOpen} onClick={toggleMenu} />
@@ -101,5 +138,35 @@ const _Logo = styled.div`
   img {
     height: 3rem;
     width: auto;
+  }
+`
+
+const _MenuWrapper = styled.div`
+  ${({ theme }) => css`
+    display: none;
+    ${theme.media.desktop} {
+      display: block;
+      width: 80%;
+      display: flex;
+      flex-direction: row;
+      margin-left: 6rem;
+      justify-content: space-between;
+    }
+  `}
+`
+
+const _SocialsWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+`
+
+const _ImageWrapper = styled.div`
+  width: 1.3125rem;
+  margin: 0 0.5rem 0;
+
+  :nth-child(2) {
+    width: 50px;
+    height: 50px;
   }
 `
