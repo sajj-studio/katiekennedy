@@ -64,9 +64,15 @@ export const ProjectThumbnail: FC<ProjectThumbnailProps> = ({
 )
 
 const _Category = styled.div`
-  width: 5.6875rem;
-  padding: 0 0.5rem;
-  text-align: center;
+  ${({ theme }) => css`
+    width: 5.6875rem;
+    padding: 0 0.5rem;
+    text-align: center;
+
+    ${theme.media.desktop} {
+      width: 10rem;
+    }
+  `}
 `
 const _ImageContainer = styled.div`
   ${({ theme }) => css`
@@ -84,6 +90,10 @@ const _ImageContainer = styled.div`
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
+    }
+
+    ${theme.media.desktop} {
+      max-width: 10rem;
     }
   `}
 `
