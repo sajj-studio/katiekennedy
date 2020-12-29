@@ -40,16 +40,16 @@ const GalleryPage: FC = () => {
         }
         text="Gallery"
       />
-      <_SectionWrapper>
-        <SectionTitle color="pink">Different angles</SectionTitle>
-      </_SectionWrapper>
 
-      <Featured />
+      <Container>
+        <SectionTitle color="pink">Different angles</SectionTitle>
+        <Featured />
+      </Container>
 
       {data.allContentfulTheme.nodes.map(theme => (
         <_ProjectWrapper>
-          <SectionTitle color="pink">{theme.title ?? ''}</SectionTitle>
           <Container>
+            <SectionTitle color="pink">{theme.title ?? ''}</SectionTitle>
             {theme?.featuredPhotos && <Gallery photos={theme.featuredPhotos} />}
             <_ButtonWrapper>
               <Button to={`/theme/${theme.slug}`} variant="outline" fullWidth>
@@ -81,14 +81,6 @@ const _ButtonWrapper = styled.div`
     ${theme.media.desktop} {
       margin: 0 auto;
       width: 33.5%;
-    }
-  `}
-`
-const _SectionWrapper = styled.div`
-  ${({ theme }) => css`
-    ${theme.media.desktop} {
-      display: flex;
-      justify-content: center;
     }
   `}
 `
