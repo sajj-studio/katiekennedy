@@ -1,6 +1,12 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const ProjectList = styled.div`
-  display: flex;
-  justify-content: space-between;
+  ${({ theme }) => css`
+    display: flex;
+    justify-content: space-between;
+
+    ${theme.media.desktop} {
+      justify-content: center;
+    }
+  `}
 `

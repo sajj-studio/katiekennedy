@@ -25,12 +25,20 @@ export const SectionTitle: FC<SectionTitleProps> = ({
 }
 
 const _Wrapper = styled.div`
-  position: relative;
-  margin: 1.5rem 0;
+  ${({ theme }) => css`
+    position: relative;
+    margin: 1.5rem 0;
 
-  ${Typography} {
-    padding-left: 2.4375rem;
-  }
+    ${Typography} {
+      padding-left: 2.4375rem;
+    }
+
+    ${theme.media.desktop} {
+      ${Typography} {
+        padding-left: 1.25rem;
+      }
+    }
+  `}
 `
 
 const _Circle = styled.div<{ color?: keyof DefaultTheme['colors'] }>`
@@ -49,6 +57,10 @@ const _Circle = styled.div<{ color?: keyof DefaultTheme['colors'] }>`
       border-radius: 50%;
       left: 0;
       transform: translate(-60%, -9px);
+    }
+
+    ${theme.media.desktop} {
+      display: none;
     }
   `}
 `

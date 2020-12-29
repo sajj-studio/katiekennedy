@@ -7,7 +7,7 @@ import { Featured } from '../components/featured'
 import { Button } from '../components/button'
 import { graphql, useStaticQuery } from 'gatsby'
 import { GalleryPageQuery } from '../graphqlTypes'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { Gallery } from '../components/gallery'
 import { Container } from '../components/container'
 
@@ -64,11 +64,25 @@ const GalleryPage: FC = () => {
 }
 
 const _ProjectWrapper = styled.div`
-  margin: 0 0 3rem;
+  ${({ theme }) => css`
+    margin: 0 0 3rem;
+
+    ${theme.media.desktop} {
+      margin: 0 5rem 3rem;
+      padding: 0 5rem;
+    }
+  `}
 `
 
 const _ButtonWrapper = styled.div`
-  margin: 0 -1.25rem;
+  ${({ theme }) => css`
+    margin: 0 -1.25rem;
+
+    ${theme.media.desktop} {
+      margin: 0 auto;
+      width: 33.5%;
+    }
+  `}
 `
 
 export default GalleryPage
