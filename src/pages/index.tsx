@@ -6,26 +6,27 @@ import { Featured } from '../components/featured'
 import { SectionTitle } from '../components/section-title'
 import { AboutMe } from '../components/about-me'
 import { LatestWork } from '../components/latest-work'
+import { Container } from '../components/container'
 
 const IndexPage: FC = () => (
   <Layout>
     <SEO title="Home" />
     <HomeJumbotron />
 
-    <section>
+    <Container>
       <SectionTitle color="pink">Different angles</SectionTitle>
       <Featured />
-    </section>
+    </Container>
 
-    <section>
+    <Container>
       <SectionTitle color="pink">About me</SectionTitle>
       <AboutMe />
-    </section>
+    </Container>
 
-    <section>
+    <Container>
       <SectionTitle color="pink">Latest work</SectionTitle>
       <LatestWork />
-    </section>
+    </Container>
   </Layout>
 )
 
