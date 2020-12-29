@@ -5,7 +5,6 @@ import { Hamburger } from './hamburger'
 import { Menu } from './sidebar'
 import { HeaderQuery } from '../graphqlTypes'
 import { Container } from './container'
-import { Typography } from './typography'
 import { InstagramLogo } from '../assets/Images/instagram'
 import { FacebookLogo } from '../assets/Images/facebook'
 
@@ -54,28 +53,10 @@ export const Header: FC = () => {
             </Link>
           </_Logo>
           <_MenuWrapper>
-            <Typography
-              variant="menu-desktop"
-              color="pink"
-              as="a"
-              href={'/gallery'}
-            >
-              Gallery
-            </Typography>
-            <Typography variant="menu-desktop" color="pink" as="a" href={'/'}>
-              About me
-            </Typography>
-            <Typography variant="menu-desktop" color="pink" as="a" href={'/'}>
-              Latest work
-            </Typography>
-            <Typography
-              variant="menu-desktop"
-              color="pink"
-              as="a"
-              href={'/contact'}
-            >
-              Contact me
-            </Typography>
+            <_MenuLink to="/gallery">Gallery</_MenuLink>
+            <_MenuLink to="/">About me</_MenuLink>
+            <_MenuLink to="/">Latest work</_MenuLink>
+            <_MenuLink to="/contact">Contact me</_MenuLink>
             <_SocialsWrapper>
               <a href={data.contentfulContactInfo?.facebookPage ?? ''}>
                 <_ImageWrapper>
@@ -152,6 +133,16 @@ const _MenuWrapper = styled.div`
       margin-left: 6rem;
       justify-content: space-between;
     }
+  `}
+`
+
+const _MenuLink = styled(Link)`
+  ${({ theme }) => css`
+    font-family: ${theme.typography.serif};
+    font-weight: 300;
+    line-height: 1.125rem;
+    font-size: 1.25rem;
+    color: ${theme.colors.pink};
   `}
 `
 
