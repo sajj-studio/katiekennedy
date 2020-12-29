@@ -1,13 +1,16 @@
+import { CSSProperties } from 'react'
 import styled, { css, DefaultTheme } from 'styled-components'
 
 interface TypographyProps {
   color: keyof DefaultTheme['colors']
   variant: 'title' | 'subtitle' | 'body' | 'inline'
+  align?: CSSProperties['textAlign']
 }
 
 export const Typography = styled.p<TypographyProps>`
-  ${({ theme, color, variant }) => css`
+  ${({ theme, color, variant, align = 'left' }) => css`
     color: ${theme.colors[color]};
+    text-align: ${align};
 
     ${(() => {
       switch (variant) {

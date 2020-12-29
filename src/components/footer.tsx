@@ -30,10 +30,10 @@ export const Footer: FC = () => {
   return (
     <_FooterWrapper>
       <_FooterCircle />
-      <SectionTitle color="white" circleColor="white">
-        Contact me
-      </SectionTitle>
       <Container>
+        <SectionTitle color="white" circleColor="white">
+          Contact me
+        </SectionTitle>
         <_FooterContentContacts>
           <a href={data.contentfulContactInfo?.facebookPage ?? ''}>
             <_ImageWrapper src={data.facebook?.publicURL ?? ''} alt={''} />

@@ -10641,6 +10641,46 @@ export type GalleryPageQuery = { __typename?: 'Query' } & {
   }
 }
 
+export type ProjectSliderPageQueryVariables = Exact<{
+  id: Scalars['String']
+}>
+
+export type ProjectSliderPageQuery = { __typename?: 'Query' } & {
+  contentfulProject?: Maybe<
+    { __typename?: 'ContentfulProject' } & Pick<ContentfulProject, 'slug'> & {
+        description?: Maybe<
+          { __typename?: 'contentfulProjectDescriptionTextNode' } & Pick<
+            ContentfulProjectDescriptionTextNode,
+            'description'
+          >
+        >
+        photos?: Maybe<
+          Array<
+            Maybe<
+              { __typename?: 'ContentfulAsset' } & {
+                localFile?: Maybe<
+                  { __typename?: 'File' } & {
+                    childImageSharp?: Maybe<
+                      { __typename?: 'ImageSharp' } & {
+                        fluid?: Maybe<
+                          { __typename?: 'ImageSharpFluid' } & Pick<
+                            ImageSharpFluid,
+                            'src'
+                          > &
+                            GatsbyImageSharpFluidFragment
+                        >
+                      }
+                    >
+                  }
+                >
+              }
+            >
+          >
+        >
+      }
+  >
+}
+
 export type ProjectPageQueryVariables = Exact<{
   id: Scalars['String']
 }>
@@ -10649,7 +10689,7 @@ export type ProjectPageQuery = { __typename?: 'Query' } & {
   contentfulProject?: Maybe<
     { __typename?: 'ContentfulProject' } & Pick<
       ContentfulProject,
-      'id' | 'title'
+      'id' | 'slug' | 'title'
     > & {
         coverImage?: Maybe<
           { __typename?: 'ContentfulAsset' } & JumbotronImageFragment

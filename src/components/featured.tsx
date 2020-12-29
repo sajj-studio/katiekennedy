@@ -2,7 +2,6 @@ import React, { FC, useState } from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 import { ProjectThumbnail } from './project-thumbnail'
 import { FeaturedQuery } from '../graphqlTypes'
-import { Container } from './container'
 import { ProjectList } from './project-list'
 import { Button } from './button'
 import styled from 'styled-components'
@@ -25,7 +24,7 @@ export const Featured: FC = () => {
   const data = useStaticQuery<FeaturedQuery>(query)
 
   return (
-    <Container>
+    <>
       {tab === 'themes' && (
         <ProjectList>
           {data.contentfulHomepageFeatured?.themes?.map(
@@ -70,7 +69,7 @@ export const Featured: FC = () => {
           Projects
         </Button>
       </_FlexCenter>
-    </Container>
+    </>
   )
 }
 

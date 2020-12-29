@@ -48,8 +48,8 @@ const GalleryPage: FC = () => {
 
       {data.allContentfulTheme.nodes.map(theme => (
         <_ProjectWrapper>
-          <SectionTitle color="pink">{theme.title ?? ''}</SectionTitle>
           <Container>
+            <SectionTitle color="pink">{theme.title ?? ''}</SectionTitle>
             {theme?.featuredPhotos && <Gallery photos={theme.featuredPhotos} />}
             <_ButtonWrapper>
               <Button to={`/theme/${theme.slug}`} variant="outline" fullWidth>

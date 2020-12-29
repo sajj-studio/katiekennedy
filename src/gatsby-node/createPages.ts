@@ -3,6 +3,7 @@ import { PageGeneratorQuery } from '../graphqlTypes'
 import { ProjectPageContext } from '../templates/project'
 import { resolve } from 'path'
 import { ThemePageContext } from '../templates/theme'
+import { ProjectSliderPageContext } from '../templates/project-slider'
 
 export const createPages = async ({
   actions: { createPage },
@@ -33,6 +34,11 @@ export const createPages = async ({
     createPage<ProjectPageContext>({
       path: `/project/${project.slug}`,
       component: resolve('src/templates/project.tsx'),
+      context: { id: project.id },
+    })
+    createPage<ProjectSliderPageContext>({
+      path: `/project/${project.slug}/gallery`,
+      component: resolve('src/templates/project-slider.tsx'),
       context: { id: project.id },
     })
   }
