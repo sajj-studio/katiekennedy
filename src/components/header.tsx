@@ -38,6 +38,21 @@ export const Header: FC = () => {
               />
             </Link>
           </_Logo>
+          {/* <_MenuWrapper>
+            <Typography variant="subtitle" color="pink" as="a" href={'/'}>
+              Gallery
+            </Typography>
+            <Typography variant="subtitle" color="pink" as="a" href={'/'}>
+              About me
+            </Typography>
+            <Typography variant="subtitle" color="pink" as="a" href={'/'}>
+              Latest work
+            </Typography>
+            <Typography variant="subtitle" color="pink" as="a" href={'/'}>
+              Contact me
+            </Typography>
+          </_MenuWrapper> */}
+
           <nav>
             <Hamburger isOpen={isOpen} onClick={toggleMenu} />
             <Menu

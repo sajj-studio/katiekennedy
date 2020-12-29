@@ -1,5 +1,6 @@
 import React, { FC } from 'react'
 import styled, { css } from 'styled-components'
+import { theme } from './sc-theme'
 
 interface HamburgerProps {
   isOpen: boolean
@@ -19,6 +20,10 @@ const _Hamburger = styled.div`
   position: relative;
   z-index: 105;
   margin: 0.5rem 1rem 0 0;
+
+  ${theme.media.desktop} {
+    display: none;
+  }
 `
 
 interface HamburgerLineProps {
