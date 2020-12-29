@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
-import { graphql, PageProps } from 'gatsby'
-import { GalleryFragment, ThemePageQuery } from '../graphqlTypes'
+import { graphql, Link, PageProps } from 'gatsby'
+import { ThemePageQuery } from '../graphqlTypes'
 import { Jumbotron } from '../components/jumbotron'
 import { Gallery } from '../components/gallery'
 import { Layout } from '../components/layout'
@@ -10,23 +10,32 @@ export interface ThemePageContext {
   id: string
 }
 
+interface LinkToProjectProps {
+  slug: string
+}
+const _LinkToProject: FC<LinkToProjectProps> = ({ children, slug }) => (
+  <Link to={`/project/${slug}`}>{children}</Link>
+)
+
 const ThemePage: FC<PageProps<ThemePageQuery, ThemePageContext>> = ({
   data,
 }) => {
   const theme = data.contentfulTheme
-  const photos = theme?.project?.reduce<(GalleryFragment | null)[]>(
-    (res, project) => [
-      ...res,
-      ...(project?.featuredPhotos ? project?.featuredPhotos : []),
-    ],
-    []
-  )
 
   return (
     <Layout>
       <Jumbotron image={theme?.coverImage} text={theme?.title ?? ''} />
       <Container>
-        {photos?.filter(Boolean) && <Gallery photos={photos} />}
+        {theme?.project?.map(
+          project =>
+            project?.featuredPhotos?.filter(Boolean) && (
+              <Gallery
+                photos={project?.featuredPhotos}
+                ItemWrapper={_LinkToProject}
+                itemWrapperProps={{ slug: project.slug ?? '' }}
+              />
+            )
+        )}
       </Container>
     </Layout>
   )

@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { ComponentType, FC } from 'react'
 import { graphql } from 'gatsby'
 import { GalleryFragment } from '../graphqlTypes'
 import styled, { css } from 'styled-components'
@@ -17,20 +17,38 @@ export const fragment = graphql`
   }
 `
 
-interface GalleryProps {
+interface GalleryPropsWithoutAction {
   photos: (GalleryFragment | null | undefined)[]
 }
+interface GalleryPropsWithAction<P> {
+  photos: (GalleryFragment | null | undefined)[]
+  ItemWrapper: ComponentType<P>
+  itemWrapperProps: P
+}
+type GalleryProps<P = unknown> =
+  | GalleryPropsWithoutAction
+  | GalleryPropsWithAction<P>
 
-export const Gallery: FC<GalleryProps> = ({ photos }) => {
+export function Gallery<P>({
+  photos,
+  ...props
+}: GalleryProps<P>): ReturnType<FC<GalleryProps<P>>> {
   return (
     <_Grid>
       {photos.map(
         photo =>
           photo && (
             <_Item key={photo.id}>
-              {/*
-              //@ts-ignore */}
-              <_Image fluid={photo?.localFile?.childImageSharp?.fluid} />
+              {'ItemWrapper' in props ? (
+                <props.ItemWrapper {...props.itemWrapperProps}>
+                  {/* 
+                  //@ts-ignore */}
+                  <_Image fluid={photo?.localFile?.childImageSharp?.fluid} />
+                </props.ItemWrapper>
+              ) : (
+                //@ts-ignore
+                <_Image fluid={photo?.localFile?.childImageSharp?.fluid} />
+              )}
             </_Item>
           )
       )}
