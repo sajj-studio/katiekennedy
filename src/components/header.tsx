@@ -60,12 +60,12 @@ export const Header: FC = () => {
             <_SocialsWrapper>
               <a href={data.contentfulContactInfo?.facebookPage ?? ''}>
                 <_ImageWrapper>
-                  <FacebookLogo color="#C57D75" />
+                  <FacebookLogo color="pink" />
                 </_ImageWrapper>
               </a>
               <a href={data.contentfulContactInfo?.instagramPage ?? ''}>
                 <_ImageWrapper>
-                  <InstagramLogo color="#C57D75" />
+                  <InstagramLogo color="pink" />
                 </_ImageWrapper>
               </a>
             </_SocialsWrapper>
