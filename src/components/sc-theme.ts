@@ -2,10 +2,12 @@ import { DefaultTheme } from 'styled-components'
 
 const breakpoints: DefaultTheme['breakpoints'] = {
   mobile: { max: '767px' },
-  desktop: { min: '768px' },
+  tablet: { min: '768px' }, // i would suggest naming this tablet so we can use desktop farther up
+  desktop: { min: '992px' },
 }
 const media: DefaultTheme['media'] = {
   mobile: `@media screen and (max-width: ${breakpoints.mobile.max})`,
+  tablet: `@media screen and (min-width: ${breakpoints.tablet.min})`,
   desktop: `@media screen and (min-width: ${breakpoints.desktop.min})`,
 }
 

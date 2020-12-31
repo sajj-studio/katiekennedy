@@ -33,7 +33,7 @@ const _Wrapper = styled.div`
       padding-left: 2.4375rem;
     }
 
-    ${theme.media.desktop} {
+    ${theme.media.tablet} {
       ${Typography} {
         padding-left: 1.25rem;
       }
@@ -59,7 +59,7 @@ const _Circle = styled.div<{ color?: keyof DefaultTheme['colors'] }>`
       transform: translate(-60%, -9px);
     }
 
-    ${theme.media.desktop} {
+    ${theme.media.tablet} {
       display: none;
     }
   `}

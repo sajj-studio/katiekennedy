@@ -63,7 +63,7 @@ const _Grid = styled.div`
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 1rem;
 
-    ${theme.media.desktop} {
+    ${theme.media.tablet} {
       grid-template-columns: repeat(3, 1fr);
     }
   `}
@@ -82,7 +82,7 @@ const _Item = styled.div`
       }
     }
 
-    ${theme.media.desktop} {
+    ${theme.media.tablet} {
       &:nth-child(6n + 2),
       &:nth-child(6n + 4) {
         grid-column: span 2;
