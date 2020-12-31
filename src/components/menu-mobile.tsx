@@ -1,16 +1,13 @@
 import React, { FC } from 'react'
 import styled, { css } from 'styled-components'
+import { MenuItem } from './header'
 import { hexToRGBA } from './sc-theme'
 
-interface MenuItem {
-  href: string
-  label: string
-}
 interface MenuProps {
   items: MenuItem[]
   isOpen: boolean
 }
-export const Menu: FC<MenuProps> = ({ items, isOpen }) => (
+export const MobileMenu: FC<MenuProps> = ({ items, isOpen }) => (
   <_Menu isOpen={isOpen}>
     {items.map(item => (
       <_MenuItem key={item.label}>

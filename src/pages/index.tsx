@@ -7,24 +7,45 @@ import { SectionTitle } from '../components/section-title'
 import { AboutMe } from '../components/about-me'
 import { LatestWork } from '../components/latest-work'
 import { Container } from '../components/container'
+import { ActivePageContext } from '../contexts/active-page'
+import styled, { css } from 'styled-components'
 
 const IndexPage: FC = () => (
-  <Layout>
-    <SEO title="Home" />
-    <HomeJumbotron />
+  <ActivePageContext.Provider value="home">
+    <Layout>
+      <SEO title="Home" />
+      <HomeJumbotron />
 
-    <Container>
-      <SectionTitle color="pink">Different angles</SectionTitle>
-      <Featured />
-    </Container>
+      <Container>
+        <SectionTitle color="pink">Different angles</SectionTitle>
+        <Featured />
+      </Container>
 
-    <AboutMe />
+      <_AnchorOffset>
+        <div id="about-me" />
+      </_AnchorOffset>
+      <AboutMe />
 
-    <Container>
-      <SectionTitle color="pink">Latest work</SectionTitle>
-      <LatestWork />
-    </Container>
-  </Layout>
+      <_AnchorOffset>
+        <div id="latest-work" />
+      </_AnchorOffset>
+      <Container>
+        <SectionTitle color="pink">Latest work</SectionTitle>
+        <LatestWork />
+      </Container>
+    </Layout>
+  </ActivePageContext.Provider>
 )
 
 export default IndexPage
+
+const _AnchorOffset = styled.div`
+  ${({ theme }) => css`
+    position: relative;
+
+    div {
+      position: absolute;
+      top: -${theme.sizing.headerHeight};
+    }
+  `}
+`

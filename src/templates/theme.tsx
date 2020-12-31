@@ -5,6 +5,7 @@ import { Jumbotron } from '../components/jumbotron'
 import { Gallery } from '../components/gallery'
 import { Layout } from '../components/layout'
 import { Container } from '../components/container'
+import { ActivePageContext } from '../contexts/active-page'
 
 export interface ThemePageContext {
   id: string
@@ -23,21 +24,23 @@ const ThemePage: FC<PageProps<ThemePageQuery, ThemePageContext>> = ({
   const theme = data.contentfulTheme
 
   return (
-    <Layout>
-      <Jumbotron image={theme?.coverImage} text={theme?.title ?? ''} />
-      <Container>
-        {theme?.project?.map(
-          project =>
-            project?.featuredPhotos?.filter(Boolean) && (
-              <Gallery
-                photos={project?.featuredPhotos}
-                ItemWrapper={_LinkToProject}
-                itemWrapperProps={{ slug: project.slug ?? '' }}
-              />
-            )
-        )}
-      </Container>
-    </Layout>
+    <ActivePageContext.Provider value="gallery">
+      <Layout>
+        <Jumbotron image={theme?.coverImage} text={theme?.title ?? ''} />
+        <Container>
+          {theme?.project?.map(
+            project =>
+              project?.featuredPhotos?.filter(Boolean) && (
+                <Gallery
+                  photos={project?.featuredPhotos}
+                  ItemWrapper={_LinkToProject}
+                  itemWrapperProps={{ slug: project.slug ?? '' }}
+                />
+              )
+          )}
+        </Container>
+      </Layout>
+    </ActivePageContext.Provider>
   )
 }
 

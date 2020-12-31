@@ -10,6 +10,7 @@ import { GalleryPageQuery } from '../graphqlTypes'
 import styled, { css } from 'styled-components'
 import { Gallery } from '../components/gallery'
 import { Container } from '../components/container'
+import { ActivePageContext } from '../contexts/active-page'
 
 export const query = graphql`
   query GalleryPage {
@@ -31,35 +32,39 @@ export const query = graphql`
 const GalleryPage: FC = () => {
   const data = useStaticQuery<GalleryPageQuery>(query)
   return (
-    <Layout>
-      <SEO title="Gallery" />
-      <Jumbotron
-        image={
-          data.allContentfulTheme.nodes?.[Math.floor(Math.random() * 100) % 3]
-            .coverImage
-        }
-        text="Gallery"
-      />
-      <_SectionWrapper>
-        <SectionTitle color="pink">Different angles</SectionTitle>
-      </_SectionWrapper>
+    <ActivePageContext.Provider value="gallery">
+      <Layout>
+        <SEO title="Gallery" />
+        <Jumbotron
+          image={
+            data.allContentfulTheme.nodes?.[Math.floor(Math.random() * 100) % 3]
+              .coverImage
+          }
+          text="Gallery"
+        />
+        <_SectionWrapper>
+          <SectionTitle color="pink">Different angles</SectionTitle>
+        </_SectionWrapper>
 
-      <Featured />
+        <Featured />
 
-      {data.allContentfulTheme.nodes.map(theme => (
-        <_ProjectWrapper>
-          <Container>
-            <SectionTitle color="pink">{theme.title ?? ''}</SectionTitle>
-            {theme?.featuredPhotos && <Gallery photos={theme.featuredPhotos} />}
-            <_ButtonWrapper>
-              <Button to={`/theme/${theme.slug}`} variant="outline" fullWidth>
-                See more
-              </Button>
-            </_ButtonWrapper>
-          </Container>
-        </_ProjectWrapper>
-      ))}
-    </Layout>
+        {data.allContentfulTheme.nodes.map(theme => (
+          <_ProjectWrapper>
+            <Container>
+              <SectionTitle color="pink">{theme.title ?? ''}</SectionTitle>
+              {theme?.featuredPhotos && (
+                <Gallery photos={theme.featuredPhotos} />
+              )}
+              <_ButtonWrapper>
+                <Button to={`/theme/${theme.slug}`} variant="outline" fullWidth>
+                  See more
+                </Button>
+              </_ButtonWrapper>
+            </Container>
+          </_ProjectWrapper>
+        ))}
+      </Layout>
+    </ActivePageContext.Provider>
   )
 }
 
