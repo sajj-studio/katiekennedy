@@ -1,15 +1,14 @@
 import React, { FC } from 'react'
-import styled, { DefaultTheme } from 'styled-components'
-import { theme } from '../../components/sc-theme'
+import styled, { css, DefaultTheme } from 'styled-components'
 
 interface LogoProps {
   color: keyof DefaultTheme['colors']
 }
 
-export const InstagramLogo: FC<LogoProps> = props => {
+export const InstagramLogo: FC<LogoProps> = ({ color }) => {
   return (
     <_SvgWrapper
-      fill={theme.colors[props.color]}
+      color={color}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 48 48"
       width="144px"
@@ -20,7 +19,10 @@ export const InstagramLogo: FC<LogoProps> = props => {
   )
 }
 
-const _SvgWrapper = styled.svg`
-  width: 100%;
-  height: 100%;
+const _SvgWrapper = styled.svg<LogoProps>`
+  ${({ theme, color }) => css`
+    fill: ${theme.colors[color]};
+    width: 100%;
+    height: 100%;
+  `}
 `
