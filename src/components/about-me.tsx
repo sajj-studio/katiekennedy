@@ -1,12 +1,12 @@
 import React, { FC } from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 import { AboutMeQuery } from '../graphqlTypes'
-import { Container } from './container'
 import Img from 'gatsby-image'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { BLOCKS } from '@contentful/rich-text-types'
+import { SectionTitle } from '../components/section-title'
 import { Typography } from './typography'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const query = graphql`
   query AboutMe {
@@ -31,8 +31,8 @@ export const AboutMe: FC = () => {
   const data = useStaticQuery<AboutMeQuery>(query)
 
   return (
-    <Container>
-      <Img
+    <_Container>
+      <_Image
         //@ts-ignore
         fluid={
           data.contentfulHomepageAboutMe?.image?.localFile?.childImageSharp
@@ -40,22 +40,57 @@ export const AboutMe: FC = () => {
         }
       />
       <_Space />
-      {documentToReactComponents(
-        JSON.parse(data.contentfulHomepageAboutMe?.text?.raw ?? '{}'),
-        {
-          renderNode: {
-            [BLOCKS.PARAGRAPH]: (_, children) => (
-              <Typography variant="body" color="brown">
-                {children}
-              </Typography>
-            ),
-          },
-        }
-      )}
-    </Container>
+      <_Content>
+        <SectionTitle color="pink">About Me</SectionTitle>
+        {documentToReactComponents(
+          JSON.parse(data.contentfulHomepageAboutMe?.text?.raw ?? '{}'),
+          {
+            renderNode: {
+              [BLOCKS.PARAGRAPH]: (_, children) => (
+                <Typography variant="body" color="brown">
+                  {children}
+                </Typography>
+              ),
+            },
+          }
+        )}
+      </_Content>
+    </_Container>
   )
 }
 
+const _Container = styled.div`
+  ${({ theme }) => css`
+    ${theme.media.laptop} {
+      display: flex;
+    }
+  `}
+`
+
 const _Space = styled.div`
-  margin-bottom: 1.25rem;
+  ${({ theme }) => css`
+    margin-bottom: 1.25rem;
+
+    ${theme.media.laptop} {
+      display: none;
+    }
+  `}
+`
+
+const _Image = styled(Img)`
+  ${({ theme }) => css`
+    ${theme.media.laptop} {
+      width: 50%;
+    }
+  `}
+`
+
+const _Content = styled.div`
+  ${({ theme }) => css`
+    ${theme.media.laptop} {
+      max-width: 50%;
+      width: 24rem;
+      margin: 0 auto;
+    }
+  `}
 `
