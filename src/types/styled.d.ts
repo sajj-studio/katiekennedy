@@ -1,7 +1,7 @@
 import 'styled-components'
 
 declare module 'styled-components' {
-  type BreakpointTypes = 'desktop' | 'mobile'
+  type BreakpointTypes = 'tablet' | 'mobile' | 'desktop'
   interface Breakpoint {
     min?: string
     max?: string

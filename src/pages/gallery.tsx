@@ -67,7 +67,7 @@ const _ProjectWrapper = styled.div`
   ${({ theme }) => css`
     margin: 0 0 3rem;
 
-    ${theme.media.desktop} {
+    ${theme.media.tablet} {
       margin: 0 5rem 3rem;
       padding: 0 5rem;
     }
@@ -78,7 +78,7 @@ const _ButtonWrapper = styled.div`
   ${({ theme }) => css`
     margin: 0 -1.25rem;
 
-    ${theme.media.desktop} {
+    ${theme.media.tablet} {
       margin: 0 auto;
       width: 33.5%;
     }

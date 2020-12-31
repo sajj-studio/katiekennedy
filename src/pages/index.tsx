@@ -18,10 +18,7 @@ const IndexPage: FC = () => (
       <Featured />
     </Container>
 
-    <Container>
-      <SectionTitle color="pink">About me</SectionTitle>
-      <AboutMe />
-    </Container>
+    <AboutMe />
 
     <Container>
       <SectionTitle color="pink">Latest work</SectionTitle>

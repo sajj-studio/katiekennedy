@@ -7,6 +7,7 @@ import { BLOCKS } from '@contentful/rich-text-types'
 import { SectionTitle } from '../components/section-title'
 import { Typography } from './typography'
 import styled, { css } from 'styled-components'
+import { Container } from './container'
 
 export const query = graphql`
   query AboutMe {
@@ -32,6 +33,9 @@ export const AboutMe: FC = () => {
 
   return (
     <_Container>
+      <_MobileOnly>
+        <SectionTitle color="pink">About me</SectionTitle>
+      </_MobileOnly>
       <_Image
         //@ts-ignore
         fluid={
@@ -41,7 +45,9 @@ export const AboutMe: FC = () => {
       />
       <_Space />
       <_Content>
-        <SectionTitle color="pink">About Me</SectionTitle>
+        <_DesktopOnly>
+          <SectionTitle color="pink">About me</SectionTitle>
+        </_DesktopOnly>
         {documentToReactComponents(
           JSON.parse(data.contentfulHomepageAboutMe?.text?.raw ?? '{}'),
           {
@@ -59,9 +65,30 @@ export const AboutMe: FC = () => {
   )
 }
 
-const _Container = styled.div`
+const _MobileOnly = styled.div`
+  ${({ theme }) =>
+    css`
+      ${theme.media.desktop} {
+        display: none;
+      }
+    `}
+`
+const _DesktopOnly = styled.div`
+  ${({ theme }) =>
+    css`
+      display: none;
+
+      ${theme.media.desktop} {
+        display: initial;
+      }
+    `}
+`
+
+const _Container = styled(Container)`
   ${({ theme }) => css`
-    ${theme.media.laptop} {
+    margin-top: 4rem;
+
+    ${theme.media.desktop} {
       display: flex;
     }
   `}
@@ -71,7 +98,7 @@ const _Space = styled.div`
   ${({ theme }) => css`
     margin-bottom: 1.25rem;
 
-    ${theme.media.laptop} {
+    ${theme.media.desktop} {
       display: none;
     }
   `}
@@ -79,7 +106,7 @@ const _Space = styled.div`
 
 const _Image = styled(Img)`
   ${({ theme }) => css`
-    ${theme.media.laptop} {
+    ${theme.media.desktop} {
       width: 50%;
     }
   `}
@@ -87,7 +114,7 @@ const _Image = styled(Img)`
 
 const _Content = styled.div`
   ${({ theme }) => css`
-    ${theme.media.laptop} {
+    ${theme.media.desktop} {
       max-width: 50%;
       width: 24rem;
       margin: 0 auto;
