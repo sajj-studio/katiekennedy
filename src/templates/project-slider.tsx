@@ -49,9 +49,11 @@ const ProjectSliderPage: FC<
               />
             </_GalleryWrapper>
           )}
-          <Typography variant="body" color="white" align="center">
-            {project?.description?.description}
-          </Typography>
+          <_AlignCenter>
+            <Typography variant="body" color="white">
+              {project?.description?.description}
+            </Typography>
+          </_AlignCenter>
         </_Container>
       </ThemeProvider>
     </>
@@ -109,10 +111,14 @@ const _GalleryWrapper = styled.div`
   max-height: 80vh;
 `
 const _ItemWrapper = styled.div`
-  height: 80vh;
+  height: 75vh;
   display: flex;
   justify-content: center;
   align-items: center;
+`
+
+const _AlignCenter = styled.div`
+  text-align: center;
 `
 
 export default ProjectSliderPage
