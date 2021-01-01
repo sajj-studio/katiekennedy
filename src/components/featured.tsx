@@ -4,7 +4,8 @@ import { ProjectThumbnail } from './project-thumbnail'
 import { FeaturedQuery } from '../graphqlTypes'
 import { ProjectList } from './project-list'
 import { Button } from './button'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+import { SectionTitle } from './section-title'
 
 export const query = graphql`
   query Featured {
@@ -25,6 +26,10 @@ export const Featured: FC = () => {
 
   return (
     <>
+      <_TextCenter>
+        <SectionTitle color="pink">Different angles</SectionTitle>
+      </_TextCenter>
+
       {tab === 'themes' && (
         <ProjectList>
           {data.contentfulHomepageFeatured?.themes?.map(
@@ -72,6 +77,15 @@ export const Featured: FC = () => {
     </>
   )
 }
+
+const _TextCenter = styled.div`
+  ${({ theme }) =>
+    css`
+      ${theme.media.desktop} {
+        text-align: center;
+      }
+    `}
+`
 
 const _FlexCenter = styled.div`
   display: flex;

@@ -17,7 +17,6 @@ const IndexPage: FC = () => (
       <HomeJumbotron />
 
       <Container>
-        <SectionTitle color="pink">Different angles</SectionTitle>
         <Featured />
       </Container>
 

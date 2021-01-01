@@ -10424,17 +10424,6 @@ export type AboutMeQuery = { __typename?: 'Query' } & {
   >
 }
 
-export type DesktopMenuQueryVariables = Exact<{ [key: string]: never }>
-
-export type DesktopMenuQuery = { __typename?: 'Query' } & {
-  contentfulContactInfo?: Maybe<
-    { __typename?: 'ContentfulContactInfo' } & Pick<
-      ContentfulContactInfo,
-      'facebookPage' | 'instagramPage'
-    >
-  >
-}
-
 export type FeaturedQueryVariables = Exact<{ [key: string]: never }>
 
 export type FeaturedQuery = { __typename?: 'Query' } & {
@@ -10555,26 +10544,22 @@ export type LatestWorkQuery = { __typename?: 'Query' } & {
   >
 }
 
+export type DesktopMenuQueryVariables = Exact<{ [key: string]: never }>
+
+export type DesktopMenuQuery = { __typename?: 'Query' } & {
+  contentfulContactInfo?: Maybe<
+    { __typename?: 'ContentfulContactInfo' } & Pick<
+      ContentfulContactInfo,
+      'facebookPage' | 'instagramPage'
+    >
+  >
+}
+
 export type ProjectThumbnailFragment = {
   __typename?: 'ContentfulProject'
 } & Pick<ContentfulProject, 'id' | 'slug' | 'title'> & {
     coverImage?: Maybe<
-      { __typename?: 'ContentfulAsset' } & {
-        localFile?: Maybe<
-          { __typename?: 'File' } & {
-            childImageSharp?: Maybe<
-              { __typename?: 'ImageSharp' } & {
-                fixed?: Maybe<
-                  { __typename?: 'ImageSharpFixed' } & Pick<
-                    ImageSharpFixed,
-                    'src'
-                  >
-                >
-              }
-            >
-          }
-        >
-      }
+      { __typename?: 'ContentfulAsset' } & ThumbnailAssetFragment
     >
   }
 
@@ -10583,24 +10568,23 @@ export type ThemeThumbnailFragment = { __typename?: 'ContentfulTheme' } & Pick<
   'id' | 'slug' | 'title'
 > & {
     coverImage?: Maybe<
-      { __typename?: 'ContentfulAsset' } & {
-        localFile?: Maybe<
-          { __typename?: 'File' } & {
-            childImageSharp?: Maybe<
-              { __typename?: 'ImageSharp' } & {
-                fixed?: Maybe<
-                  { __typename?: 'ImageSharpFixed' } & Pick<
-                    ImageSharpFixed,
-                    'src'
-                  >
-                >
-              }
-            >
-          }
-        >
-      }
+      { __typename?: 'ContentfulAsset' } & ThumbnailAssetFragment
     >
   }
+
+export type ThumbnailAssetFragment = { __typename?: 'ContentfulAsset' } & {
+  localFile?: Maybe<
+    { __typename?: 'File' } & {
+      childImageSharp?: Maybe<
+        { __typename?: 'ImageSharp' } & {
+          fluid?: Maybe<
+            { __typename?: 'ImageSharpFluid' } & GatsbyImageSharpFluidFragment
+          >
+        }
+      >
+    }
+  >
+}
 
 export type Unnamed_1_QueryVariables = Exact<{ [key: string]: never }>
 

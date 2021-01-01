@@ -6,18 +6,13 @@ import {
 } from '../graphqlTypes'
 import styled, { css } from 'styled-components'
 import { Typography } from './typography'
+import Image from 'gatsby-image'
 
 export const fragments = graphql`
   fragment ProjectThumbnail on ContentfulProject {
     id
     coverImage {
-      localFile {
-        childImageSharp {
-          fixed(height: 91, width: 91) {
-            src
-          }
-        }
-      }
+      ...ThumbnailAsset
     }
     slug
     title
@@ -26,16 +21,25 @@ export const fragments = graphql`
   fragment ThemeThumbnail on ContentfulTheme {
     id
     coverImage {
-      localFile {
-        childImageSharp {
-          fixed(height: 91, width: 91) {
-            src
-          }
-        }
-      }
+      ...ThumbnailAsset
     }
     slug
     title
+  }
+
+  fragment ThumbnailAsset on ContentfulAsset {
+    localFile {
+      childImageSharp {
+        fluid(
+          sizes: "(min-width: 768px) 171px, 91px"
+          srcSetBreakpoints: [91, 171]
+          maxWidth: 171
+          maxHeight: 171
+        ) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
   }
 `
 
@@ -51,8 +55,8 @@ export const ProjectThumbnail: FC<ProjectThumbnailProps> = ({
   <_Category>
     <Link to={`/${type}/${slug}`}>
       <_ImageContainer>
-        <img
-          src={coverImage?.localFile?.childImageSharp?.fixed?.src}
+        <Image
+          fluid={coverImage?.localFile?.childImageSharp?.fluid}
           alt={`${title} cover`}
         />
       </_ImageContainer>
@@ -68,6 +72,7 @@ const _Category = styled.div`
     width: 5.6875rem;
     padding: 0 0.5rem;
     text-align: center;
+    margin: 0 1rem;
 
     ${theme.media.desktop} {
       width: 10rem;
@@ -79,7 +84,6 @@ const _ImageContainer = styled.div`
     position: relative;
     width: 100%;
     max-width: 5.6875rem;
-    padding-bottom: 100%;
     overflow: hidden;
     box-shadow: 0 0 0 3px ${theme.colors.white}, 0 0 0 4px ${theme.colors.beige};
     border-radius: 50%;
@@ -89,7 +93,6 @@ const _ImageContainer = styled.div`
       position: absolute;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%);
     }
 
     ${theme.media.desktop} {

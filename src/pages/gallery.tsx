@@ -42,9 +42,6 @@ const GalleryPage: FC = () => {
           }
           text="Gallery"
         />
-        <_SectionWrapper>
-          <SectionTitle color="pink">Different angles</SectionTitle>
-        </_SectionWrapper>
 
         <Featured />
 
@@ -86,14 +83,6 @@ const _ButtonWrapper = styled.div`
     ${theme.media.tablet} {
       margin: 0 auto;
       width: 33.5%;
-    }
-  `}
-`
-const _SectionWrapper = styled.div`
-  ${({ theme }) => css`
-    ${theme.media.desktop} {
-      display: flex;
-      justify-content: center;
     }
   `}
 `
