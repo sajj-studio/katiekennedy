@@ -10642,7 +10642,10 @@ export type ProjectSliderPageQueryVariables = Exact<{
 
 export type ProjectSliderPageQuery = { __typename?: 'Query' } & {
   contentfulProject?: Maybe<
-    { __typename?: 'ContentfulProject' } & Pick<ContentfulProject, 'slug'> & {
+    { __typename?: 'ContentfulProject' } & Pick<
+      ContentfulProject,
+      'title' | 'slug'
+    > & {
         description?: Maybe<
           { __typename?: 'contentfulProjectDescriptionTextNode' } & Pick<
             ContentfulProjectDescriptionTextNode,

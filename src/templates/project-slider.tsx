@@ -9,6 +9,7 @@ import styled, { css, ThemeProvider } from 'styled-components'
 import { theme } from '../components/sc-theme'
 import { notEmpty } from '../util/notEmpty'
 import { Typography } from '../components/typography'
+import { SEO } from '../components/seo'
 
 export interface ProjectSliderPageContext {
   id: string
@@ -19,6 +20,7 @@ const ProjectSliderPage: FC<
 > = ({ data: { contentfulProject: project } }) => {
   return (
     <>
+      <SEO title={project?.title ?? ''} />
       <ThemeProvider theme={theme}>
         <_CloseIcon to={`/project/${project?.slug}`} />
         <GlobalStyles />
@@ -126,6 +128,7 @@ export default ProjectSliderPage
 export const query = graphql`
   query ProjectSliderPage($id: String!) {
     contentfulProject(id: { eq: $id }) {
+      title
       slug
       description {
         description
