@@ -29,10 +29,6 @@ const _Wrapper = styled.div`
     position: relative;
     margin: 1.5rem 0;
 
-    ${Typography} {
-      padding-left: 2.4375rem;
-    }
-
     ${theme.media.tablet} {
       ${Typography} {
         padding-left: 1.25rem;

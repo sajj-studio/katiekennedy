@@ -56,6 +56,7 @@ export const ProjectThumbnail: FC<ProjectThumbnailProps> = ({
     <Link to={`/${type}/${slug}`}>
       <_ImageContainer>
         <Image
+          //@ts-ignore
           fluid={coverImage?.localFile?.childImageSharp?.fluid}
           alt={`${title} cover`}
         />
@@ -82,8 +83,7 @@ const _Category = styled.div`
 const _ImageContainer = styled.div`
   ${({ theme }) => css`
     position: relative;
-    width: 100%;
-    max-width: 5.6875rem;
+    width: 5.6875rem;
     overflow: hidden;
     box-shadow: 0 0 0 3px ${theme.colors.white}, 0 0 0 4px ${theme.colors.beige};
     border-radius: 50%;
@@ -96,7 +96,7 @@ const _ImageContainer = styled.div`
     }
 
     ${theme.media.desktop} {
-      max-width: 10rem;
+      width: 10.6875rem;
     }
   `}
 `

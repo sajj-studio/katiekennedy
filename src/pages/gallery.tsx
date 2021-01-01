@@ -48,7 +48,9 @@ const GalleryPage: FC = () => {
         {data.allContentfulTheme.nodes.map(theme => (
           <_ProjectWrapper>
             <Container>
-              <SectionTitle color="pink">{theme.title ?? ''}</SectionTitle>
+              <_AlignCenter>
+                <SectionTitle color="pink">{theme.title ?? ''}</SectionTitle>
+              </_AlignCenter>
               {theme?.featuredPhotos && (
                 <Gallery photos={theme.featuredPhotos} />
               )}
@@ -72,6 +74,14 @@ const _ProjectWrapper = styled.div`
     ${theme.media.tablet} {
       margin: 0 5rem 3rem;
       padding: 0 5rem;
+    }
+  `}
+`
+
+const _AlignCenter = styled.div`
+  ${({ theme }) => css`
+    ${theme.media.tablet} {
+      margin: 0 -1.25rem;
     }
   `}
 `

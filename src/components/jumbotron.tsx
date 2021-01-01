@@ -67,9 +67,8 @@ const _Content = styled(Container)<{
   verticalAlign: JumbotronProps['verticalAlign']
 }>`
   ${({ theme, verticalAlign }) => css`
-    width: 70%;
     align-self: flex-end;
-    padding: 3rem 2rem;
+    padding-bottom: 3rem;
 
     h1 {
       font-family: ${theme.typography.serif};
@@ -80,10 +79,12 @@ const _Content = styled(Container)<{
     }
 
     ${theme.media.desktop} {
+      width: 74.5rem;
+      padding-bottom: 0;
       ${verticalAlign === 'middle' &&
       css`
         align-self: center;
-      `}
+      `};
     }
   `}
 `

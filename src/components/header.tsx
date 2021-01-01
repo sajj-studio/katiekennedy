@@ -87,7 +87,6 @@ const _Header = styled.div`
     align-items: center;
     justify-content: space-between;
     height: ${theme.sizing.headerHeight};
-    padding: 0 2.25rem;
   `}
 `
 const _Logo = styled.div`

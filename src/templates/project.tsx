@@ -25,9 +25,9 @@ const ProjectPage: FC<PageProps<ProjectPageQuery, ProjectPageContext>> = ({
             <Gallery
               photos={project?.photos}
               ItemWrapper={Link}
-              itemWrapperProps={{
+              itemWrapperProps={() => ({
                 to: `/project/${project?.slug ?? ''}/gallery`,
-              }}
+              })}
             />
           )}
         </Container>
