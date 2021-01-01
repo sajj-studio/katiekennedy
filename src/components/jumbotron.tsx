@@ -23,6 +23,7 @@ interface JumbotronProps {
   text: string
   linkText?: string
   linkTo?: string
+  verticalAlign?: 'middle' | 'bottom'
 }
 
 export const Jumbotron: FC<JumbotronProps> = ({
@@ -30,13 +31,14 @@ export const Jumbotron: FC<JumbotronProps> = ({
   text,
   linkText,
   linkTo,
+  verticalAlign = 'bottom',
 }) => (
   <_Wrapper>
     <_Img
       src={image?.localFile?.childImageSharp?.fluid?.src}
       alt={text ?? ''}
     />
-    <_Content>
+    <_Content verticalAlign={verticalAlign}>
       <h1>{text}</h1>
       {linkText && linkTo && (
         <Button to={linkTo} variant="filled">
@@ -61,8 +63,10 @@ const _Img = styled.img`
   transform: translate(-50%, -50%);
   z-index: -1;
 `
-const _Content = styled(Container)`
-  ${({ theme }) => css`
+const _Content = styled(Container)<{
+  verticalAlign: JumbotronProps['verticalAlign']
+}>`
+  ${({ theme, verticalAlign }) => css`
     width: 70%;
     align-self: flex-end;
     padding: 3rem 2rem;
@@ -73,6 +77,13 @@ const _Content = styled(Container)`
       color: ${theme.colors.white};
       text-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
       margin-bottom: 2rem;
+    }
+
+    ${theme.media.desktop} {
+      ${verticalAlign === 'middle' &&
+      css`
+        align-self: center;
+      `}
     }
   `}
 `

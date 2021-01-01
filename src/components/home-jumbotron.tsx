@@ -23,6 +23,7 @@ export const HomeJumbotron: FC = () => {
       text={data.contentfulHomepageJumbotron?.text ?? ''}
       linkText="Explore more"
       linkTo="/gallery"
+      verticalAlign="middle"
     />
   )
 }
