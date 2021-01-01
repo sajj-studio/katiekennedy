@@ -23,7 +23,7 @@ interface GalleryPropsWithoutAction {
 interface GalleryPropsWithAction<P> {
   photos: (GalleryFragment | null | undefined)[]
   ItemWrapper: ComponentType<P>
-  itemWrapperProps: P
+  itemWrapperProps: (photo: GalleryFragment) => P
 }
 type GalleryProps<P = unknown> =
   | GalleryPropsWithoutAction
@@ -40,7 +40,7 @@ export function Gallery<P>({
           photo && (
             <_Item key={photo.id}>
               {'ItemWrapper' in props ? (
-                <props.ItemWrapper {...props.itemWrapperProps}>
+                <props.ItemWrapper {...props.itemWrapperProps(photo)}>
                   {/* 
                   //@ts-ignore */}
                   <_Image fluid={photo?.localFile?.childImageSharp?.fluid} />
