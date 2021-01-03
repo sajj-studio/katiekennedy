@@ -46,36 +46,23 @@ const GalleryPage: FC = () => {
         <Featured />
 
         {data.allContentfulTheme.nodes.map(theme => (
-          <_ProjectWrapper>
-            <Container>
-              <_AlignCenter>
-                <SectionTitle color="pink">{theme.title ?? ''}</SectionTitle>
-              </_AlignCenter>
-              {theme?.featuredPhotos && (
-                <Gallery photos={theme.featuredPhotos} />
-              )}
-              <_ButtonWrapper>
-                <Button to={`/theme/${theme.slug}`} variant="outline" fullWidth>
-                  See more
-                </Button>
-              </_ButtonWrapper>
-            </Container>
-          </_ProjectWrapper>
+          <ProjectContainer>
+            <_AlignCenter>
+              <SectionTitle color="pink">{theme.title ?? ''}</SectionTitle>
+            </_AlignCenter>
+            {theme?.featuredPhotos && <Gallery photos={theme.featuredPhotos} />}
+            <_Button to={`/theme/${theme.slug}`} variant="outline">
+              See more
+            </_Button>
+          </ProjectContainer>
         ))}
       </Layout>
     </ActivePageContext.Provider>
   )
 }
 
-const _ProjectWrapper = styled.div`
-  ${({ theme }) => css`
-    margin: 0 0 3rem;
-
-    ${theme.media.tablet} {
-      margin: 0 5rem 3rem;
-      padding: 0 5rem;
-    }
-  `}
+const ProjectContainer = styled(Container)`
+  margin-bottom: 3rem;
 `
 
 const _AlignCenter = styled.div`
@@ -86,13 +73,14 @@ const _AlignCenter = styled.div`
   `}
 `
 
-const _ButtonWrapper = styled.div`
+const _Button = styled(Button)`
   ${({ theme }) => css`
+    display: block;
     margin: 0 -1.25rem;
+    max-width: 23rem;
 
     ${theme.media.tablet} {
       margin: 0 auto;
-      width: 33.5%;
     }
   `}
 `

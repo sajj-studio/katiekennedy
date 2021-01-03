@@ -12,17 +12,15 @@ export const SectionTitle: FC<SectionTitleProps> = ({
   color,
   circleColor,
   children,
-}) => {
-  return (
-    <_Wrapper>
-      <_Circle color={circleColor} />
+}) => (
+  <_Wrapper>
+    <_Circle color={circleColor} />
 
-      <Typography color={color} variant="title" as="h2">
-        {children}
-      </Typography>
-    </_Wrapper>
-  )
-}
+    <Typography color={color} variant="title" as="h2">
+      {children}
+    </Typography>
+  </_Wrapper>
+)
 
 const _Wrapper = styled.div`
   ${({ theme }) => css`
