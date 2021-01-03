@@ -83,11 +83,10 @@ const _FooterWrapper = styled.footer`
      * overflows the boundaries of the footer. But the bottom one has to be 3rem,
      * otherwise the button is horribly cropped. */
     padding: 1px 0 3rem;
-    z-index: -1;
   `}
 `
 
-const _FooterCircle = styled.circle`
+const _FooterCircle = styled.div`
   position: absolute;
   width: 100%;
   z-index: 0;
