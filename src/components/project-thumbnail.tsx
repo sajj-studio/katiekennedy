@@ -52,8 +52,8 @@ export const ProjectThumbnail: FC<ProjectThumbnailProps> = ({
   type,
   data: { coverImage, title, slug },
 }) => (
-  <_Category>
-    <Link to={`/${type}/${slug}`}>
+  <Thumbnail>
+    <StyledLink to={`/${type}/${slug}`}>
       <_ImageContainer>
         <Image
           //@ts-ignore
@@ -64,19 +64,21 @@ export const ProjectThumbnail: FC<ProjectThumbnailProps> = ({
       <Typography variant="body" color="brown">
         {title}
       </Typography>
-    </Link>
-  </_Category>
+    </StyledLink>
+  </Thumbnail>
 )
 
-const _Category = styled.div`
+const StyledLink = styled(Link)`
+  display: inline-block;
+`
+
+const Thumbnail = styled.div`
   ${({ theme }) => css`
-    width: 5.6875rem;
-    padding: 0 0.5rem;
     text-align: center;
-    margin: 0 1rem;
+    margin: 0 0.75rem;
 
     ${theme.media.desktop} {
-      width: 10rem;
+      margin: 1rem;
     }
   `}
 `
