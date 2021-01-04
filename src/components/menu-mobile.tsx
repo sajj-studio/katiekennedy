@@ -25,7 +25,7 @@ const _Menu = styled.ul<{ isOpen: boolean }>`
     width: calc(100% - 6.25rem);
     height: 100vh;
     padding-left: 3.75rem;
-    background: ${hexToRGBA(theme.colors.beige, 0.875)};
+    background: ${hexToRGBA(theme.colors.beige, 0.7)};
     backdrop-filter: blur(30px);
     display: flex;
     flex-direction: column;

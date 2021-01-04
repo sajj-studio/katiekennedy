@@ -6,6 +6,7 @@ import { MobileMenu } from './menu-mobile'
 import { HeaderQuery } from '../graphqlTypes'
 import { Container } from './container'
 import { DesktopMenu } from './menu-desktop'
+import { hexToRGBA } from './sc-theme'
 
 export const query = graphql`
   query Header {
@@ -71,13 +72,13 @@ const _HeaderWrap = styled.header<{ isOpen: boolean }>`
     top: 0;
     width: 100%;
     z-index: 100;
-    background: rgba(${theme.colors.white}, 0.875);
     backdrop-filter: blur(30px);
+    background: ${hexToRGBA(theme.colors.white, 0.7)};
 
     ${isOpen &&
     css`
       backdrop-filter: none;
-      background: rgba(${theme.colors.white}, 0.95);
+      background: ${hexToRGBA(theme.colors.white, 0.875)};
     `}
   `}
 `
